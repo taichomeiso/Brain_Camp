@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root to: 'tops#index'
+  get 'games/color_rock_paper_sicissors'
+  get 'games/memory_square'
+  get 'games/number_master'
+  get 'games/reverse_colors'
+  get 'games/fit_the_shape'
+  get 'results/index'
 end
