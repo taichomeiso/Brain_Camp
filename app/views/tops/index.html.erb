@@ -1,2 +1,262 @@
-<h1>Brain Camp</h1>
-<p>Find me in app/views/tops/index.html.erb</p>
+<div class="top-page__whole-wrapper">
+  <div class="top-page__upper-container">
+    <div class="top-page__upper-left-container">
+      <div class="top-page__upper-box">
+        <h1 class="top-page__app-title">Brain Camp!</h1>
+      </div>
+      <div class="top-page__lower-box">
+        <p class="top-page__concept-description">
+          "Boost Your Brain, Break the Records"
+        </p>
+        <p class="top-page__by-all-member">by ktkt</p>
+      </div>
+    </div>
+    <div class="top-page__upper-right-container">
+      <%= image_tag "brain-camp-image.png", class: "top-page__brain-camp-image", alt: "Brain Campのイメージ", width: 600, height: 450 %>
+    </div>
+  </div>
+
+  <div class="top-page__middle-container">
+    <h1 class="top-page__game-select-corner">game select</h1>
+  </div>
+
+  <div class="top-page__lower-container">
+    <div class="top-page__left-box">
+      <div class="top-page__left-game-box">
+        <div class="top-page__game-box">
+          イラスト
+          <div class="top-page__game-name-box">
+            <%= link_to '色勝ちじゃんけん', games_color_rock_paper_sicissors_path, class: 'top-page__game-link' %>
+          </div>
+          <div class="top-page__trophy-box">
+            <%= image_tag "trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
+          </div>
+        </div>
+
+        <div class="top-page__game-box">
+          イラスト
+          <div class="top-page__game-name-box">
+            <%= link_to '数の達人', games_number_master_path, class: 'top-page__game-link' %>
+          </div>
+          <div class="top-page__trophy-box">
+            <%= image_tag "trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
+          </div>
+        </div>
+
+        <div class="top-page__game-box">
+          イラスト
+          <div class="top-page__game-name-box">
+            <%= link_to '覚えマス!!', games_memory_square_path, class: 'top-page__game-link' %>
+          </div>
+          <div class="top-page__trophy-box">
+            <%= image_tag "trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
+          </div>
+        </div>
+      </div>
+
+      <div class="top-page__right-game-box" style="display: none;">
+        <div class="top-page__game-box">
+          イラスト
+          <div class="top-page__game-name-box">
+            <%= link_to 'あべこべカラーズ', games_reverse_colors_path, class: 'top-page__game-link' %>
+          </div>
+          <div class="top-page__trophy-box">
+            <%= image_tag "trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
+          </div>
+        </div>
+
+        <div class="top-page__game-box">
+          イラスト
+          <div class="top-page__game-name-box">
+            <%= link_to 'フィットザシェイプ', games_fit_the_shape_path, class: 'top-page__game-link' %>
+          </div>
+          <div class="top-page__trophy-box">
+            <%= image_tag "trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="top-page__right-box">
+      <div class="top-page__ranking-box">
+        <div class="top-page__ranking-title-box">
+          <h1>色勝ちじゃんけん　ランキング表</h1>
+          <%= image_tag "trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
+        </div>
+        <div class="top-page__ranking-number-list">
+          <div class="top-page__ranking-number1">
+            <div class="top-page__ranking-number-box">
+              <span class="top-page__gold-number">1位</span>
+            </div>
+            <div class="top-page__ranking-nickname-box">ニックネーム</div>
+          </div>
+          <div class="top-page__ranking-number2">
+            <div class="top-page__ranking-number-box">
+              <span class="top-page__silver-number">2位</span>
+            </div>
+            <div class="top-page__ranking-nickname-box">ニックネーム</div>
+          </div>
+          <div class="top-page__ranking-number3">
+            <div class="top-page__ranking-number-box">
+              <span class="top-page__bronze-number">3位</span>
+            </div>
+            <div class="top-page__ranking-nickname-box">ニックネーム</div>
+          </div>
+          <div class="top-page__ranking-number4">
+            <div class="top-page__ranking-number-box">4位</div>
+            <div class="top-page__ranking-nickname-box">ニックネーム</div>
+          </div>
+          <div class="top-page__ranking-number5">
+            <div class="top-page__ranking-number-box">5位</div>
+            <div class="top-page__ranking-nickname-box">ニックネーム</div>
+          </div>
+        </div>
+
+        <div class="top-page__ranking-box" style="display: none;">
+          <div class="top-page__ranking-title-box">
+            <h1>数の達人　ランキング表</h1>
+            <%= image_tag "trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
+          </div>
+          <div class="top-page__ranking-number-list">
+            <div class="top-page__ranking-number1">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__gold-number">1位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number2">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__silver-number">2位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number3">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__bronze-number">3位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number4">
+              <div class="top-page__ranking-number-box">4位</div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number5">
+              <div class="top-page__ranking-number-box">5位</div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-page__ranking-box" style="display: none;">
+          <div class="top-page__ranking-title-box">
+            <h1>覚えマス!!　ランキング表</h1>
+            <%= image_tag "trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
+          </div>
+          <div class="top-page__ranking-number-list">
+            <div class="top-page__ranking-number1">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__gold-number">1位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number2">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__silver-number">2位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number3">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__bronze-number">3位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number4">
+              <div class="top-page__ranking-number-box">4位</div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number5">
+              <div class="top-page__ranking-number-box">5位</div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-page__ranking-box" style="display: none;">
+          <div class="top-page__ranking-title-box">
+            <h1>あべこべカラーズ　ランキング表</h1>
+            <%= image_tag "trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
+          </div>
+          <div class="top-page__ranking-number-list">
+            <div class="top-page__ranking-number1">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__gold-number">1位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number2">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__silver-number">2位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number3">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__bronze-number">3位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number4">
+              <div class="top-page__ranking-number-box">4位</div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number5">
+              <div class="top-page__ranking-number-box">5位</div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-page__ranking-box" style="display: none;">
+          <div class="top-page__ranking-title-box">
+            <h1>フィットザシェイプ　ランキング表</h1>
+            <%= image_tag "trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
+          </div>
+          <div class="top-page__ranking-number-list">
+            <div class="top-page__ranking-number1">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__gold-number">1位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number2">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__silver-number">2位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number3">
+              <div class="top-page__ranking-number-box">
+                <span class="top-page__bronze-number">3位</span>
+              </div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number4">
+              <div class="top-page__ranking-number-box">4位</div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+            <div class="top-page__ranking-number5">
+              <div class="top-page__ranking-number-box">5位</div>
+              <div class="top-page__ranking-nickname-box">ニックネーム</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="top-page__footer">
+    <p>&copy; 2024 ktkt. All rights reserved.</p>
+</footer>
