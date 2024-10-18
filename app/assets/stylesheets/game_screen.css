@@ -1,35 +1,36 @@
-.GameScreenBase{
-  margin: 20px, auto;
+.game-page__GameScreenBase{
+  margin: 20px auto;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(to left, #2D6BA1, #2C89CB 50%, #5AA4D8)
 }
-.BackTitelButton{
+.game-page__BackTitleButton{
   width: 120px;
   height: 39px;
-  padding: 5px 5px 5px 5px;
+  padding: 5px;
   text-align: center;
   border: solid 2px #000;
   background-color: skyblue;
-  border-radius: 10px 10px 10px 10px;
+  border-radius:10px;
   margin-bottom: 10px;
-  margin-right: -350px;
+  margin-right: -550px;
 }
-.MainGameScreen{
-  width: 480px;
+.game-page__MainGameScreen{
+  width: 700px;
   height: 650px;
   background-color: darkgray;
   border: 2px solid #000000;
   margin-bottom: 10px;
 }
-.GameStartButton{
+.game-page__GameStartButton{
   display: block;
   text-decoration: none;
   cursor: pointer;
   border-radius: 9999px;
   color: #fff;
-  background: #3d79d5;
+  background: #87ceeb;
   text-align: center;
   font-size: 24px;
   line-height: 1;
