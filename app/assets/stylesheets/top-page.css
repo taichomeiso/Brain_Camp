@@ -41,8 +41,8 @@
   font-style: italic;
   margin: 0;
   background: linear-gradient(transparent 80%, rgb(255, 240, 29) 70%);
-  letter-spacing: -5px; 
-  /* ここで文字と文字の間の幅変更してもらってもいいです  */
+  letter-spacing: -5px;
+  /* ここで文字と文字の間の幅変更してもらってもいいです */
 }
 
 .top-page__lower-box {
@@ -143,14 +143,13 @@
   cursor: pointer;
   font-family: "M PLUS 1", sans-serif;
   font-weight: 600;
-  background-color: #5AA4D8;
+  background-color: #5aa4d8;
   color: black;
 }
 
 .top-page__color-rock-paper-scissors-img {
   width: 340px;
 }
-
 
 .top-page__game-link {
   font-size: 24px;
@@ -228,7 +227,7 @@
   padding: 0;
 }
 
-.top-page__ranking-number-box{
+.top-page__ranking-number-box {
   width: 30%;
   height: 100%;
   display: flex;
@@ -236,7 +235,7 @@
   justify-content: center;
 }
 
-.top-page__ranking-nickname-box{
+.top-page__ranking-nickname-box {
   width: 70%;
   height: 100%;
   display: flex;
@@ -270,7 +269,7 @@
 
 .top-page__silver-number {
   display: inline-block;
-  background: linear-gradient(45deg, #757575 0%, #9E9E9E 45%, #E8E8E8 70%, #9E9E9E 85%, #757575 100%);
+  background: linear-gradient(45deg, #757575 0%, #9e9e9e 45%, #e8e8e8 70%, #9e9e9e 85%, #757575 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
