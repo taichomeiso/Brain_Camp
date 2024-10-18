@@ -1,25 +1,23 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="results.css">
-    <title>リザルト画面</title>
-  </head>
-  <body>
-    <div class="results-top">
-      <div class="right-side">
-        <h1 class="score-name">score</h1>
-        <div class="score"></div>
-        <div class="Registration-form">
-          <h2>記録を登録しますか？</h2>
-          <button type="submit" id="register-button">登録</button>
-        </div>
-        <button id="retry-button">リトライ</button>
-        <button id="back-to-home-button">トップに戻る</button>
+<div class="results-top">
+  <div class="right-side">
+    <div class="score-name">score</div>
+    <div class="score"></div>
+      <div class="score-display">00.00秒</div>
+    <div class="Registration-form">
+      <div class="username">記録を登録しますか？</div>
+      <div class="form">
+        <input type="text" placeholder="ニックネーム入力" class="name-form">
+        <input type="submit" name="commit" value="登録" data-disable-with="登録" class="registration-btn">
       </div>
-        
-      <div class="left-side">
-        <img src="" alt="イラスト" class="image">
-      </div>
-  </body>
-</html>
+    </div>
+    <input type="submit" name="commit" value="リトライする" data-disable-with="リトライする" class="retry-btn">
+    <input type="submit" name="commit" value="トップへ戻る" data-disable-with="トップへ戻る" class="top-btn">
+  </div>
+    
+  <div class="left-side">
+    <img src="" alt="イラスト" class="image">
+    <div class="message">すごい！貴方が一位です！！！！！！</div>
+  </div>
+</div>
+
+
