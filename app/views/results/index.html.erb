@@ -1,22 +1,22 @@
-<div class="results-top">
-  <div class="right-side">
-    <div class="score-name">score</div>
-    <div class="score"></div>
-      <div class="score-display">00.00秒</div>
-    <div class="Registration-form">
-      <div class="username">記録を登録しますか？</div>
-      <div class="form">
-        <input type="text" placeholder="ニックネーム入力" class="name-form">
-        <input type="submit" name="commit" value="登録" data-disable-with="登録" class="registration-btn">
+<div class="results-page__top">
+  <div class="result-page__left-side">
+    <div class="result-page__score-name">score</div>
+    <div class="result-page__score"></div>
+      <div class="result-page__score-display">00.00秒</div>
+    <div class="result-page__Registration-form">
+      <div class="result-page__username">記録を登録しますか？</div>
+      <div class="result-page__form">
+        <input type="text" placeholder="ニックネーム入力" class="result-page__name-form">
+        <input type="submit" name="commit" value="登録" data-disable-with="登録" class="result-page__registration-button">
       </div>
     </div>
-    <input type="submit" name="commit" value="リトライする" data-disable-with="リトライする" class="retry-btn">
-    <input type="submit" name="commit" value="トップへ戻る" data-disable-with="トップへ戻る" class="top-btn">
+    <input type="submit" name="commit" value="リトライする" data-disable-with="リトライする" class="result-page__retry-button">
+    <input type="submit" name="commit" value="トップへ戻る" data-disable-with="トップへ戻る" class="result-page__back-to-home-button">
   </div>
     
-  <div class="left-side">
-    <img src="" alt="イラスト" class="image">
-    <div class="message">すごい！貴方が一位です！！！！！！</div>
+  <div class="result-page__right-side">
+    <%= image_tag "",alt:"リザルト画面のイラスト", class:"result-page__right-image"%>
+    <div class="result-page__message">すごい！貴方が一位です！！！！！！</div>
   </div>
 </div>
 

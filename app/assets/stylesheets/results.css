@@ -1,8 +1,8 @@
-.results-top {
+.results-page__top {
   display: flex;
 }
 
-.right-side {
+.result-page__left-side {
   height: 100vh;
   width: 55%;
   background-color: white;
@@ -12,14 +12,14 @@
   align-items: center;  
 }
 
-.score-name {
+.result-page__score-name {
   height: 150px;
   font-size: 70px;
   display: flex;
   align-items: center;
 }
 
-.score-display {
+.result-page__score-display {
   height: 200px;
   width: 400px;
   font-size: 100px;
@@ -29,7 +29,7 @@
   align-items: center;
 }
 
-.Registration-form {
+.result-page__Registration-form {
   height: 100px;
   width: 100%;
   display: flex;
@@ -37,11 +37,11 @@
   align-items: center;
 }
 
-.username {
+.result-page__username {
   font-size: 30px;
 }
 
-.form {
+.result-page__form {
   height: 50px;
   width: 50%;
   background-color: lightgray;
@@ -51,12 +51,12 @@
   justify-content: space-between;
 }
 
-.name-form {
+.result-page__name-form {
   width: 80%;
   font-size: 25px;
 }
 
-.registration-btn {
+.result-page__registration-button {
   font-size: 25px;
   background-color: purple;
   color: white;
@@ -67,7 +67,7 @@
 }
 
 
-.retry-btn {
+.result-page__retry-button {
   font-size: 30px;
   background-color: aqua;
   color: white;
@@ -80,7 +80,7 @@
   margin-top: 50px;
 }
 
-.top-btn {
+.result-page__back-to-home-button {
   font-size: 30px;
   background-color: red;
   color: white;
@@ -91,13 +91,13 @@
   margin-top: 50px;
 }
 
-.left-side {
+.result-page__right-side {
   height: 100vh;
   width: 45%;
   background-color: lightgray;
 }
 
-.message {
+.result-page__message {
   font-size: 30px;
   margin-top: 500px;
   display: flex;
