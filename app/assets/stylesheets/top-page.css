@@ -35,12 +35,14 @@
 }
 
 .top-page__app-title {
-  font-size: 110px;
+  font-size: 120px;
   font-family: "M PLUS 1", sans-serif;
   font-weight: 700;
   font-style: italic;
   margin: 0;
   background: linear-gradient(transparent 80%, rgb(255, 240, 29) 70%);
+  letter-spacing: -5px; 
+  /* ここで文字と文字の間の幅変更してもらってもいいです  */
 }
 
 .top-page__lower-box {
@@ -114,7 +116,7 @@
 }
 
 .top-page__left-game-box {
-  width: 75%;
+  width: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -133,31 +135,22 @@
 
 .top-page__game-box {
   position: relative;
-  width: 100%;
-  height: 100px;
-  border: 0.5px solid black;
-  border-radius: 8px;
+  width: max-content;
+  height: max-content;
+  border: 1px solid white;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   cursor: pointer;
   font-family: "M PLUS 1", sans-serif;
   font-weight: 600;
-  background-color: white;
+  background-color: #5AA4D8;
   color: black;
 }
 
-.top-page__game-name-box {
-  width: 50%;
-  height: 50%;
-  background-color: #a8a8a8;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "M PLUS 1", sans-serif;
-  font-weight: 600;
-  color: white;
+.top-page__color-rock-paper-scissors-img {
+  width: 340px;
 }
+
 
 .top-page__game-link {
   font-size: 24px;
@@ -165,17 +158,25 @@
   color: white;
 }
 
+.top-page__number-master-square-img {
+  height: 100%;
+}
+
+.top-page__number-master-thinking-img {
+  width: 100px;
+  height: 95px;
+}
+
 .top-page__trophy-box {
   width: 40px;
   height: 40px;
-  background-color: #ffffff;
   border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   top: 0;
-  right: 0;
+  right: -40px;
 }
 
 .top-page__trophy-image {

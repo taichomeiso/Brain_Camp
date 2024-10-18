@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="top-page__upper-right-container">
-      <%= image_tag "brain-camp-image.png", class: "top-page__brain-camp-image", alt: "Brain Campのイメージ", width: 600, height: 450 %>
+      <%= image_tag "brain-camp-main-image.png", class: "top-page__brain-camp-image", alt: "Brain Campのイメージ", width: 600, height: 450 %>
     </div>
   </div>
 
@@ -23,31 +23,37 @@
   <div class="top-page__lower-container">
     <div class="top-page__left-box">
       <div class="top-page__left-game-box">
+
+        <%# <%= link_to '色勝ちじゃんけん', games_color_rock_paper_sicissors_path, class: 'top-page__game-link' %> 
+          <%# <div class="top-page__game-box">の要素を押したら上のコードがクリックされるようにする %>
         <div class="top-page__game-box">
-          イラスト
-          <div class="top-page__game-name-box">
-            <%= link_to '色勝ちじゃんけん', games_color_rock_paper_sicissors_path, class: 'top-page__game-link' %>
-          </div>
+
+          <%= image_tag "color_rock_paper_sicissors.svg", class: "top-page__color-rock-paper-scissors-img", alt: "色勝ちじゃんけん" %>
           <div class="top-page__trophy-box">
             <%= image_tag "trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
           </div>
         </div>
 
+        <%# <%= link_to '数の達人', games_number_master_path, class: 'top-page__game-link' %> 
+        <%# <div class="top-page__game-box">の要素を押したら上のコードがクリックされるようにする %>
+
         <div class="top-page__game-box">
-          イラスト
-          <div class="top-page__game-name-box">
-            <%= link_to '数の達人', games_number_master_path, class: 'top-page__game-link' %>
-          </div>
+          <%= image_tag "number-master-square-image.svg", class: "top-page__number-master-square-img", alt: "数独のマスのイメージ" %>
+          <%= image_tag "49363.png", class: "top-page__number-master-thinking-img", alt: "数独で考えている人のイメージ" %>
+          <%= image_tag "number-master-title-image.svg", class: "top-page_number-master-title-img", alt: "数独のタイトルのイメージ" %>
           <div class="top-page__trophy-box">
             <%= image_tag "trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
           </div>
         </div>
 
+        <%# <%= link_to '覚えマス!!', games_memory_square_path, class: 'top-page__game-link' %> 
+        <%# <div class="top-page__game-box">の要素を押したら上のコードがクリックされるようにする %>
+
         <div class="top-page__game-box">
-          イラスト
-          <div class="top-page__game-name-box">
-            <%= link_to '覚えマス!!', games_memory_square_path, class: 'top-page__game-link' %>
-          </div>
+          <%= image_tag "memory-square-square-image.svg", class: "top-page__memory-square-square-img", alt: "覚えマスのマスのイメージ" %>
+          <%= image_tag "memory-square-thinking-image2.svg", class: "top-page__memory-square-square-img", alt: "覚えマスのマスのイメージ" %>
+          <%= image_tag "memory-square-thinking-image1.svg", class: "top-page__memory-square-square-img", alt: "覚えマスのマスのイメージ" %>
+          <%= image_tag "memory-square-title-image.svg", class: "top-page__memory-square-square-img", alt: "覚えマスのマスのイメージ" %>
           <div class="top-page__trophy-box">
             <%= image_tag "trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
           </div>
