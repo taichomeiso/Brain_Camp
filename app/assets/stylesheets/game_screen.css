@@ -1,5 +1,6 @@
 .game-page__GameScreenBase{
-  margin: 20px auto;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -19,7 +20,7 @@
 }
 .game-page__MainGameScreen{
   width: 700px;
-  height: 650px;
+  height: 700px;
   background-color: darkgray;
   border: 2px solid #000000;
   margin-bottom: 10px;
