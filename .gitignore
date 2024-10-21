@@ -32,8 +32,8 @@
 .env
 
 # がgit管理下から外したい、消したくても消せないファイル
-bin￥bundel
-bin￥importmap
-bin￥rails
-bin￥rake
-bin￥setup
+/bin/bundle
+/bin/importmap
+/bin/rails
+/bin/rake
+/bin/setup
