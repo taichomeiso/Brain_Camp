@@ -1,0 +1,140 @@
+.results-page__top {
+  display: flex;
+  background-color: #89DAF5;
+}
+
+.result-page__left-side {
+  height: 100vh;
+  width: 55%;
+  display: flex;
+  flex-direction: column;   /* 子要素を縦並びにする */
+  align-items: center;  
+}
+
+.score-background {
+  position: absolute;
+  margin-top: 100px;
+}
+
+
+.result-page__score-name {
+  height: 150px;
+  font-size: 70px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.result-page__score-display {
+  height: 200px;
+  width: 400px;
+  color: white;
+  font-size: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Dela Gothic One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.result-page__Registration-form {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-page__username {
+  font-size: 30px;
+}
+
+.result-page__form {
+  height: 50px;
+  width: 50%;
+  background-color: #89DAF5;
+  border: 2px solid white;
+  margin: 20px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px; 
+}
+
+.result-page__name-form {
+  width: 80%;
+  font-size: 25px;
+}
+
+.result-page__registration-button {
+  font-size: 25px;
+  background-color: purple;
+  color: white;
+  border: none; 
+  border-radius: 30px; 
+  cursor: pointer; 
+}
+
+.result-page__container {
+  display: flex;
+  align-items: center;
+  position: relative; /* これで子要素の位置がこの親要素を基準に設定されます */
+  display: inline-block; /* コンテンツの幅に合わせてサイズが決まるようにする */
+}
+
+.result-page__frame {
+  display: flex;
+  justify-content: center;
+  display: block;
+  height: 280px;
+  width: 100%; /* 必要に応じてサイズを調整 */
+}
+
+.result-page__retry-button,
+.result-page__back-to-home-button {
+  width: 200px;
+  position: absolute;
+  left: 50%; /* 水平方向に中央揃え */
+  transform: translateX(-50%); /* 中央揃えを確実にするための調整 */
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 50px;
+}
+
+
+
+.result-page__retry-button {
+  font-size: 25px;
+  background-color: aqua;
+  color: white;
+  border-radius: 30px; 
+  top: 0px; /* フレーム画像の上部に配置 */
+}
+
+.result-page__back-to-home-button {
+  font-size: 25px;
+  background-color: red;
+  color: white;
+  border-radius: 30px; 
+  top: 100px; /* フレーム画像の下に配置 */
+}
+
+
+.result-page__right-side {
+  height: 100vh;
+  width: 45%;
+}
+
+.result-page__right-message {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.result-page__right-image {
+  height: 600px;
+  width: 600px;
+  margin-left: 70px;
+}
+
