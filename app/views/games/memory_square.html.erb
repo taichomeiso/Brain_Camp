@@ -1,8 +1,61 @@
+<!-- ゲーム画面の全体ラップ -->
 <div class="game-page__GameScreenBase">
+  
+  <!-- タイトル画面に戻るボタン -->
   <%= link_to root_path, class: "game-page__BackTitleButton" do %>
-     <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>   
+    <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>
   <% end %>
-  <div class="game-page__MainGameScreen">
+
+  <!-- ゲームのメインスクリーン -->
+  <div class="memory-square__game-screen">
+    
+    <!-- スコアボックスと問題ボックスの配置 -->
+    <div class="memory-square__upper-container">
+      <!-- スコアを表示するボックス -->
+      <div class="memory-square__score-box">
+        0
+      </div>
+      <!-- 質問を表示するボックス -->
+      <div class="memory-square__question-box">
+      </div>
+    </div>
+
+    <!-- メインのゲームテーブル（メモリースクエア） -->
+    <div class="memory-square__middle-container">
+      <table class="memory-square__table" cellspacing="0">
+        <tr>
+          <td id="memory-square__td1"></td>
+          <td id="memory-square__td2"></td>
+          <td id="memory-square__td3"></td>
+        </tr>
+        <tr>
+          <td id="memory-square__td4"></td>
+          <td id="memory-square__td5"></td>
+          <td id="memory-square__td6"></td>
+        </tr>
+        <tr>
+          <td id="memory-square__td7"></td>
+          <td id="memory-square__td8"></td>
+          <td id="memory-square__td9"></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 数字の入力用テーブル -->
+    <div class="memory-square__lower-container">
+      <table class="memory-square__number-table" cellspacing="10px">
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <button class="game-page__GameStartButton">ゲームスタート</button>
+
+  <!-- ゲームスタートボタン -->
+  <button class="game-page__GameStartButton" id="memory-square__game-start-button">
+    ゲームスタート
+  </button>
 </div>
