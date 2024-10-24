@@ -1,0 +1,32 @@
+<%= form_with(model: sudoku) do |form| %>
+  <% if sudoku.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(sudoku.errors.count, "error") %> prohibited this sudoku from being saved:</h2>
+
+      <ul>
+        <% sudoku.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :board, style: "display: block" %>
+    <%= form.text_area :board %>
+  </div>
+
+  <div>
+    <%= form.label :initial_board, style: "display: block" %>
+    <%= form.text_area :initial_board %>
+  </div>
+
+  <div>
+    <%= form.label :solved, style: "display: block" %>
+    <%= form.check_box :solved %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

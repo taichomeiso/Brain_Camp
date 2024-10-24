@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Sudokus</h1>
+
+<div id="sudokus">
+  <% @sudokus.each do |sudoku| %>
+    <%= render sudoku %>
+    <p>
+      <%= link_to "Show this sudoku", sudoku %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New sudoku", new_sudoku_path %>
