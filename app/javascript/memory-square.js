@@ -213,8 +213,6 @@ document.addEventListener("turbo:load", () => {
         )};
       });
 
-      
-
       memorySquareNumbers.forEach(number => {
         if (number) {
           number.addEventListener('mouseover', () => {
@@ -225,8 +223,6 @@ document.addEventListener("turbo:load", () => {
           }
         )};
       });
-
-
 
       const clickedSquare = await waitForUserSquareClick();  // ユーザーのクリック待ち
       checkUserSquareClick(clickedSquare, previousSquare, previousSquare2);  // 判定処理
