@@ -1,2 +1,0 @@
-class Sudoku < ApplicationRecord
-end
