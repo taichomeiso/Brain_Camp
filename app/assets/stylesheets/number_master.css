@@ -1,16 +1,50 @@
 .number_master_timer {
   font-size: 70px;
-  /* font-weight: bold; */
-  margin-bottom: 20px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-/* .buttons {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .button {
-      font-size: 20px;
-      width: 50px;
-      height: 50px;
-      margin: 5px;
-    } */
+#buttons {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#buttons button {
+  /* ボタンの基本スタイル */
+  padding: 10px 20px;          /* ボタンの内側の余白 */
+  background-color: #4CAF50;   /* 背景色（緑） */
+  color: white;                /* テキストの色（白） */
+  border: none;                /* ボーダーを消す */
+  border-radius: 10px;          /* 角を丸くする */
+  font-size: 40px;             /* フォントサイズ */
+  cursor: pointer;             /* ホバー時にカーソルをポインターに変更 */
+  margin: 5px;                 /* ボタン同士の間隔 */
+  transition: background-color 0.3s ease; /* 背景色の変化にアニメーション */
+}
+
+table {
+  border-collapse: collapse;
+  margin: 30px auto;
+}
+td {
+  border: 1px solid black;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+}
+input {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 40px;
+  border: none;
+}
+/* 太い線で 2×2 のブロックを分ける */
+td:nth-child(2), td:nth-child(4) {
+  border-right: 2px solid black;
+}
+tr:nth-child(2) td, tr:nth-child(4) td {
+  border-bottom: 2px solid black;
+}
