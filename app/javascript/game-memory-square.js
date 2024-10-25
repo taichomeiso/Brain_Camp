@@ -59,7 +59,7 @@ document.addEventListener("turbo:load", () => {
 
         // 結果ページに遷移
         setTimeout(() => {
-          window.location.href = `/results/index`;
+          window.location.href = `/results/memory_square`;
         }, 2000);
       }
     }, 1000);
