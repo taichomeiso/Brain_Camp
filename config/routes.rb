@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   get 'games/number_master'
   get 'games/reverse_colors'
   get 'games/fit_the_shape'
-  get 'results/index'
+  get 'results/color_rock_paper_sicissors'
+  get 'results/memory_square'
+  get 'results/number_master'
 end
