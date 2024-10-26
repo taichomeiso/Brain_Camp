@@ -1,7 +1,17 @@
 document.addEventListener("turbo:load", () => {
-  function loadScoreFromLocalStorage() {
-    const memorySquareScore = localStorage.getItem('memorySquareYourScore');
-    document.querySelector('.memory-square-result-page__score-display').textContent = memorySquareScore + "点!!";
+  // ローカルストレージからスコアを取得
+
+  const scoreBox = document.querySelector('.memory-square-result-page__score-display')
+  const memorySquareScore = localStorage.getItem('memorySquareYourScore');
+
+  if (!scoreBox) {return null}
+  
+  // 画面にスコアを表示する
+  scoreBox.textContent = memorySquareScore + "点!!";
+  
+  // フォームの隠しフィールドにスコアをセットする
+  const scoreField = document.querySelector('#memory-square-result-page__score-field');
+  if (scoreField && memorySquareScore) {
+    scoreField.value = memorySquareScore;
   }
-  loadScoreFromLocalStorage();
 });

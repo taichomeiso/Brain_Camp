@@ -1,16 +1,31 @@
 <!-- ゲーム画面の全体ラップ -->
-<div class="game-page__GameScreenBase">
+<div class="memory-square__GameScreenBase">
   
   <!-- タイトル画面に戻るボタン -->
-  <%= link_to root_path, class: "game-page__BackTitleButton" do %>
+  <%= link_to root_path, class: "memory-square__BackTitleButton" do %>
     <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>
   <% end %>
 
   <!-- ゲームのメインスクリーン -->
   <div class="memory-square__game-screen">
-    
+
+    <div class="memory-square__combo-box">
+      <div class="memory-square__combo1">◾️</div>
+      <div class="memory-square__combo2">◾️</div>
+      <div class="memory-square__combo3">◾️</div>
+      <div class="memory-square__combo4">◾️</div>
+      <div class="memory-square__combo5">◾️</div>
+      <div class="memory-square__combo6">◾️</div>
+      <div class="memory-square__combo7">◾️</div>
+      <div class="memory-square__combo8">◾️</div>
+      <div class="memory-square__combo9">◾️</div>
+    </div>
+
     <!-- スコアボックスと問題ボックスの配置 -->
     <div class="memory-square__upper-container">
+      <div class="memory-square__count-box">
+        60
+      </div>
       <!-- スコアを表示するボックス -->
       <div class="memory-square__score-box">
         0
@@ -43,7 +58,7 @@
 
     <!-- 数字の入力用テーブル -->
     <div class="memory-square__lower-container">
-      <table class="memory-square__number-table" cellspacing="10px">
+      <table class="memory-square__number-table" cellspacing="15px">
         <tr>
           <td>1</td>
           <td>2</td>
@@ -55,7 +70,7 @@
   </div>
 
   <!-- ゲームスタートボタン -->
-  <button class="game-page__GameStartButton" id="memory-square__game-start-button">
+  <button class="memory-square__GameStartButton" id="memory-square__game-start-button">
     ゲームスタート
   </button>
 </div>

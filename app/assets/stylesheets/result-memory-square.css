@@ -1,8 +1,8 @@
 .memory-square-result-page__score-display {
   height: 200px;
-  width: 400px;
+  width: 600px;
   color: white;
-  font-size: 75px;
+  font-size: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
