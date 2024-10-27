@@ -3,4 +3,6 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "result-display-memory-square"
 import "game-memory-square"
+import "tutorial-memory-square"
+
 

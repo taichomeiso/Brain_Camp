@@ -25,7 +25,6 @@
 }
 
 /* --- ゲーム全体のスタイル --- */
-
 .memory-square__GameScreenBase {
   position: relative;
   width: 100vw;
@@ -49,6 +48,7 @@
   margin-left: 700px;
 }
 
+/* --- ゲーム画面 --- */
 .memory-square__game-screen {
   position: relative;
   width: 700px;
@@ -59,6 +59,51 @@
   flex-direction: column;
   background-color: #232323;
   margin-bottom: 10px;
+}
+
+/* チュートリアル動画関連 */
+.memory-square__tutorial-movie-screen {
+  position: fixed;
+  width: 700px;
+  height: 690px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #4a4a4a;
+  margin-bottom: 10px;
+  z-index: 1001;
+  color: orange;
+}
+
+.memory-square__tutorial-description-wrapper {
+  position: fixed;
+  width: 700px;
+  height: 690px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1002;
+}
+
+.memory-square__play-tutorial-image {
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
+}
+
+/* --- タイトル --- */
+.memory-square__title {
+  font-size: 80px;
+  margin: 0;
+  margin-top: 20px;
+  position: fixed;
+  z-index: inherit;
+  color: white;
+  text-shadow: -3px 2px 0 #000;
+  letter-spacing: 10px;
 }
 
 /* --- コンボボックス --- */
@@ -83,10 +128,10 @@
 .memory-square__combo9 {
   width: 56px;
   height: 100%;
-  display: flex;
+  display: none; /* 初期状態では表示しない */
   justify-content: center;
   align-items: center;
-  opacity: 0;
+  opacity: 0; /* 非表示から開始 */
 }
 
 .memory-square__combo1.fade-in,
@@ -98,7 +143,8 @@
 .memory-square__combo7.fade-in,
 .memory-square__combo8.fade-in,
 .memory-square__combo9.fade-in {
-  animation: fadeIn 0.5s forwards; /* フェードインアニメーション */
+  display: flex; /* フェードイン時に表示 */
+  animation: fadeIn 0.5s forwards;
 }
 
 .memory-square__combo1.fade-out,
@@ -110,11 +156,11 @@
 .memory-square__combo7.fade-out,
 .memory-square__combo8.fade-out,
 .memory-square__combo9.fade-out {
-  animation: fadeOut 0.5s forwards; /* フェードアウトアニメーション */
+  animation: fadeOut 0.5s forwards;
+  display: none; /* フェードアウト後に非表示 */
 }
 
 /* --- 上部コンテナ --- */
-
 .memory-square__upper-container {
   position: relative;
   width: 100%;
@@ -124,24 +170,25 @@
   align-items: center;
 }
 
-.memory-square__count-box {
+.memory-square__count-box,
+.memory-square__score-box {
   position: absolute;
-  top: 0px;
-  left: 50px;
   color: white;
   font-size: 30px;
+}
+
+.memory-square__count-box {
+  top: 0px;
+  left: 50px;
 }
 
 .memory-square__score-box {
-  position: absolute;
   top: 0px;
   right: 10px;
-  color: white;
-  font-size: 30px;
 }
 
 .memory-square__question-box {
-  width: 390px;
+  width: 400px;
   height: 100px;
   border: 4px solid white;
   border-radius: 15px;
@@ -152,7 +199,6 @@
 }
 
 /* --- 中央コンテナ --- */
-
 .memory-square__middle-container {
   width: 100%;
   height: 60%;
@@ -162,7 +208,6 @@
 }
 
 /* --- テーブルのスタイル --- */
-
 .memory-square__table {
   width: 392px;
   height: 392px;
@@ -180,63 +225,31 @@
 }
 
 .memory-square__table td.highlighted {
-  border: 2px solid orange; /* ボーダーを太くし、オレンジに変更 */
-}
-
-/* --- 終了メッセージのスタイル --- */
-
-.memory-square__the-end {
-  font-size: 100px;
-  text-align: center;
-  color: white;
-  line-height: 700px; /* 垂直中央揃え */
-}
-
-/* --- 数字テーブルのスタイル --- */
-
-.memory-square__number-table {
-  width: 420px;
-  height: 100px;
-}
-
-.memory-square__number-table td {
-  width: 100px;
-  height: 100px;
-  border: 2px solid white;
-  line-height: 100px; /* 垂直中央揃え */
-  font-size: 60px;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-}
-
-.memory-square__number-table td.highlighted {
   border: 2px solid orange;
 }
 
 /* --- 数字ボックスのアニメーション --- */
-
 .memory-square__number-box {
   display: inline-block;
   border: 3px solid white;
+  border-radius: 8px;
   color: white;
   width: 90px;
   height: 90px;
-  line-height: 90px; /* 垂直中央揃え */
+  line-height: 90px;
   opacity: 0;
-  transition: opacity 0.5s, transform 0.5s; /* トランジションを使ってスムーズに */
+  transition: opacity 0.5s, transform 0.5s;
 }
 
 .memory-square__number-box.fade-in {
-  animation: fadeIn 0.5s forwards; /* フェードインアニメーション */
+  animation: fadeIn 0.5s forwards;
 }
 
 .memory-square__number-box.fade-out {
-  animation: fadeOut 0.5s forwards; /* フェードアウトアニメーション */
+  animation: fadeOut 0.5s forwards;
 }
 
 /* --- 下部コンテナ --- */
-
 .memory-square__lower-container {
   width: 100%;
   height: 20%;
@@ -250,13 +263,11 @@
   height: 90px;
   border-radius: 50px;
   display: block;
-  text-decoration: none;
   cursor: pointer;
   color: #fff;
   background: #87ceeb;
   text-align: center;
   font-size: 24px;
   line-height: 90px;
-  margin-bottom: 10px;
   border: 2px solid black;
 }

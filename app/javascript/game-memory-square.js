@@ -131,33 +131,40 @@ document.addEventListener("turbo:load", () => {
             }
           }
 
-          let correctComboLength = correctOrWrongArray.length;
 
           setInterval(() => {
-          // correctComboLength を常に最新の値に更新
-          correctComboLength = correctOrWrongArray.length;
-
-          // 配列の長さに応じた処理
-          if (correctComboLength >= 1 && correctComboLength <= 9) {
-            comboImageArray[correctComboLength].classList.add('fade-in');
-            comboImageArray[correctComboLength].classList.remove('fade-out');
-          }
-
-          if (correctComboLength >= 10) {
-            console.log("FEVER!!");
-          }
-
-          // correctComboLength が0の場合に全ての画像の opacity を0にする
-          if (correctComboLength === 0) {
-            comboImageArray.forEach(comboImage => {
-            if (comboImage) {
-              comboImage.classList.remove('fade-in');
-              comboImage.classList.add('fade-out');
+            // 配列の長さを更新
+            let correctComboLength = correctOrWrongArray.length;
+          
+            // 配列の長さに応じた処理
+            if (correctComboLength >= 1 && correctComboLength <= 9) {
+              // fade-inクラスを追加して表示
+              comboImageArray[correctComboLength].classList.add('fade-in');
+              comboImageArray[correctComboLength].classList.remove('fade-out');
+              comboImageArray[correctComboLength].style.display = 'flex'; // 表示させる
             }
-          });
-        }
-      }, 100);  // 100ミリ秒ごとにチェック
-
+          
+            // FEVER状態の処理
+            if (correctComboLength >= 10) {
+              console.log("FEVER!!");
+            }
+          
+            // correctComboLength が0の場合に全ての画像の opacity を0にする
+            if (correctComboLength === 0) {
+              comboImageArray.forEach(comboImage => {
+                if (comboImage) {
+                  comboImage.classList.remove('fade-in');
+                  comboImage.classList.add('fade-out');
+                  
+                  // 500ミリ秒後に非表示にする（フェードアウトアニメーションが完了してから）
+                  setTimeout(() => {
+                    comboImage.style.display = 'none';
+                  }, 500); // fadeOutアニメーションの時間に合わせる
+                }
+              });
+            }
+          }, 100);  // 100ミリ秒ごとにチェック
+          
           let previousSquareNumber = squareArray[squareArray.length - 2];   // 1つ前の数字
           let previousSquareNumber2 = squareArray[squareArray.length - 3];  // 2つ前の数字
           let previousSquareNumber3 = squareArray[squareArray.length - 4];
