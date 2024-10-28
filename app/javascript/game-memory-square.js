@@ -44,6 +44,7 @@ document.addEventListener("turbo:load", () => {
   const squareArray = [];     // 各ターンで表示された数字を記録
   let correctOrWrongArray = [];
   let memorySquareYourScore = 0;          // スコアを記録
+  let feverCount = 30;
   let i = 0;                  // ゲームのターン数をカウント
   let timeLimit = 60;         // ゲームの制限時間
   const countMax = 30;        // 質問を出す最大ターン数
@@ -61,25 +62,35 @@ document.addEventListener("turbo:load", () => {
     // 1秒ごとに時間を減らす処理
     window.setInterval(function() {
       if (timeLimit > 0) {
-        if (hardModeEnabled === false) {
-            timeLimit -= 1; // ハードモードが無効な場合に時間を減少
-            memorySquareCount.textContent = timeLimit;
-        } else {
-            memorySquareCount.textContent = "Fever!!"; // ハードモード時は "Fever!!" を表示
-            
+        if (!hardModeEnabled) { // ハードモードが無効な場合に時間を減少
+          timeLimit -= 1;
+          memorySquareCount.textContent = timeLimit;
+        } else { // ハードモード時は "Fever!!" を表示
+          memorySquareCount.textContent = "Fever!!";
+          if (feverCount > 0) {
+            feverCount -= 1;
+            console.log(feverCount);
+          }
+          
+          // feverCountが0になった場合、初期化して通常モードに戻す
+          if (feverCount === 0) {
+            feverCount = 30;          // feverCountを初期化
+            hardModeEnabled = false;  // 通常モードに戻す
+            console.log("ハードモード終了");
+          }
         }
-    }
-    
+      }
+      
       // 時間切れ時の処理
-      if (timeLimit === 0 && hardModeEnabled === false) {
+      if (timeLimit === 0 && !hardModeEnabled) {
         upperContainer.style.display = "none";
         middleContainer.style.display = "none";
         lowerContainer.style.display = "none";
         gameScreen.innerHTML = `<div class="memory-square__the-end">Time up!!</div>`;
-    
+      
         // ゲーム終了時にローカルストレージにスコアを保存
-        localStorage.setItem('memorySquareYourScore', memorySquareYourScore);  // 文字列のキーを指定
-
+        localStorage.setItem('memorySquareYourScore', memorySquareYourScore); // 文字列のキーを指定
+    
         // 結果ページに遷移
         setTimeout(() => {
           window.location.href = `/results/memory_square`;
@@ -87,7 +98,6 @@ document.addEventListener("turbo:load", () => {
       }
     }, 1000);
     
-
     // 新しい質問を設定する処理を開始
     const setQuestions = setInterval(() => {
       // 前回のマスの数字を非表示にし、フェードアウトアニメーション
@@ -138,16 +148,18 @@ document.addEventListener("turbo:load", () => {
           
             // 配列の長さに応じた処理
             if (correctComboLength >= 1 && correctComboLength <= 9) {
-              // fade-inクラスを追加して表示
-              comboImageArray[correctComboLength].classList.add('fade-in');
-              comboImageArray[correctComboLength].classList.remove('fade-out');
-              comboImageArray[correctComboLength].style.display = 'flex'; // 表示させる
+              if (comboImageArray[correctComboLength - 1]) { // -1して配列の範囲内に調整
+                comboImageArray[correctComboLength - 1].classList.add('fade-in');
+                comboImageArray[correctComboLength - 1].classList.remove('fade-out');
+                comboImageArray[correctComboLength - 1].style.display = 'flex';
+              }
             }
-          
+            
             // FEVER状態の処理
             if (correctComboLength >= 10) {
               console.log("FEVER!!");
             }
+            
           
             // correctComboLength が0の場合に全ての画像の opacity を0にする
             if (correctComboLength === 0) {
@@ -163,7 +175,7 @@ document.addEventListener("turbo:load", () => {
                 }
               });
             }
-          }, 100);  // 100ミリ秒ごとにチェック
+          }, 1000);  // 1000ミリ秒ごとにチェック
           
           let previousSquareNumber = squareArray[squareArray.length - 2];   // 1つ前の数字
           let previousSquareNumber2 = squareArray[squareArray.length - 3];  // 2つ前の数字
