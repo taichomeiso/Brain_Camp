@@ -4,9 +4,13 @@ let gameStarted = false;
 
 // タイマーを更新する関数
 function updateTimer() {
-  timer += 100; // 100ミリ秒ごとに更新
-  const seconds = (timer / 1000).toFixed(2);
-  document.getElementById("timer").innerText = `タイマー: ${seconds}秒`;
+  timer += 10; // 10ミリ秒ごとに更新
+  const totalSeconds = Math.floor(timer / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = (totalSeconds % 60).toString().padStart(2, '0');
+  const milliseconds = (timer % 1000).toString().padStart(3, '0').slice(0, 2); // ミリ秒を2桁にする
+
+  document.getElementById("timer").innerText = `${minutes}:${seconds}.${milliseconds}秒`;
 }
 
 // ゲームのスタート関数
@@ -14,8 +18,8 @@ function startGame() {
   if (!gameStarted) {
     gameStarted = true;
     timer = 0;
-    document.getElementById("timer").innerText = " 00.00.00秒";
-    timerInterval = setInterval(updateTimer, 100); // 100ミリ秒ごとに呼び出し
+    document.getElementById("timer").innerText = "00:00.00秒"; // タイマーの初期値を設定
+    timerInterval = setInterval(updateTimer, 10); // 100ミリ秒ごとに呼び出し
   }
 }
 
