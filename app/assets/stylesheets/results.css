@@ -1,3 +1,4 @@
+/* 
 .results-page__top {
   display: flex;
   background-color: #89DAF5;
@@ -7,7 +8,7 @@
   height: 100vh;
   width: 55%;
   display: flex;
-  flex-direction: column;   /* 子要素を縦並びにする */
+  flex-direction: column;   
   align-items: center;  
 }
 
@@ -79,24 +80,23 @@
 .result-page__container {
   display: flex;
   align-items: center;
-  position: relative; /* これで子要素の位置がこの親要素を基準に設定されます */
-  display: inline-block; /* コンテンツの幅に合わせてサイズが決まるようにする */
-}
+  position: relative; 
+  display: inline-block; 
 
 .result-page__frame {
   display: flex;
   justify-content: center;
   display: block;
   height: 280px;
-  width: 100%; /* 必要に応じてサイズを調整 */
+  width: 100%; 
 }
 
 .result-page__retry-button,
 .result-page__back-to-home-button {
   width: 200px;
   position: absolute;
-  left: 50%; /* 水平方向に中央揃え */
-  transform: translateX(-50%); /* 中央揃えを確実にするための調整 */
+  left: 50%; 
+  transform: translateX(-50%); 
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;
@@ -110,7 +110,7 @@
   background-color: aqua;
   color: white;
   border-radius: 30px; 
-  top: 0px; /* フレーム画像の上部に配置 */
+  top: 0px; 
 }
 
 .result-page__back-to-home-button {
@@ -118,7 +118,7 @@
   background-color: red;
   color: white;
   border-radius: 30px; 
-  top: 100px; /* フレーム画像の下に配置 */
+  top: 100px; 
 }
 
 
@@ -137,4 +137,4 @@
   width: 600px;
   margin-left: 70px;
 }
-
+*/
