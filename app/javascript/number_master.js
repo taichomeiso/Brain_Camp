@@ -32,19 +32,19 @@ function stopGame() {
 }
 
 // すべてのマスが埋まっているかをチェックする関数
-function checkAllCellsFilled() {
-  const cells = document.querySelectorAll(".sudoku-cell");
-  return Array.from(cells).every(cell => cell.value.trim() !== "");
-}
+// function checkAllCellsFilled() {
+//   const cells = document.querySelectorAll(".sudoku-cell");
+//   return Array.from(cells).every(cell => cell.value.trim() !== "");
+// }
 
 // マスに変更があった場合のイベントリスナーを追加
-document.querySelectorAll(".sudoku-cell").forEach(cell => {
-  cell.addEventListener("input", () => {
-    if (checkAllCellsFilled()) {
-      stopGame();
-    }
-  });
-});
+// document.querySelectorAll(".sudoku-cell").forEach(cell => {
+//   cell.addEventListener("input", () => {
+//     if (checkAllCellsFilled()) {
+//       stopGame();
+//     }
+//   });
+// });
 
 // スタートボタンのクリックイベント
 document.getElementById("startButton").addEventListener("click", startGame);
