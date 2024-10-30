@@ -33,7 +33,7 @@
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to left, #2D6BA1, #2C89CB 50%, #5AA4D8);
+  background: linear-gradient(to left, #2d6ba1, #2c89cb 50%, #5aa4d8);
 }
 
 .memory-square__BackTitleButton {
@@ -58,6 +58,20 @@
   flex-direction: column;
   background-color: #232323;
   margin-bottom: 10px;
+}
+
+.memory-square__countdown-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.memory-square__countdown {
+  font-size: 200px;
+  text-align: center;
+  color: white;
 }
 
 .memory-square__tutorial-movie-screen {
@@ -122,7 +136,6 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-
 }
 
 .memory-square__play-tutorial-image {
@@ -132,6 +145,35 @@
 }
 
 /* --- コンボボックス --- */
+.memory-square__combo-container {
+  position: absolute;
+  top: 120px;
+  right: 50px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-weight: bold;
+}
+
+.memory-square__fever-time {
+  font-size: 30px;
+  letter-spacing: -2px;
+}
+
+.memory-square__combo-number {
+  font-size: 54px;
+}
+
+#memory-square__combo-combo {
+  font-size: 16px;
+  letter-spacing: -1px;
+  margin-top: -5px;
+}
+
 .memory-square__combo-box {
   position: absolute;
   width: 500px;
@@ -189,31 +231,85 @@
 .memory-square__upper-container {
   position: relative;
   width: 100%;
-  height: 20%;
+  height: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.memory-square__volume-box {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  border: 2px solid white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.memory-square__volume-on-img,
+.memory-square__volume-off-img {
+  width: 40px;
+  height: 40px;
 }
 
 .memory-square__count-box {
   position: absolute;
-  top: 0px;
-  left: 50px;
+  top: 20px;
+  left: 30px;
   color: white;
   font-size: 30px;
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#memory-square__progress-circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 19px;
+  background: steelblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 1s linear; /* 背景の変化を1秒間かけて滑らかに */
+}
+
+#memory-square__progress-count {
+  position: absolute;
+  font-weight: bold;
 }
 
 .memory-square__score-box {
-  position: absolute;
-  top: 0px;
-  right: 10px;
   color: white;
   font-size: 30px;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 5px;
 }
 
 .memory-square__question-box {
   width: 400px;
-  height: 100px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 4px solid white;
   border-radius: 15px;
   text-align: center;
@@ -225,7 +321,7 @@
 /* --- 中央コンテナ --- */
 .memory-square__middle-container {
   width: 100%;
-  height: 60%;
+  height: 55%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -233,14 +329,14 @@
 
 /* --- テーブルのスタイル --- */
 .memory-square__table {
-  width: 392px;
-  height: 392px;
+  width: 362px;
+  height: 362px;
   border: 1px solid white;
 }
 
 .memory-square__table td {
-  width: 130px;
-  height: 130px;
+  width: 120px;
+  height: 120px;
   border: 1px solid #ffffff;
   text-align: center;
   vertical-align: middle;
