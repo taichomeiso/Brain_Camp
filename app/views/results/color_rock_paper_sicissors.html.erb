@@ -1,8 +1,8 @@
 
-  <%= stylesheet_link_tag 'results2', media: 'all' %>
+  <%= stylesheet_link_tag 'results', media: 'all' %>
   <title>リザルト</title>
 <div class="result-body">
-  <div class="layer1">
+  <div class="result-layer1">
     <div class="result-score">
       <div class="result-page__score-name">SCORE!!</div>
       <div class="result-page__score"></div>
@@ -35,15 +35,18 @@
   </div>
   
 
-  <div class="layer2">
+  <div class="result-layer2">
     <%= image_tag 'result-page-images/decoration.svg', alt: "score背景", class: "score-background" %>
     <%= image_tag 'result-page-images/results_speech_bubble_down.svg', alt: "フレーム画像", class: "result-page__frame" %>
     <%= image_tag 'result-page-images/results_speech_bubble_up.svg', alt: "リザルト画面メッセージ", class: "result-page__right-message" %>
   </div>
   
-  <div class="layer3">
+  <div class="result-layer3">
     <%= image_tag 'result-page-images/results_image.svg', alt: "リザルト画面のイラスト", class: "result-page__right-image" %>
   </div>
+  <script>
+  console.log(`Width: ${window.innerWidth}px, Height: ${window.innerHeight}px`);
+</script>
 </div>
 
 

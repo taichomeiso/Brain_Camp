@@ -1,140 +1,233 @@
-/* 
-.results-page__top {
-  display: flex;
+.result-body {
   background-color: #89DAF5;
-}
-
-.result-page__left-side {
   height: 100vh;
-  width: 55%;
+  width: 100vw;
+  margin: 0;
+}
+
+.result-layer1 {
   display: flex;
-  flex-direction: column;   
-  align-items: center;  
-}
-
-.score-background {
+  flex-direction: column;
   position: absolute;
-  margin-top: 100px;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10;
 }
 
+.result-score {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  padding-top: 40px;
+}
 
 .result-page__score-name {
-  height: 150px;
-  font-size: 70px;
-  display: flex;
-  align-items: center;
-  position: relative;
+  font-size: 125px;
+  font-family: "M PULS 1", sans-serif;
+  font-weight: 800;
+  transform: rotate(-3deg) translateX(-40px); /* 左に20px寄せる */;
+  width: fit-content;
+  line-height: 1;
+  margin: 0 auto;
+  margin-bottom: 25px;
 }
 
-.result-page__score-display {
-  height: 200px;
-  width: 400px;
+.number_master-result-page__score-display,
+.memory-square-result-page__score-display,
+.color_rock_paper_sicissors-result-page__score-display {
   color: white;
-  font-size: 75px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 120px;
   font-family: "Dela Gothic One", sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
+  text-shadow: 0px 4px 4px #00000040;
+  transform:translateX(-30px); /* 左に20px寄せる */
+  margin: 0 auto;
+  margin-bottom: 30px;
+  width: fit-content;
+  line-height: 1;
 }
 
 .result-page__Registration-form {
-  height: 100px;
-  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-}
-
-.result-page__username {
-  font-size: 30px;
+  gap: 12px;
+  width: 100%;
+  margin-top:20px;
+  margin-left: 40px;
+  justify-content: center;
 }
 
 .result-page__form {
-  height: 50px;
-  width: 50%;
-  background-color: #89DAF5;
-  border: 2px solid white;
-  margin: 20px;
-  padding: 5px;
   display: flex;
-  justify-content: space-between;
-  border-radius: 10px; 
+  align-items: center;
+  gap: 12px;
+  height: 80px;
+  background-color: #89DAF5;
+  border: 6px solid white;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.result-page__username {
+  font-size: 35px;
+  font-weight: bold;
+  font-family: "Roboto";
+  white-space: nowrap;
 }
 
 .result-page__name-form {
-  width: 80%;
-  font-size: 25px;
+  width: 300px;
+  height: 80px;
+  font-size: 27px;
+  background-color: #ffffff36;
+  border: none;
 }
 
 .result-page__registration-button {
-  font-size: 25px;
-  background-color: purple;
+  font-size: 27px;
+  background-color: #e52323;
   color: white;
-  border: none; 
-  border-radius: 30px; 
-  cursor: pointer; 
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
 }
 
-.result-page__container {
+.hover-area {
+  position: relative;
+  display: inline-block;
+}
+
+.result-button {
+  width: fit-content;
   display: flex;
+  flex-direction: column;
+  font-size: 50px;
+  transform: rotate(-3deg);
+  margin-top: 120px;
+  margin-left: 330px;
+  position: relative;
+  left: -90px;
+  gap: 30px;
+}
+
+.button-with-icon {
+  display: inline-flex;
   align-items: center;
-  position: relative; 
-  display: inline-block; 
-
-.result-page__frame {
-  display: flex;
-  justify-content: center;
-  display: block;
-  height: 280px;
-  width: 100%; 
+  position: relative;
+  gap: 12px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
 }
 
+.button-icon {
+  width: 85px;
+  height: auto;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* 初期状態でcheckmark_defaultを表示 */
+.icon-A {
+  display: inline;
+}
+
+.icon-B,
+.icon-C {
+  display: none;
+}
+
+/* ホバーエリアにホバーしたときにcheckmark_orangeを表示 */
+.hover-area:hover .icon-A {
+  display: none;
+}
+
+.hover-area:hover .icon-B {
+  display: inline;
+}
+
+/* ボタンにホバーしたときにcheckmark_redを表示 */
+.button-with-icon:hover .icon-A,
+.button-with-icon:hover .icon-B {
+  display: none;
+}
+
+.button-with-icon:hover .icon-C {
+  display: inline;
+}
+.button-with-icon:hover .result-page__retry-button,
+.button-with-icon:hover .result-page__back-to-home-button {
+  text-decoration: underline;
+}
+
+/* ボタンにホバーしたときのアンダーライン追加とシャドウの削除 */
+.result-page__retry-button:hover,
+.result-page__back-to-home-button:hover {
+  color: #333333;
+  box-shadow: none; 
+  text-decoration: underline;
+  transition: background-color 0.3s ease, color 0.3s ease, text-decoration 0.3s ease;
+}
+
+/* ボタンの通常スタイル */
 .result-page__retry-button,
 .result-page__back-to-home-button {
-  width: 200px;
-  position: absolute;
-  left: 50%; 
-  transform: translateX(-50%); 
-  padding: 10px 20px;
-  border-radius: 5px;
+  width: fit-content;
+  color: #333333;
   text-decoration: none;
-  margin-top: 50px;
 }
 
-
-
-.result-page__retry-button {
-  font-size: 25px;
-  background-color: aqua;
-  color: white;
-  border-radius: 30px; 
-  top: 0px; 
-}
-
-.result-page__back-to-home-button {
-  font-size: 25px;
-  background-color: red;
-  color: white;
-  border-radius: 30px; 
-  top: 100px; 
-}
-
-
-.result-page__right-side {
+.result-layer2 {
+  position: absolute;
+  width: 100vw;
   height: 100vh;
-  width: 45%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.result-page__frame {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  aspect-ratio: 630 / 332;
+  position: absolute;
+  left: 120px;
+  bottom: 45px;
 }
 
 .result-page__right-message {
-  margin-top: 50px;
   width: 100%;
+  max-width: 764px;
+  height: auto;
+  aspect-ratio: 764 / 214;
+  position: absolute;
+  top: 60px;
+  right: 25px;
+}
+
+.score-background {
+  width: 580px;
+  height: auto;
+  position: absolute;
+  top: 130px;
+  left: 100px;
+}
+
+.result-layer3 {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
 }
 
 .result-page__right-image {
-  height: 600px;
-  width: 600px;
-  margin-left: 70px;
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  aspect-ratio: 537 / 576;
+  position: absolute;
+  bottom: 30px;
+  right: 90px;
 }
-*/
+
