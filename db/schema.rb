@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_10_25_030014) do
-  create_table "memory_squares", charset: "utf8mb3", force: :cascade do |t|
+  create_table "memory_squares", charset: "utf8", force: :cascade do |t|
     t.string "nickname"
     t.integer "score"
     t.datetime "created_at", null: false
