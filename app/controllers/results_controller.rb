@@ -23,4 +23,9 @@ class ResultsController < ApplicationController
   def memory_square_params
     params.require(:memory_square).permit(:nickname, :score)
   end
+
+  def show
+    # 必要に応じてレコードのIDで取得
+    @result = Result.find(params[:id])
+  end
 end

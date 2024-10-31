@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_25_030014) do
+ActiveRecord::Schema[7.0].define(version: 2024_10_31_063951) do
   create_table "memory_squares", charset: "utf8", force: :cascade do |t|
     t.string "nickname"
     t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "results", charset: "utf8", force: :cascade do |t|
+    t.string "nickname"
+    t.float "game_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

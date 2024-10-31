@@ -23,6 +23,36 @@ document.addEventListener("turbo:load", () => {
     }
   }
 
+  function showMessage(text, type = "success") {
+    const messageDiv = document.createElement("div");
+    messageDiv.innerText = text;
+    messageDiv.style.position = "fixed";
+    messageDiv.style.top = "20px";
+    messageDiv.style.left = "50%";
+    messageDiv.style.transform = "translateX(-50%)";
+    messageDiv.style.padding = "15px 30px";
+    messageDiv.style.borderRadius = "8px";
+    messageDiv.style.color = "#fff";
+    messageDiv.style.fontSize = "1.2rem";
+    messageDiv.style.zIndex = 1000;
+    messageDiv.style.transition = "opacity 0.5s ease";
+
+    if (type === "error") {
+      messageDiv.style.backgroundColor = "#e74c3c"; // エラーメッセージ用の赤色
+    } else {
+      messageDiv.style.backgroundColor = "#2ecc71"; // 成功メッセージ用の緑色
+    }
+
+    document.body.appendChild(messageDiv);
+
+    setTimeout(() => {
+      messageDiv.style.opacity = "0";
+      setTimeout(() => {
+        document.body.removeChild(messageDiv);
+      }, 500);
+    }, 3000);
+  }
+
   function isValidMove(row, col, num) {
     for (let i = 0; i < 4; i++) {
       if (grid[row][i] === num || grid[i][col] === num) return false;
@@ -76,14 +106,61 @@ document.addEventListener("turbo:load", () => {
     }
   }
 
+  function showFireworks() {
+    const fireworkCount = 20; // 花火の数
+    const fireworksContainer = document.createElement('div');
+    fireworksContainer.style.position = 'fixed';
+    fireworksContainer.style.top = '0';
+    fireworksContainer.style.left = '0';
+    fireworksContainer.style.pointerEvents = 'none';
+    document.body.appendChild(fireworksContainer);
+
+    for (let i = 0; i < fireworkCount; i++) {
+      const firework = document.createElement('div');
+      firework.className = 'firework';
+      firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+      firework.style.width = '15px';
+      firework.style.height = '15px';
+      firework.style.position = 'absolute';
+      firework.style.top = `${Math.random() * window.innerHeight}px`;
+      firework.style.left = `${Math.random() * window.innerWidth}px`;
+      firework.style.opacity = '1';
+
+      fireworksContainer.appendChild(firework);
+
+      // 花火のアニメーション
+      setTimeout(() => {
+        firework.style.transform = 'scale(20)';
+        firework.style.opacity = '0';
+      }, 100);
+
+      // 花火を消す
+      setTimeout(() => {
+        fireworksContainer.removeChild(firework);
+      }, 1000);
+    }
+
+    // コンテナも後で削除
+    setTimeout(() => {
+      document.body.removeChild(fireworksContainer);
+    }, 3000);
+  }
+
   function checkCompletion() {
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
-        if (!grid[i][j]) return false; // 空のセルがある場合、未完成
+        if (!grid[i][j]) return false;
       }
     }
-    clearInterval(timerInterval); // すべてのマスが埋まったらタイマーを停止
-    alert("おめでとうございます！ゲームクリアです！");
+    clearInterval(timerInterval);
+    showFireworks(); // ゲームクリア時に花火を表示
+    showMessage("🎉 おめでとうございます！ゲームクリアです！ 🎉", "success");
+
+    // ゲームクリアのメッセージ表示が消えた後にリザルト画面へ遷移
+    setTimeout(() => {
+      window.location.href = '/results/number_master'; // リザルト画面のパスに置き換えてください
+    }, 3500); // メッセージの表示時間と合わせる
+
     return true;
   }
 
@@ -93,7 +170,7 @@ document.addEventListener("turbo:load", () => {
       cell.value = '';
       cell.disabled = false;
     });
-    setHints(); // スタートと同時にヒントを出す
+    setHints();
     startGame();
   });
 
@@ -113,7 +190,7 @@ document.addEventListener("turbo:load", () => {
         clearInterval(timerInterval);
       }
     } else {
-      alert("重複しています！");
+      showMessage("重複しています！別の数字を選んでください。", "error");
     }
   };
 
@@ -123,12 +200,8 @@ document.addEventListener("turbo:load", () => {
       cell.focus();
       console.log("アクティブなセルが設定されました。", activeCell);
     });
-
-
-    // キーボード入力を無効化
     cell.setAttribute('readonly', true);
   });
-
 
   document.querySelectorAll('.number-button').forEach(button => {
     button.addEventListener('click', (event) => {

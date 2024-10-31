@@ -12,16 +12,15 @@
 }
 
 #buttons button {
-  /* ボタンの基本スタイル */
-  padding: 10px 20px;          /* ボタンの内側の余白 */
-  background-color: #4CAF50;   /* 背景色（緑） */
-  color: white;                /* テキストの色（白） */
-  border: none;                /* ボーダーを消す */
-  border-radius: 10px;          /* 角を丸くする */
-  font-size: 40px;             /* フォントサイズ */
-  cursor: pointer;             /* ホバー時にカーソルをポインターに変更 */
-  margin: 5px;                 /* ボタン同士の間隔 */
-  transition: background-color 0.3s ease; /* 背景色の変化にアニメーション */
+  padding: 10px 20px;          
+  background-color: #4CAF50;   
+  color: white;                
+  border: none;                
+  border-radius: 10px;        
+  font-size: 40px;             
+  cursor: pointer;             
+  margin: 5px;                 
+  transition: background-color 0.3s ease; 
 }
 
 table {
@@ -47,4 +46,14 @@ td:nth-child(2), td:nth-child(4) {
 }
 tr:nth-child(2) td, tr:nth-child(4) td {
   border-bottom: 2px solid black;
+}
+
+/* 花火のアニメーションのスタイル */
+.firework {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 1s, opacity 1s;
+  width: 300px;
+  height: 300px;
 }
