@@ -123,7 +123,12 @@ document.addEventListener("turbo:load", () => {
       cell.focus();
       console.log("アクティブなセルが設定されました。", activeCell);
     });
+
+
+    // キーボード入力を無効化
+    cell.setAttribute('readonly', true);
   });
+
 
   document.querySelectorAll('.number-button').forEach(button => {
     button.addEventListener('click', (event) => {
