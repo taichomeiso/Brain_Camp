@@ -3,11 +3,14 @@ document.addEventListener("turbo:load", () => {
   const gameStartButton = document.getElementById(
     "memory-square__game-start-button"
   );
+
+  const bgmAudio = document.getElementById("memory-square_bgm-audio");
   const volumeBox = document.querySelector(".memory-square__volume-box");
   const volumeOnImage = document.querySelector(".memory-square__volume-on-img");
   const volumeOffImage = document.querySelector(
     ".memory-square__volume-off-img"
   );
+
   const countdownScreen = document.querySelector(
     ".memory-square__countdown-screen"
   );
@@ -87,16 +90,27 @@ document.addEventListener("turbo:load", () => {
     return null;
   } // テーブルや質問ボックスが無い場合は終了
 
-  volumeBox.addEventListener("click", () => {
+  volumeBox.addEventListener("click", (event) => {
+    event.stopPropagation(); // バブリングを防ぐ
+
     // 要素の現在の表示状態を確認
     if (volumeOnImage.style.display === "none") {
-      volumeOnImage.style.display = "flex"; // 表示する
+      bgmAudio.pause(); // 再生停止
+      bgmAudio.currentTime = 0; // 再生位置を最初に戻す
+      volumeOnImage.style.display = "flex";
       volumeOffImage.style.display = "none";
     } else if (volumeOnImage.style.display === "flex") {
-      volumeOffImage.style.display = "flex"; // 非表示にする
+      bgmAudio.loop = true;
+      bgmAudio.play();
+      bgmAudio.volume = 0.2; // 音量を設定
+      volumeOffImage.style.display = "flex";
       volumeOnImage.style.display = "none";
     }
   });
+
+  // 初期表示の設定
+  volumeOnImage.style.display = "flex"; // 初期状態を表示に設定
+  volumeOffImage.style.display = "none"; // 初期状態を非表示に設定
 
   const tableDataArray = [];
   const squareArray = [];
@@ -237,6 +251,7 @@ document.addEventListener("turbo:load", () => {
                 feverTimeText.style.display = "none";
                 memorySquareComboContainer.style.display = "flex";
                 memorySquareComboCombo.style.display = "block";
+                memorySquareComboCount.style.display = "block";
                 memorySquareComboCount.textContent = correctComboLength;
               }
 
@@ -275,17 +290,21 @@ document.addEventListener("turbo:load", () => {
               );
 
               // ハードモードを有効にする条件
-              if (correctOrWrongArray.length >= 8 && !hardModeEnabled) {
+              if (
+                correctOrWrongArray.length >= 9 &&
+                hardModeEnabled === false
+              ) {
                 hardModeEnabled = true;
               }
 
               // ハードモードが有効な場合の質問設定
               if (hardModeEnabled) {
+                questionArray.push(...hardModeArray);
                 randomQuestion = Math.floor(
                   Math.random() * questionArray.length
                 );
                 makeQuestion = questionArray[randomQuestion];
-                questionArray.push(...hardModeArray);
+                console.log(questionArray);
                 questionBox.textContent = makeQuestion;
                 questionActive = true;
 
@@ -451,7 +470,7 @@ document.addEventListener("turbo:load", () => {
             number.style.border = "2px solid orange";
           });
           number.addEventListener("mouseout", () => {
-            number.style.border = "2px solid white";
+            number.style.border = "";
           });
         }
       });
@@ -491,7 +510,7 @@ document.addEventListener("turbo:load", () => {
             td.style.border = "2px solid orange";
           });
           td.addEventListener("mouseout", () => {
-            td.style.border = "2px solid white";
+            td.style.border = "";
           });
         }
       });

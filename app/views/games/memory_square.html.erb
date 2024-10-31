@@ -1,5 +1,6 @@
 <!-- ゲーム画面の全体ラップ -->
 <div class="memory-square__GameScreenBase">
+  <audio id="memory-square_bgm-audio" src="<%= asset_path 'memory-square-bgm.mp3' %>" preload="auto"></audio>
   
   <!-- タイトル画面に戻るボタン -->
   <%= link_to root_path, class: "memory-square__BackTitleButton" do %>
