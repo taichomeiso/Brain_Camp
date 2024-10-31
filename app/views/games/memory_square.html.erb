@@ -1,5 +1,6 @@
 <!-- ゲーム画面の全体ラップ -->
 <div class="memory-square__GameScreenBase">
+  <audio id="memory-square_bgm-audio" src="<%= asset_path 'memory-square-bgm.mp3' %>" preload="auto"></audio>
   
   <!-- タイトル画面に戻るボタン -->
   <%= link_to root_path, class: "memory-square__BackTitleButton" do %>
@@ -8,7 +9,10 @@
 
   <!-- ゲームのメインスクリーン -->
   <div class="memory-square__game-screen">
-    
+
+    <div class="memory-square__countdown-screen" style="display: none;">
+    </div>
+
     <!-- チュートリアル画面 -->
     <div class="memory-square__tutorial-movie-screen">
       <%= video_tag "memory-square-tutorial-movie.mp4", controls: true, autoplay: false, loop: false, class: "memory-square__tutorial-movie" %>
@@ -23,8 +27,19 @@
       </div> 
     </div>
 
+    <div class="memory-square__combo-container" style="display: none;">
+      <div class="memory-square__fever-time" style ="display: none;">
+        Fever!!
+      </div>
+      <div class="memory-square__combo-number">
+      </div>
+      <span id="memory-square__combo-combo">
+        combo!!
+      </span>
+    </div>
+
     <!-- コンボボックス -->
-    <div class="memory-square__combo-box">
+    <%# <div class="memory-square__combo-box">
       <div class="memory-square__combo1">◾️</div>
       <div class="memory-square__combo2">◾️</div>
       <div class="memory-square__combo3">◾️</div>
@@ -34,11 +49,21 @@
       <div class="memory-square__combo7">◾️</div>
       <div class="memory-square__combo8">◾️</div>
       <div class="memory-square__combo9">◾️</div>
-    </div>
+    </div> %>
 
     <!-- スコアボックスと問題ボックスの配置 -->
     <div class="memory-square__upper-container">
-      <div class="memory-square__count-box">60</div>
+
+      <div class="memory-square__volume-box">
+        <%= image_tag "memory-square-images/volume-on.svg", alt: "音量ONのイメージ", class: "memory-square__volume-on-img", style: "display:none;"%>
+        <%= image_tag "memory-square-images/volume-off.svg", alt: "音量OFFのイメージ", class: "memory-square__volume-off-img" %>
+      </div>
+
+      <div class="memory-square__count-box">
+        <div id="memory-square__progress-circle">
+          <div id="memory-square__progress-count">60</div>
+        </div>
+      </div>
       <!-- スコアを表示するボックス -->
       <div class="memory-square__score-box">0</div>
       <!-- 質問を表示するボックス -->

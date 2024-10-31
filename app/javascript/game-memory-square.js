@@ -1,26 +1,75 @@
 document.addEventListener("turbo:load", () => {
   // ゲームに関連する要素を取得
-  const gameStartButton = document.getElementById("memory-square__game-start-button");
+  const gameStartButton = document.getElementById(
+    "memory-square__game-start-button"
+  );
+
+  const bgmAudio = document.getElementById("memory-square_bgm-audio");
+  const volumeBox = document.querySelector(".memory-square__volume-box");
+  const volumeOnImage = document.querySelector(".memory-square__volume-on-img");
+  const volumeOffImage = document.querySelector(
+    ".memory-square__volume-off-img"
+  );
+
+  const countdownScreen = document.querySelector(
+    ".memory-square__countdown-screen"
+  );
   const questionBox = document.querySelector(".memory-square__question-box");
   const gameScreen = document.querySelector(".memory-square__game-screen");
-  const upperContainer = document.querySelector(".memory-square__upper-container");
-  const middleContainer = document.querySelector(".memory-square__middle-container");
-  const lowerContainer = document.querySelector(".memory-square__lower-container");
+  const upperContainer = document.querySelector(
+    ".memory-square__upper-container"
+  );
+  const middleContainer = document.querySelector(
+    ".memory-square__middle-container"
+  );
+  const lowerContainer = document.querySelector(
+    ".memory-square__lower-container"
+  );
   const memorySquareTable = document.querySelector(".memory-square__table");
-  const memorySquareNumbers = document.querySelectorAll(".memory-square__number-table td");
-  const memorySquareCount = document.querySelector(".memory-square__count-box")
+  const memorySquareNumbers = document.querySelectorAll(
+    ".memory-square__number-table td"
+  );
+  const memorySquareCount = document.getElementById(
+    "memory-square__progress-count"
+  );
+  const memorySquareCountCircle = document.getElementById(
+    "memory-square__progress-circle"
+  );
 
-  const combo1Image = document.querySelector(".memory-square__combo1");
-  const combo2Image = document.querySelector(".memory-square__combo2");
-  const combo3Image = document.querySelector(".memory-square__combo3");
-  const combo4Image = document.querySelector(".memory-square__combo4");
-  const combo5Image = document.querySelector(".memory-square__combo5");
-  const combo6Image = document.querySelector(".memory-square__combo6");
-  const combo7Image = document.querySelector(".memory-square__combo7");
-  const combo8Image = document.querySelector(".memory-square__combo8");
-  const combo9Image = document.querySelector(".memory-square__combo9");
+  const memorySquareComboCount = document.querySelector(
+    ".memory-square__combo-number"
+  );
 
-  const comboImageArray = [combo1Image, combo2Image, combo3Image, combo4Image, combo5Image, combo6Image, combo7Image, combo8Image, combo9Image];
+  const memorySquareComboCombo = document.getElementById(
+    "memory-square__combo-combo"
+  );
+
+  const memorySquareComboContainer = document.querySelector(
+    ".memory-square__combo-container"
+  );
+
+  // const combo1Image = document.querySelector(".memory-square__combo1");
+  // const combo2Image = document.querySelector(".memory-square__combo2");
+  // const combo3Image = document.querySelector(".memory-square__combo3");
+  // const combo4Image = document.querySelector(".memory-square__combo4");
+  // const combo5Image = document.querySelector(".memory-square__combo5");
+  // const combo6Image = document.querySelector(".memory-square__combo6");
+  // const combo7Image = document.querySelector(".memory-square__combo7");
+  // const combo8Image = document.querySelector(".memory-square__combo8");
+  // const combo9Image = document.querySelector(".memory-square__combo9");
+
+  // const comboImageArray = [
+  //   combo1Image,
+  //   combo2Image,
+  //   combo3Image,
+  //   combo4Image,
+  //   combo5Image,
+  //   combo6Image,
+  //   combo7Image,
+  //   combo8Image,
+  //   combo9Image,
+  // ];
+  const feverTimeText = document.querySelector(".memory-square__fever-time");
 
   // 9つのマス目を取得
   const td1 = document.getElementById("memory-square__td1");
@@ -33,201 +82,283 @@ document.addEventListener("turbo:load", () => {
   const td8 = document.getElementById("memory-square__td8");
   const td9 = document.getElementById("memory-square__td9");
 
-
   const tdArray = [td1, td2, td3, td4, td5, td6, td7, td8, td9]; // マス目を配列に格納
 
   const yourScoreBox = document.querySelector(".memory-square__score-box");
 
-  if (!memorySquareTable || !questionBox) { return null; }  // テーブルや質問ボックスが無い場合は終了
+  if (!memorySquareTable || !questionBox) {
+    return null;
+  } // テーブルや質問ボックスが無い場合は終了
 
-  const tableDataArray = [];  // 各ターンでクリックされたマスを記録
-  const squareArray = [];     // 各ターンで表示された数字を記録
+  volumeBox.addEventListener("click", (event) => {
+    event.stopPropagation(); // バブリングを防ぐ
+
+    // 要素の現在の表示状態を確認
+    if (volumeOnImage.style.display === "none") {
+      bgmAudio.pause(); // 再生停止
+      bgmAudio.currentTime = 0; // 再生位置を最初に戻す
+      volumeOnImage.style.display = "flex";
+      volumeOffImage.style.display = "none";
+    } else if (volumeOnImage.style.display === "flex") {
+      bgmAudio.loop = true;
+      bgmAudio.play();
+      bgmAudio.volume = 0.2; // 音量を設定
+      volumeOffImage.style.display = "flex";
+      volumeOnImage.style.display = "none";
+    }
+  });
+
+  // 初期表示の設定
+  volumeOnImage.style.display = "flex"; // 初期状態を表示に設定
+  volumeOffImage.style.display = "none"; // 初期状態を非表示に設定
+
+  const tableDataArray = [];
+  const squareArray = [];
   let correctOrWrongArray = [];
-  let memorySquareYourScore = 0;          // スコアを記録
-  let feverCount = 30;
-  let i = 0;                  // ゲームのターン数をカウント
-  let timeLimit = 60;         // ゲームの制限時間
-  const countMax = 30;        // 質問を出す最大ターン数
-  let previousTd = null;      // 1つ前のマスを記録
-  let questionActive = false; // 質問がアクティブかどうかのフラグ
-  let hardModeEnabled = false; // ハードモードが有効かどうかを示すフラグ
+  let memorySquareYourScore = 0;
+  let feverCount = 300;
+  let i = 0;
+  let timeLimit = 60;
+  const totalGameTime = timeLimit;
+  const countMax = 36;
+  let previousTd = null;
+  let questionActive = false;
+  let hardModeEnabled = false;
 
+  gameStartButton.addEventListener("click", () => {
+    gameStartButton.style.opacity = 0;
+    gameStartButton.style.cursor = "none";
+    gameStartButton.style.pointerEvents = "none";
+    countdownScreen.style.display = "flex";
+    upperContainer.style.display = "none";
+    middleContainer.style.display = "none";
+    lowerContainer.style.display = "none";
 
-  // ゲームスタートボタンをクリックした際の処理
-  gameStartButton.addEventListener('click', () => {
-    gameStartButton.style.opacity = 0;            // ボタンを非表示に
-    gameStartButton.style.cursor = "none";        // ボタンのカーソルを無効に
-    gameStartButton.style.pointerEvents = "none"; // クリック無効化
+    // カウントダウンの設定
+    let countdown = 3; // 3秒からスタート
+    countdownScreen.innerHTML = `<div class="memory-square__countdown">${countdown}</div>`; // カウントダウンを表示
 
-    // 1秒ごとに時間を減らす処理
-    window.setInterval(function() {
-      if (timeLimit > 0) {
-        if (!hardModeEnabled) { // ハードモードが無効な場合に時間を減少
-          timeLimit -= 1;
-          memorySquareCount.textContent = timeLimit;
-        } else { // ハードモード時は "Fever!!" を表示
-          memorySquareCount.textContent = "Fever!!";
-          if (feverCount > 0) {
-            feverCount -= 1;
-            console.log(feverCount);
-          }
-          
-          // feverCountが0になった場合、初期化して通常モードに戻す
-          if (feverCount === 0) {
-            feverCount = 30;          // feverCountを初期化
-            hardModeEnabled = false;  // 通常モードに戻す
-            console.log("ハードモード終了");
-          }
-        }
+    const countdownInterval = setInterval(() => {
+      countdown -= 1;
+      if (countdown > 0) {
+        countdownScreen.innerHTML = `<div class="memory-square__countdown">${countdown}</div>`;
+      } else {
+        clearInterval(countdownInterval);
+        countdownScreen.style.display = "none";
+        startGame(); // ゲームを開始
       }
-      
-      // 時間切れ時の処理
-      if (timeLimit === 0 && !hardModeEnabled) {
-        upperContainer.style.display = "none";
-        middleContainer.style.display = "none";
-        lowerContainer.style.display = "none";
-        gameScreen.innerHTML = `<div class="memory-square__the-end">Time up!!</div>`;
-      
-        // ゲーム終了時にローカルストレージにスコアを保存
-        localStorage.setItem('memorySquareYourScore', memorySquareYourScore); // 文字列のキーを指定
-    
-        // 結果ページに遷移
-        setTimeout(() => {
-          window.location.href = `/results/memory_square`;
-        }, 2000);
-      }
-    }, 1000);
-    
-    // 新しい質問を設定する処理を開始
-    const setQuestions = setInterval(() => {
-      // 前回のマスの数字を非表示にし、フェードアウトアニメーション
-      if (previousTd) {
-        const previousNumberBox = previousTd.querySelector('.memory-square__number-box');
-        if (previousNumberBox) {
-          previousNumberBox.classList.remove('fade-in');
-          previousNumberBox.classList.add('fade-out');
+    }, 1000); // 1秒ごとにカウントダウン
 
-          setTimeout(() => {
-            previousTd.innerHTML = "";
-          }, 250);
-        }
-      }
+    const startGame = () => {
+      upperContainer.style.display = "flex";
+      middleContainer.style.display = "flex";
+      lowerContainer.style.display = "flex";
+      const interval = 100; // 100msごとに更新
+      const decrement = 1 / (1000 / interval); // timeLimit減少量の分割
 
-      // 質問がアクティブでない場合のみ新しい質問を設定
-      if (!questionActive) {
-        setTimeout(() => {
-          const randomOfTd = Math.floor(Math.random() * tdArray.length); // ランダムにマスを選択
-          const randomTableData = tdArray[randomOfTd];
-          const squareNumber = Math.floor(Math.random() * 4) + 1;        // ランダムな数字を選択
+      const gameTimer = window.setInterval(function () {
+        if (timeLimit > 0) {
+          if (!hardModeEnabled) {
+            // timeLimit が 0 より小さくならないように調整
+            timeLimit = Math.max(0, timeLimit - decrement);
+            const progressPercentage = (1 - timeLimit / totalGameTime) * 360;
 
-          const questionArray = ["1個前の場所", "1個前の数字", "2個前の場所", "2個前の数字"]; // 質問の種類
-          const hardModeArray = ["3個前の場所", "3個前の数字"];
+            // プログレスバーの色を更新
+            memorySquareCountCircle.style.background = `conic-gradient(#232323 ${progressPercentage}deg, steelblue ${progressPercentage}deg)`;
 
-          let randomQuestion = Math.floor(Math.random() * questionArray.length);
-          let makeQuestion = questionArray[randomQuestion];
-
-          randomTableData.innerHTML = `<div class="memory-square__number-box fade-in">${squareNumber}</div>`;
-          previousTd = randomTableData;  // 前回のマスとして記録
-
-          tableDataArray.push(randomTableData); // 表示されたマスと数字を記録
-          squareArray.push(squareNumber);
-
-          // どれだけ正解しているか不正解しているかを配列に入れて判定
-          if (questionBox.textContent === "◯" || questionBox.textContent === "×") {
-            correctOrWrongArray.push(questionBox.textContent);
-            if (questionBox.textContent === "×") {
-              correctOrWrongArray = [];
+            // カウントダウン表示の更新（整数のみ表示）
+            memorySquareCount.textContent = Math.floor(timeLimit);
+          } else {
+            if (feverCount > 0) {
+              feverCount -= 1;
+            } else {
+              feverCount = 300;
+              timeLimit = Math.max(0, timeLimit - 1);
               hardModeEnabled = false;
             }
           }
+        } else {
+          clearInterval(gameTimer);
+          upperContainer.style.display = "none";
+          middleContainer.style.display = "none";
+          lowerContainer.style.display = "none";
+          gameScreen.innerHTML = `<div class="memory-square__the-end">Time up!!</div>`;
+          memorySquareCountCircle.style.background = `conic-gradient(#232323 360deg, #232323 0deg)`;
 
+          localStorage.setItem("memorySquareYourScore", memorySquareYourScore);
+          setTimeout(() => {
+            window.location.href = `/results/memory_square`;
+          }, 2000);
+        }
+      }, interval);
 
-          setInterval(() => {
-            // 配列の長さを更新
-            let correctComboLength = correctOrWrongArray.length;
-          
-            // 配列の長さに応じた処理
-            if (correctComboLength >= 1 && correctComboLength <= 9) {
-              if (comboImageArray[correctComboLength - 1]) { // -1して配列の範囲内に調整
-                comboImageArray[correctComboLength - 1].classList.add('fade-in');
-                comboImageArray[correctComboLength - 1].classList.remove('fade-out');
-                comboImageArray[correctComboLength - 1].style.display = 'flex';
+      // 初回質問設定処理をすぐに実行
+      const setNewQuestion = () => {
+        if (previousTd) {
+          const previousNumberBox = previousTd.querySelector(
+            ".memory-square__number-box"
+          );
+          if (previousNumberBox) {
+            previousNumberBox.classList.remove("fade-in");
+            previousNumberBox.classList.add("fade-out");
+
+            setTimeout(() => {
+              previousTd.innerHTML = "";
+            }, 250);
+          }
+        }
+
+        if (!questionActive) {
+          setTimeout(() => {
+            const randomOfTd = Math.floor(Math.random() * tdArray.length);
+            const randomTableData = tdArray[randomOfTd];
+            const squareNumber = Math.floor(Math.random() * 4) + 1;
+
+            let questionArray = [
+              "1個前の場所",
+              "1個前の数字",
+              "2個前の場所",
+              "2個前の数字",
+            ];
+            const hardModeArray = ["3個前の場所", "3個前の数字"];
+
+            let randomQuestion = Math.floor(
+              Math.random() * questionArray.length
+            );
+            let makeQuestion = questionArray[randomQuestion];
+
+            randomTableData.innerHTML = `<div class="memory-square__number-box fade-in">${squareNumber}</div>`;
+            previousTd = randomTableData;
+            tableDataArray.push(randomTableData);
+            squareArray.push(squareNumber);
+
+            if (
+              questionBox.textContent === "◯" ||
+              questionBox.textContent === "×"
+            ) {
+              correctOrWrongArray.push(questionBox.textContent);
+              if (questionBox.textContent === "×") {
+                correctOrWrongArray = [];
+                hardModeEnabled = false;
               }
             }
-            
-            // FEVER状態の処理
-            if (correctComboLength >= 10) {
-              console.log("FEVER!!");
-            }
-            
-          
-            // correctComboLength が0の場合に全ての画像の opacity を0にする
-            if (correctComboLength === 0) {
-              comboImageArray.forEach(comboImage => {
-                if (comboImage) {
-                  comboImage.classList.remove('fade-in');
-                  comboImage.classList.add('fade-out');
-                  
-                  // 500ミリ秒後に非表示にする（フェードアウトアニメーションが完了してから）
-                  setTimeout(() => {
-                    comboImage.style.display = 'none';
-                  }, 500); // fadeOutアニメーションの時間に合わせる
-                }
-              });
-            }
-          }, 1000);  // 1000ミリ秒ごとにチェック
-          
-          let previousSquareNumber = squareArray[squareArray.length - 2];   // 1つ前の数字
-          let previousSquareNumber2 = squareArray[squareArray.length - 3];  // 2つ前の数字
-          let previousSquareNumber3 = squareArray[squareArray.length - 4];
 
-          let previousSquare = tableDataArray[tableDataArray.length - 2];   // 1つ前のマス
-          let previousSquare2 = tableDataArray[tableDataArray.length - 3];  // 2つ前のマス
-          let previousSquare3 = tableDataArray[tableDataArray.length - 4];
+            // コレクトコンボの処理
+            setInterval(() => {
+              let correctComboLength = correctOrWrongArray.length;
 
-          i += 1;  // ターン数を増やす
+              if (correctComboLength >= 2 && correctComboLength <= 8) {
+                feverTimeText.style.display = "none";
+                memorySquareComboContainer.style.display = "flex";
+                memorySquareComboCombo.style.display = "block";
+                memorySquareComboCount.style.display = "block";
+                memorySquareComboCount.textContent = correctComboLength;
+              }
 
-          // ターン数が3以上の場合、質問を表示
-          if (i >= 3) {
-            questionBox.textContent = makeQuestion;
-            questionActive = true;
-            waitForAnswer(previousSquare, previousSquare2, previousSquare3, previousSquareNumber, previousSquareNumber2, previousSquareNumber3);
+              if (correctComboLength >= 9) {
+                feverTimeText.style.display = "flex"; // フォントサイズを30に変更
+                memorySquareComboCount.style.display = "none";
+                memorySquareComboCombo.style.display = "none";
+              }
 
-            // ハードモード条件を満たした場合、ハードモード質問を追加
-            if (correctOrWrongArray.length >= 9 && !hardModeEnabled) {
-              questionArray.push(...hardModeArray); // ハードモードの質問を追加
-              hardModeEnabled = true; // ハードモードが有効化されたことを示す
-            }
+              if (correctComboLength === 0) {
+                memorySquareComboContainer.style.display = "none";
+              }
+            }, 1000);
 
-            // 質問を更新して再表示
-            if (hardModeEnabled) {
-              // ハードモードの場合、ハードモード質問を選択
-              randomQuestion = Math.floor(Math.random() * questionArray.length);
-              makeQuestion = questionArray[randomQuestion];
-              questionBox.textContent = makeQuestion; // 質問を表示
+            let previousSquareNumber = squareArray[squareArray.length - 2];
+            let previousSquareNumber2 = squareArray[squareArray.length - 3];
+            let previousSquareNumber3 = squareArray[squareArray.length - 4];
+
+            let previousSquare = tableDataArray[tableDataArray.length - 2];
+            let previousSquare2 = tableDataArray[tableDataArray.length - 3];
+            let previousSquare3 = tableDataArray[tableDataArray.length - 4];
+
+            i += 1;
+
+            if (i >= 3) {
+              questionBox.textContent = makeQuestion;
               questionActive = true;
-              waitForAnswer(previousSquare, previousSquare2, previousSquare3, previousSquareNumber, previousSquareNumber2, previousSquareNumber3);
-            }
-          }
 
-          // 最大ターン数に達したら質問を終了
-          if (i >= countMax) {
-            clearInterval(setQuestions);
-            questionBox.textContent = makeQuestion;
-            questionActive = true; // 質問がアクティブであることを示すフラグを設定
-          }
-        }, 500);
-      }
-    }, 3000);  // 3秒ごとに新しい質問を設定
+              waitForAnswer(
+                previousSquare,
+                previousSquare2,
+                previousSquare3,
+                previousSquareNumber,
+                previousSquareNumber2,
+                previousSquareNumber3
+              );
+
+              // ハードモードを有効にする条件
+              if (
+                correctOrWrongArray.length >= 9 &&
+                hardModeEnabled === false
+              ) {
+                hardModeEnabled = true;
+              }
+
+              // ハードモードが有効な場合の質問設定
+              if (hardModeEnabled) {
+                questionArray.push(...hardModeArray);
+                randomQuestion = Math.floor(
+                  Math.random() * questionArray.length
+                );
+                makeQuestion = questionArray[randomQuestion];
+                console.log(questionArray);
+                questionBox.textContent = makeQuestion;
+                questionActive = true;
+
+                waitForAnswer(
+                  previousSquare,
+                  previousSquare2,
+                  previousSquare3,
+                  previousSquareNumber,
+                  previousSquareNumber2,
+                  previousSquareNumber3
+                );
+              }
+            }
+
+            if (i >= countMax) {
+              clearInterval(setQuestions);
+              upperContainer.style.display = "none";
+              middleContainer.style.display = "none";
+              lowerContainer.style.display = "none";
+              gameScreen.innerHTML = `<div class="memory-square__the-end">覚えマスター!!</div>`;
+              localStorage.setItem(
+                "memorySquareYourScore",
+                memorySquareYourScore
+              );
+              setTimeout(() => {
+                window.location.href = `/results/memory_square`;
+              }, 2000);
+            }
+          }, 500);
+        }
+      };
+
+      // 初回実行
+      setNewQuestion();
+
+      // setIntervalで繰り返し実行
+      const setQuestions = setInterval(
+        setNewQuestion,
+        hardModeEnabled ? 2000 : 3000
+      );
+    };
   });
 
   // 数字のクリックを待つ関数 (Promiseでクリック待機)
   function waitForUserNumberClick() {
     return new Promise((resolve) => {
-      memorySquareNumbers.forEach(number => {
-        number.addEventListener('click', () => {
-          resolve(number);  // クリックされた要素を解決
-        }, { once: true });
+      memorySquareNumbers.forEach((number) => {
+        number.addEventListener(
+          "click",
+          () => {
+            resolve(number); // クリックされた要素を解決
+          },
+          { once: true }
+        );
       });
     });
   }
@@ -235,124 +366,175 @@ document.addEventListener("turbo:load", () => {
   // マスのクリックを待つ関数 (Promiseでクリック待機)
   function waitForUserSquareClick() {
     return new Promise((resolve) => {
-      tdArray.forEach(td => {
-        td.addEventListener('click', () => {
-          resolve(td);  // クリックされた要素を解決
-        }, { once: true });
+      tdArray.forEach((td) => {
+        td.addEventListener(
+          "click",
+          () => {
+            resolve(td); // クリックされた要素を解決
+          },
+          { once: true }
+        );
       });
     });
   }
 
   // ユーザーの数字クリックが正しいか判定する関数
-  function checkUserNumberClick(clickedNumber, previousSquareNumber, previousSquareNumber2, previousSquareNumber3) {
+  function checkUserNumberClick(
+    clickedNumber,
+    previousSquareNumber,
+    previousSquareNumber2,
+    previousSquareNumber3
+  ) {
     if (!questionActive) return; // 質問がアクティブでない場合はスコア処理を行わない
-  
-    if (clickedNumber.textContent === String(previousSquareNumber) || clickedNumber.textContent === String(previousSquareNumber2)) {
-      questionBox.textContent = "◯";  // 正解
-      memorySquareYourScore += 50;     // スコア加算
-      if (hardModeEnabled === true){
-        memorySquareYourScore += 50;
-      }
-      yourScoreBox.textContent = memorySquareYourScore;
-    } else if (questionBox.textContent === "3個前の数字" && clickedNumber.textContent === String(previousSquareNumber3)) {
-      questionBox.textContent = "◯";  // 3個前の数字に対してのみ75点加算
-      memorySquareYourScore += 75;
-      if (hardModeEnabled === true){
-        memorySquareYourScore += 75;
-      }
-      yourScoreBox.textContent = memorySquareYourScore;
-    } else {
-      questionBox.textContent = "×";  // 不正解
-    }
-    questionActive = false;  // 質問が終了
-  }
-  
-  function checkUserSquareClick(clickedSquare, previousSquare, previousSquare2, previousSquare3) {
-    if (!questionActive) return; // 質問がアクティブでない場合はスコア処理を行わない
-  
-    if ((previousSquare && clickedSquare.id === previousSquare.id) ||
-        (previousSquare2 && clickedSquare.id === previousSquare2.id)) {
-      questionBox.textContent = "◯";  // 正解
-      memorySquareYourScore += 50;     // スコア加算
-      if (hardModeEnabled === true){
-        memorySquareYourScore += 50;
-      }
 
+    if (
+      clickedNumber.textContent === String(previousSquareNumber) ||
+      clickedNumber.textContent === String(previousSquareNumber2)
+    ) {
+      questionBox.textContent = "◯"; // 正解
+      memorySquareYourScore += 50; // スコア加算
+      if (hardModeEnabled) {
+        memorySquareYourScore += 50;
+      }
       yourScoreBox.textContent = memorySquareYourScore;
-    } else if (questionBox.textContent === "3個前の場所" && previousSquare3 && clickedSquare.id === previousSquare3.id) {
-      questionBox.textContent = "◯";  // 3個前の場所に対してのみ75点加算
-      memorySquareYourScore += 75;
-      if (hardModeEnabled === true){
-        memorySquareYourScore += 75;
+    } else if (
+      questionBox.textContent === "3個前の数字" &&
+      clickedNumber.textContent === String(previousSquareNumber3)
+    ) {
+      questionBox.textContent = "◯"; // 3個前の数字に対してのみ75点加算
+      memorySquareYourScore += 100;
+      if (hardModeEnabled) {
+        memorySquareYourScore += 100;
       }
       yourScoreBox.textContent = memorySquareYourScore;
     } else {
-      questionBox.textContent = "×";  // 不正解
+      questionBox.textContent = "×"; // 不正解
     }
-    questionActive = false;  // 質問が終了
+    questionActive = false; // 質問が終了
   }
-  
-  
+
+  function checkUserSquareClick(
+    clickedSquare,
+    previousSquare,
+    previousSquare2,
+    previousSquare3
+  ) {
+    if (!questionActive) return; // 質問がアクティブでない場合はスコア処理を行わない
+
+    if (
+      (previousSquare && clickedSquare.id === previousSquare.id) ||
+      (previousSquare2 && clickedSquare.id === previousSquare2.id)
+    ) {
+      questionBox.textContent = "◯"; // 正解
+      memorySquareYourScore += 50; // スコア加算
+      if (hardModeEnabled) {
+        memorySquareYourScore += 50;
+      }
+      yourScoreBox.textContent = memorySquareYourScore;
+    } else if (
+      questionBox.textContent === "3個前の場所" &&
+      previousSquare3 &&
+      clickedSquare.id === previousSquare3.id
+    ) {
+      questionBox.textContent = "◯"; // 3個前の場所に対してのみ75点加算
+      memorySquareYourScore += 100;
+      if (hardModeEnabled) {
+        memorySquareYourScore += 100;
+      }
+      yourScoreBox.textContent = memorySquareYourScore;
+    } else {
+      questionBox.textContent = "×"; // 不正解
+    }
+    questionActive = false; // 質問が終了
+  }
+
   // 質問への回答を待つ処理 (非同期で数字またはマスのクリックを待つ)
-  async function waitForAnswer(previousSquare, previousSquare2, previousSquare3, previousSquareNumber, previousSquareNumber2, previousSquareNumber3) {
+  async function waitForAnswer(
+    previousSquare,
+    previousSquare2,
+    previousSquare3,
+    previousSquareNumber,
+    previousSquareNumber2,
+    previousSquareNumber3
+  ) {
     // 数字に関連する質問の場合、数字をハイライト
-    if (questionBox.textContent === "1個前の数字" || questionBox.textContent === "2個前の数字" || questionBox.textContent === "3個前の数字") {
+    if (
+      questionBox.textContent === "1個前の数字" ||
+      questionBox.textContent === "2個前の数字" ||
+      questionBox.textContent === "3個前の数字"
+    ) {
       const highlightNumbers = memorySquareNumbers;
-      highlightNumbers.forEach(number => {
+      highlightNumbers.forEach((number) => {
         if (number) {
-          number.addEventListener('mouseover', () => {
+          number.addEventListener("mouseover", () => {
             number.style.border = "2px solid orange";
           });
           number.addEventListener("mouseout", () => {
-            number.style.border = "2px solid white";
-          }
-        )};
+            number.style.border = "";
+          });
+        }
       });
 
-      tdArray.forEach(td => {
+      // マスをハイライトしない
+      tdArray.forEach((td) => {
         if (td) {
-          td.addEventListener('mouseover', () => {
+          td.addEventListener("mouseover", () => {
             td.style.border = "";
           });
           td.addEventListener("mouseout", () => {
             td.style.border = "";
-          }
-        )};
+          });
+        }
       });
 
-      const clickedNumber = await waitForUserNumberClick();  // ユーザーのクリック待ち
-      checkUserNumberClick(clickedNumber, previousSquareNumber, previousSquareNumber2, previousSquareNumber3);  // 判定処理
-      questionActive = false;  // 質問が終了
+      const clickedNumber = await waitForUserNumberClick(); // ユーザーのクリック待ち
+      checkUserNumberClick(
+        clickedNumber,
+        previousSquareNumber,
+        previousSquareNumber2,
+        previousSquareNumber3
+      ); // 判定処理
+      questionActive = false; // 質問が終了
     }
 
     // マスに関連する質問の場合、マスをハイライト
-    else if (questionBox.textContent === "1個前の場所" || questionBox.textContent === "2個前の場所" || questionBox.textContent === "3個前の場所") {
+    else if (
+      questionBox.textContent === "1個前の場所" ||
+      questionBox.textContent === "2個前の場所" ||
+      questionBox.textContent === "3個前の場所"
+    ) {
       const highlightSquares = tdArray;
-      highlightSquares.forEach(td => {
+      highlightSquares.forEach((td) => {
         if (td) {
-          td.addEventListener('mouseover', () => {
+          td.addEventListener("mouseover", () => {
             td.style.border = "2px solid orange";
           });
           td.addEventListener("mouseout", () => {
-            td.style.border = "2px solid white";
-          }
-        )};
+            td.style.border = "";
+          });
+        }
       });
 
-      memorySquareNumbers.forEach(number => {
+      // 数字をハイライトしない
+      memorySquareNumbers.forEach((number) => {
         if (number) {
-          number.addEventListener('mouseover', () => {
+          number.addEventListener("mouseover", () => {
             number.style.border = "";
           });
           number.addEventListener("mouseout", () => {
             number.style.border = "";
-          }
-        )};
+          });
+        }
       });
 
-      const clickedSquare = await waitForUserSquareClick();  // ユーザーのクリック待ち
-      checkUserSquareClick(clickedSquare, previousSquare, previousSquare2, previousSquare3);  // 判定処理
-      questionActive = false;  // 質問が終了
+      const clickedSquare = await waitForUserSquareClick(); // ユーザーのクリック待ち
+      checkUserSquareClick(
+        clickedSquare,
+        previousSquare,
+        previousSquare2,
+        previousSquare3
+      ); // 判定処理
+      questionActive = false; // 質問が終了
     }
   }
 });

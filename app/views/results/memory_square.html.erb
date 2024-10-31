@@ -9,9 +9,9 @@
       <div class="memory-square-result-page__score-display"></div>
       <div class="result-page__Registration-form">
         <div class="result-page__username">記録を登録しますか？</div>
-          <%= form_with model:@memory_sqare,class:"result-page__form",url: results_memory_square_path, local: true do|f|  %>
+          <%= form_with model:@memory_square,class:"result-page__form",url: results_memory_square_path, local: true do|f|  %>
             <%= f.text_field :nickname,  placeholder: "ニックネーム入力", class: "result-page__name-form" %>
-             <%= f.hidden_field :score, id: "memory_square-result-page__score-field" %>
+             <%= f.hidden_field :score, id: "memory-square-result-page__score-field" %>
             <%= submit_tag "登録", class: "result-page__registration-button" %>
           <% end %>
       </div>

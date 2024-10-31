@@ -132,39 +132,34 @@
   align-items: center;
   justify-content: space-around;
 }
-
+/* --- 一枚画像に変更したためコンテナとしての機能だけにしました --- */
 .top-page__game-box {
   position: relative;
   width: max-content;
   height: max-content;
-  border: 1px solid white;
   display: flex;
   justify-content: center;
   cursor: pointer;
-  font-family: "M PLUS 1", sans-serif;
-  font-weight: 600;
   background-color: #5aa4d8;
-  color: black;
 }
 
 .top-page__color-rock-paper-scissors-img {
-  width: 340px;
+  height: 100%;
+}
+.top-page__number-master-img {
+  height: 100%;
 }
 
+.top-page__memory-square-img {
+  height:100%;
+}
 .top-page__game-link {
   font-size: 24px;
   text-decoration: none;
   color: white;
 }
 
-.top-page__number-master-square-img {
-  height: 100%;
-}
 
-.top-page__number-master-thinking-img {
-  width: 100px;
-  height: 95px;
-}
 
 .top-page__trophy-box {
   width: 40px;
