@@ -17,7 +17,7 @@
   </div>
 
   <div class="top-page__middle-container">
-    <h1 class="top-page__game-select-corner">game select</h1>
+    <h1 class="top-page__game-select-corner">GAME SELECT</h1>
   </div>
 
   <div class="top-page__lower-container">
@@ -27,8 +27,11 @@
         <%# <%= link_to '色勝ちじゃんけん', games_color_rock_paper_sicissors_path, class: 'top-page__game-link' %> 
           <%# <div class="top-page__game-box">の要素を押したら上のコードがクリックされるようにするかlink_to doで包むかはお任せします
             前者の場合アニメーションなどをjsで加えることができます %>
+            <%#画像を組み合わせたものではなく全て一つのものにしました%>
         <div class="top-page__game-box">
-          <%= image_tag "top-page-images/color-rock-paper-sicissors.svg", class: "top-page__color-rock-paper-scissors-img", alt: "色勝ちじゃんけん" %>
+          <%= link_to games_color_rock_paper_sicissors_path do%>
+          <%= image_tag "top-page-images/color_rock_paper_sicissors_title.svg", class: "top-page__color-rock-paper-scissors-img", alt: "色勝ちじゃんけん" %>
+           <% end %>
           <div class="top-page__trophy-box">
             <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
           </div>
@@ -39,9 +42,9 @@
             前者の場合アニメーションなどをjsで加えることができます %>
 
         <div class="top-page__game-box">
-          <%= image_tag "top-page-images/number-master-square-image.svg", class: "top-page__number-master-square-img", alt: "数独のマスのイメージ" %>
-          <%= image_tag "top-page-images/49363.png", class: "top-page__number-master-thinking-img", alt: "数独で考えている人のイメージ" %>
-          <%= image_tag "top-page-images/number-master-title-image.svg", class: "top-page_number-master-title-img", alt: "数独のタイトルのイメージ" %>
+          <%= link_to games_number_master_path do%>
+           <%= image_tag "top-page-images/number-master_title.svg",class:"top-page__number-master-img"%>
+           <% end %> 
           <div class="top-page__trophy-box">
             <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
           </div>
@@ -52,10 +55,9 @@
             前者の場合アニメーションなどをjsで加えることができます %>
 
         <div class="top-page__game-box">
-          <%= image_tag "top-page-images/memory-square-square-image.svg", class: "top-page__memory-square-square-img", alt: "覚えマスのマスのイメージ" %>
-          <%= image_tag "top-page-images/memory-square-thinking-image2.svg", class: "top-page__memory-square-square-img", alt: "覚えマスのマスのイメージ" %>
-          <%= image_tag "top-page-images/memory-square-thinking-image1.svg", class: "top-page__memory-square-square-img", alt: "覚えマスのマスのイメージ" %>
-          <%= image_tag "top-page-images/memory-square-title-image.svg", class: "top-page__memory-square-square-img", alt: "覚えマスのマスのイメージ" %>
+          <%= link_to games_memory_square_path do %>
+           <%= image_tag "top-page-images/memory-square_title.svg" ,class:"top-page__memory-square-img"%>
+           <% end %>
           <div class="top-page__trophy-box">
             <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
           </div>

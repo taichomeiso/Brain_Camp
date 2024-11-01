@@ -1,0 +1,425 @@
+/* --- アニメーション --- */
+
+/* フェードインアニメーション */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8); /* 少し小さい状態から */
+  }
+  to {
+    opacity: 1;
+    transform: scale(1); /* 元のサイズに戻る */
+  }
+}
+
+/* フェードアウトアニメーション */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1); /* 通常の状態から */
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8); /* 少し小さくしながら透明に */
+  }
+}
+
+/* --- ゲーム全体のスタイル --- */
+.memory-square__GameScreenBase {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to left, #2d6ba1, #2c89cb 50%, #5aa4d8);
+}
+
+.memory-square__BackTitleButton {
+  width: 120px;
+  height: 39px;
+  padding: 5px;
+  text-align: center;
+  border: solid 2px #000;
+  background-color: skyblue;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-left: 700px;
+}
+
+.memory-square__game-screen {
+  position: relative;
+  width: 700px;
+  height: 700px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #232323;
+  margin-bottom: 10px;
+}
+
+.memory-square__countdown-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.memory-square__countdown {
+  font-size: 200px;
+  text-align: center;
+  color: white;
+}
+
+.memory-square__tutorial-movie-screen {
+  position: fixed;
+  width: 700px;
+  height: 695px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #4a4a4a;
+  margin-bottom: 10px;
+  z-index: 1001;
+  color: orange;
+}
+
+.memory-square__tutorial-description-wrapper {
+  position: fixed;
+  width: 700px;
+  height: 690px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1002;
+}
+
+.memory-square__title {
+  font-size: 80px;
+  margin: 0;
+  margin-top: 50px;
+  position: fixed;
+  z-index: inherit;
+  color: white;
+  text-shadow: -3px 2px 0 #000;
+  letter-spacing: 10px;
+}
+
+.memory-square__upper-tutorial-container {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.memory-square__watch-tutorial {
+  font-size: 36px;
+}
+
+.memory-square__tutorial-movie {
+  width: 90%;
+  height: 90%;
+  border-radius: 20px;
+  display: none;
+}
+
+.memory-square__lower-tutorial-container {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.memory-square__play-tutorial-image {
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
+}
+
+/* --- コンボボックス --- */
+.memory-square__combo-container {
+  position: absolute;
+  top: 120px;
+  right: 50px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-weight: bold;
+}
+
+.memory-square__fever-time {
+  font-size: 30px;
+  letter-spacing: -2px;
+}
+
+.memory-square__combo-number {
+  font-size: 54px;
+}
+
+#memory-square__combo-combo {
+  font-size: 16px;
+  letter-spacing: -1px;
+  margin-top: -5px;
+}
+
+.memory-square__combo-box {
+  position: absolute;
+  width: 500px;
+  height: 50px;
+  top: -50px;
+  left: 95px;
+  display: flex;
+  align-items: center;
+}
+
+.memory-square__combo1,
+.memory-square__combo2,
+.memory-square__combo3,
+.memory-square__combo4,
+.memory-square__combo5,
+.memory-square__combo6,
+.memory-square__combo7,
+.memory-square__combo8,
+.memory-square__combo9 {
+  width: 56px;
+  height: 100%;
+  display: none; /* 初期状態では表示しない */
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* 非表示から開始 */
+}
+
+.memory-square__combo1.fade-in,
+.memory-square__combo2.fade-in,
+.memory-square__combo3.fade-in,
+.memory-square__combo4.fade-in,
+.memory-square__combo5.fade-in,
+.memory-square__combo6.fade-in,
+.memory-square__combo7.fade-in,
+.memory-square__combo8.fade-in,
+.memory-square__combo9.fade-in {
+  display: flex; /* フェードイン時に表示 */
+  animation: fadeIn 0.5s forwards;
+}
+
+.memory-square__combo1.fade-out,
+.memory-square__combo2.fade-out,
+.memory-square__combo3.fade-out,
+.memory-square__combo4.fade-out,
+.memory-square__combo5.fade-out,
+.memory-square__combo6.fade-out,
+.memory-square__combo7.fade-out,
+.memory-square__combo8.fade-out,
+.memory-square__combo9.fade-out {
+  animation: fadeOut 0.5s forwards;
+  display: none; /* フェードアウト後に非表示 */
+}
+
+/* --- 上部コンテナ --- */
+.memory-square__upper-container {
+  position: relative;
+  width: 100%;
+  height: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.memory-square__volume-box {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  border: 2px solid white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.memory-square__volume-on-img,
+.memory-square__volume-off-img {
+  width: 40px;
+  height: 40px;
+}
+
+.memory-square__count-box {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  color: white;
+  font-size: 30px;
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#memory-square__progress-circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 19px;
+  background: steelblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 1s linear; /* 背景の変化を1秒間かけて滑らかに */
+}
+
+#memory-square__progress-count {
+  position: absolute;
+  font-weight: bold;
+}
+
+.memory-square__score-box {
+  color: white;
+  font-size: 30px;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.memory-square__question-box {
+  width: 400px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid white;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  font-size: 65px;
+  line-height: 100px; /* 垂直中央揃え */
+}
+
+/* --- 中央コンテナ --- */
+.memory-square__middle-container {
+  width: 100%;
+  height: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- テーブルのスタイル --- */
+.memory-square__table {
+  width: 362px;
+  height: 362px;
+  border: 1px solid white;
+}
+
+.memory-square__table td {
+  width: 120px;
+  height: 120px;
+  border: 1px solid #ffffff;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 80px;
+  cursor: pointer;
+}
+
+.memory-square__table td.highlighted {
+  border: 2px solid orange; /* ボーダーを太くし、オレンジに変更 */
+}
+
+/* --- 終了メッセージのスタイル --- */
+.memory-square__the-end {
+  font-size: 100px;
+  text-align: center;
+  color: white;
+  line-height: 700px; /* 垂直中央揃え */
+}
+
+/* --- 数字テーブルのスタイル --- */
+.memory-square__number-table {
+  width: 420px;
+  height: 100px;
+}
+
+.memory-square__number-table td {
+  width: 100px;
+  height: 100px;
+  border: 2px solid white;
+  border-radius: 8px;
+  line-height: 100px; /* 垂直中央揃え */
+  font-size: 60px;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+
+.memory-square__number-table td.highlighted {
+  border: 2px solid orange;
+}
+
+/* --- 数字ボックスのアニメーション --- */
+.memory-square__number-box {
+  display: inline-block;
+  border: 3px solid white;
+  border-radius: 8px;
+  color: white;
+  width: 90px;
+  height: 90px;
+  line-height: 90px; /* 垂直中央揃え */
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s; /* トランジションを使ってスムーズに */
+}
+
+.memory-square__number-box.fade-in {
+  animation: fadeIn 0.5s forwards; /* フェードインアニメーション */
+}
+
+.memory-square__number-box.fade-out {
+  animation: fadeOut 0.5s forwards; /* フェードアウトアニメーション */
+}
+
+/* --- 下部コンテナ --- */
+.memory-square__lower-container {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.memory-square__GameStartButton {
+  width: 300px;
+  height: 90px;
+  border-radius: 50px;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  background: #87ceeb;
+  text-align: center;
+  font-size: 24px;
+  line-height: 90px;
+  margin-bottom: 10px;
+  border: 2px solid black;
+}

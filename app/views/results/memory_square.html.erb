@@ -1,0 +1,50 @@
+
+  <%= stylesheet_link_tag 'results', media: 'all' %>
+  <title>リザルト</title>
+<div class="result-body">
+  <div class="result-layer1">
+    <div class="result-score">
+      <div class="result-page__score-name">SCORE!!</div>
+      <div class="result-page__score"></div>
+      <div class="memory-square-result-page__score-display"></div>
+      <div class="result-page__Registration-form">
+        <div class="result-page__username">記録を登録しますか？</div>
+          <%= form_with model:@memory_square,class:"result-page__form",url: results_memory_square_path, local: true do|f|  %>
+            <%= f.text_field :nickname,  placeholder: "ニックネーム入力", class: "result-page__name-form" %>
+             <%= f.hidden_field :score, id: "memory-square-result-page__score-field" %>
+            <%= submit_tag "登録", class: "result-page__registration-button" %>
+          <% end %>
+      </div>
+      <div class="hover-area">
+        <div class="result-button">
+          <div class="button-with-icon">
+            <%= image_tag 'result-page-images/checkmark_default.svg', alt: "イラストA", class: "button-icon icon-A" %>
+            <%= image_tag 'result-page-images/checkmark_orange.svg', alt: "イラストB", class: "button-icon icon-B" %>
+            <%= image_tag 'result-page-images/checkmark_red.svg', alt: "イラストC", class: "button-icon icon-C" %>
+            <%= link_to "リトライする", games_memory_square_path, class: "result-page__retry-button" %>
+          </div>
+          <div class="button-with-icon">
+            <%= image_tag 'result-page-images/checkmark_default.svg', alt: "イラストA", class: "button-icon icon-A" %>
+            <%= image_tag 'result-page-images/checkmark_orange.svg', alt: "イラストB", class: "button-icon icon-B" %>
+            <%= image_tag 'result-page-images/checkmark_red.svg', alt: "イラストC", class: "button-icon icon-C" %>
+            <%= link_to "トップへ戻る", root_path, class: "result-page__back-to-home-button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="result-layer2">
+    <%= image_tag 'result-page-images/decoration.svg', alt: "score背景", class: "score-background" %>
+    <%= image_tag 'result-page-images/results_speech_bubble_down.svg', alt: "フレーム画像", class: "result-page__frame" %>
+    <%= image_tag 'result-page-images/results_speech_bubble_up.svg', alt: "リザルト画面メッセージ", class: "result-page__right-message" %>
+  </div>
+  
+  <div class="result-layer3">
+    <%= image_tag 'result-page-images/results_image.svg', alt: "リザルト画面のイラスト", class: "result-page__right-image" %>
+  </div>
+</div>
+
+
+
