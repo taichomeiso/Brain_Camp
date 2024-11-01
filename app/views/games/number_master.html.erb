@@ -3,6 +3,41 @@
      <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>   
   <% end %>
   <div class="game-page__MainGameScreen">
+    <div id="timer" class="number_master_timer">00:00:00</div>
+    <table>
+      <tr>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+      </tr>
+      <tr>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+      </tr>
+      <tr>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+      </tr>
+      <tr>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+      </tr>
+    </table>
+
+    <div id="buttons">
+      <button class="number-button">1</button>
+      <button class="number-button">2</button>
+      <button class="number-button">3</button>
+      <button class="number-button">4</button>
+    </div>
+
   </div>
-  <button class="game-page__GameStartButton">ゲームスタート</button>
+  <button id="startButton" class="game-page__GameStartButton">ゲームスタート</button>
 </div>
