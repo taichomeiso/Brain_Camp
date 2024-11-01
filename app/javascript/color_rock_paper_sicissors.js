@@ -1,3 +1,4 @@
+document.addEventListener("turbo:load", () => {
 //相手の手数の最大数
 const Mumber_Steps_Max = 6;
 //相手の手数の最小数
@@ -194,4 +195,5 @@ document.addEventListener('DOMContentLoaded', function() {
     startCountdown(); // カウントダウン開始
   });
  
+});
 });
