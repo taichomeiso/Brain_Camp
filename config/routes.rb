@@ -2,12 +2,11 @@ Rails.application.routes.draw do
 
   resources :sudokus
   # root to: 'tops#index'
-  
 
+  resources :color_rock_paper_sicissors, only:[:index,:new ,:create]
   root to: 'tops#index'
 
   # ゲームに関するルーティング
-
   get 'games/color_rock_paper_sicissors'
   get 'games/memory_square'
   get 'games/number_master'
