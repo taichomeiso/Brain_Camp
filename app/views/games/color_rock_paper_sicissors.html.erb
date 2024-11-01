@@ -1,8 +1,53 @@
+<!-- ゲーム画面の全体の表示 -->
 <div class="game-page__GameScreenBase">
+  <!-- タイトルに戻るボタンの表示 -->
   <%= link_to root_path, class: "game-page__BackTitleButton" do %>
      <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>   
   <% end %>
+  <!-- タイトルに戻るボタンの表示ここまで -->
   <div class="game-page__MainGameScreen">
+    <div class="item_user-interface">
+      <!--スコアの表示-->
+      <div class="score_text">
+        <span id="score_id">0</span>
+      </div>
+      <!--スコアの表示ここまで-->
+      <%= image_tag "" ,id:"game-start-button_image_id", class:"game-start-button_image", style: "display: none;"%>
+      <!--ゲームが終了したとき表示する画像-->
+      <%= image_tag "" ,id:"game-End_Image_Id", class:"game-end-image", style: "display: none;"%>
+      <!--ゲームが終了したとき表示する画像ここまで-->
+      <!-- コンピューターが出す手を表示 -->
+      <%= image_tag "GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/computer/computer_1_image.png", id: "color_rock_paper_computer_id", style:"display: none;" %>
+      <!-- コンピューターが出す手を表示ここまで -->
+      <!-- 制限時間のゲージ表示 -->
+       <div class="time-limit_gauge">
+        <div style="height: 100%" id="time-limit_gauge_id"></div>
+      </div>
+      <div class="instructions_text">
+        青には勝ち、赤には負けてみよう！
+      </div>
+      <!-- 制限時間のゲージ表示ここまで -->
+    </div>
+    <!-- コンピューターが出す手を表示ここまで -->
+    <!-- じゃんけんのグー、チョキ、パーのボタン -->
+    <div class="color_rock_paper_choices_base">
+      <div class="color_rock_paper_frame">
+        <button><%= image_tag "GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/player/rock_image.png", alt:"グー", class: "color_rock_paper_choices", id: "rock_image_id"%></button>
+      </div>
+      <div class="color_rock_paper_frame">
+        <button><%= image_tag "GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/player/scissors_image.png", alt:"チョキ", class: "color_rock_paper_choices", id: "scissors_image_id" %></button>
+      </div>
+      <div class="color_rock_paper_frame">
+        <button><%= image_tag "GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/player/paper_image.png", alt:"パー", class: "color_rock_paper_choices", id: "paper_image_id" %></button>
+      </div>
+    </div>
+    <!-- じゃんけんのグー、チョキ、パーのボタンここまで -->
   </div>
-  <button class="game-page__GameStartButton">ゲームスタート</button>
+   <!-- ゲームスタートボタン -->
+  <button id="color_rock_paper_gameStartButton_id" class="game-page__GameStartButton">ゲームスタート</button>
+  <!-- ゲームスタートボタンここまで -->
 </div>
+<!-- ゲーム画面の全体の表示ここまで -->
+<footer class="top-page__footer">
+    <p>&copy; 2024 ktkt. All rights reserved.</p>
+</footer>

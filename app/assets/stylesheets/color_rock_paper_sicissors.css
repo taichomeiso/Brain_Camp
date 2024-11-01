@@ -1,0 +1,119 @@
+/* 相手クラス*/
+.item_user-interface{
+  position: relative;
+  width: 440px;
+  height: 440px;
+  padding: 60px;
+  margin: 10px auto;
+  border: 2px solid #000;
+  border-radius:10px;
+  background-color: aliceblue;
+}
+
+.item_user-interface img {
+  max-width: 100%;
+  height: auto; 
+  display: block; 
+}
+
+/*制限時間のゲージ*/
+.time-limit_gauge{
+  position: absolute;
+  border: 1px solid #333;
+  height: 380px;
+  width: 28px;
+  background: #999;
+  top: 20px;
+  right: -80px;
+  display: flex;
+  align-items: flex-end;
+}
+.time-limit_gauge>div{
+  width: 100%;
+  background: #78d461;
+}
+
+/*指示するテキスト*/
+.instructions_text{
+  position: absolute;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: "Hiragino Sans","ヒラギノ角ゴシック";
+  font-weight: 1000;
+  font-size: 23px;
+  color: #666161;
+  top: 40px;
+  left: -80px;
+}
+/*スコアのテキスト*/
+.score_text{
+  position: absolute;
+  writing-mode: horizontal-tb; /* 横書きに設定 */
+  text-orientation: mixed;     /* 通常の文字方向 */
+  font-family: "Hiragino Sans","ヒラギノ角ゴシック";
+  font-weight: 1000;
+  width: fit-content;
+  font-size: 30px;
+  text-align: right;
+  top: 20px;
+  left: 200px;
+}
+/*「ゲームが始まる前に表示するメッセージ」の画像のサイズ*/
+.game-start-button_image {
+  position: absolute;
+  top: 180px;
+  left: 60px;
+  width: 300px; /* 幅を300pxに設定 */
+  height: auto; /* 高さを自動調整 */
+}
+/*「おわり！」の画像のサイズ*/
+.game-end-image {
+  position: absolute;
+  top: 150px;
+  left: 60px;
+  width: 300px; /* 幅を300pxに設定 */
+  height: auto; /* 高さを自動調整 */
+}
+/*選択肢の親クラス*/
+.color_rock_paper_choices_base{
+  width: 700px;
+  height: 250px;
+  padding: 10px;
+  display: flex;
+  justify-content:space-around;
+}
+
+/*選択肢の枠*/
+.color_rock_paper_frame{
+  width:  190px;
+  height: 190px;
+  padding: 10px;
+  margin: 10px;
+  border-radius:10px;
+  border: 2px solid #000;
+  background-color: skyblue;
+}
+
+/*選択肢の画像サイズ*/
+.color_rock_paper_choices{
+  width:  160px;
+  height: 160px;
+  padding: 5px;
+}
+
+.color_rock_paper_frame:active{
+  background: #add8e6;
+  color: #FFF;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+
+button img {
+  display: block;
+}

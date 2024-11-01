@@ -11,6 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2024_10_31_063951) do
+  create_table "color_rock_paper_sicissors", charset: "utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "score", default: 0, null: false
+  end
   create_table "memory_squares", charset: "utf8", force: :cascade do |t|
     t.string "nickname"
     t.integer "score"
