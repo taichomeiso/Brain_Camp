@@ -37,7 +37,7 @@
 .color_rock_paper_sicissors-result-page__score-display {
   color: white;
   font-size: 120px;
-  font-family: "Dela Gothic One", sans-serif;
+  font-family: "M PULS 1", sans-serif;
   font-weight: 600;
   font-style: normal;
   text-shadow: 0px 4px 4px #00000040;
@@ -231,3 +231,11 @@
   right: 90px;
 }
 
+.gameTime {
+  font-size: 3rem; /* フォントサイズを大きく調整 */
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin: 70px 0 30px 0;
+}

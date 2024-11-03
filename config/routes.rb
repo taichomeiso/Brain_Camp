@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get 'results/color_rock_paper_sicissors'
   get 'results/memory_square', to: 'results#memory_square'
   get 'results/number_master'
+  
 
   # 結果登録に関する POST ルーティング
   post 'results/memory_square', to: 'results#memory_square'

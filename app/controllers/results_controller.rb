@@ -28,4 +28,6 @@ class ResultsController < ApplicationController
     # 必要に応じてレコードのIDで取得
     @result = Result.find(params[:id])
   end
+
+  
 end
