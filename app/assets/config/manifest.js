@@ -3,3 +3,7 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link memory-square-bgm.mp3
+//= link correct-answer.mp3
+//= link wrong-answer.mp3
+//= link fever-scratch.mp3
+//= link square-appearance.mp3
