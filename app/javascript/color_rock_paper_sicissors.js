@@ -1,5 +1,10 @@
+
 document.addEventListener("turbo:load", () => {
  //相手の手数の最大数
+
+// document.addEventListener("turbo:load", () => {
+  //相手の手数の最大数
+
   const Mumber_Steps_Max = 6;
   //相手の手数の最小数
   const Mumber_Steps_Min = 1;
@@ -189,12 +194,22 @@ document.addEventListener("turbo:load", () => {
     });
   }
   disableClicks(); // ゲームが開始されるまではクリックを無効化
+
   
+
+  document.addEventListener('DOMContentLoaded', function() {
+
     gameStartButton.addEventListener("click", () => {
       startMessageImage.style.display = "none"; // スタートボタンが押されたら非表示に
       startCountdown(); // カウントダウン開始
     });
+
   
 
 
 });
+
+
+  });
+// }):
+
