@@ -2,25 +2,24 @@
 
 /* フェードインアニメーション */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.8); /* 少し小さい状態から */
+  0% {
+    opacity: 0; /* 初期は透明 */
+    transform: translateY(20px); /* 下から突き出る */
   }
-  to {
-    opacity: 1;
-    transform: scale(1); /* 元のサイズに戻る */
+  100% {
+    opacity: 1; /* 完全に表示 */
+    transform: translateY(0); /* 元の位置に戻る */
   }
 }
 
-/* フェードアウトアニメーション */
 @keyframes fadeOut {
-  from {
-    opacity: 1;
-    transform: scale(1); /* 通常の状態から */
+  0% {
+    opacity: 1; /* 完全に表示 */
+    transform: translateY(0); /* 元の位置 */
   }
-  to {
-    opacity: 0;
-    transform: scale(0.8); /* 少し小さくしながら透明に */
+  100% {
+    opacity: 0; /* 完全に透明 */
+    transform: translateY(20px); /* 下に移動して凹む */
   }
 }
 
@@ -34,6 +33,7 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(to left, #2d6ba1, #2c89cb 50%, #5aa4d8);
+  font-family: "M PLUS 1", sans-serif;
 }
 
 .memory-square__BackTitleButton {
@@ -56,8 +56,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #232323;
+  background-color: rgb(148, 148, 148);
   margin-bottom: 10px;
+  font-family: "M PLUS 1", sans-serif;
 }
 
 .memory-square__countdown-screen {
@@ -83,10 +84,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #4a4a4a;
+  background-color: rgb(148, 148, 148);
   margin-bottom: 10px;
   z-index: 1001;
   color: orange;
+  font-family: "M PLUS 1", sans-serif;
 }
 
 .memory-square__tutorial-description-wrapper {
@@ -250,6 +252,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  z-index: 1006;
 }
 
 .memory-square__volume-on-img,
@@ -264,13 +267,12 @@
   left: 30px;
   color: white;
   font-size: 30px;
-  border: 2px solid white;
+  border: 4px solid white;
   border-radius: 20px;
   width: 80px;
   height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  line-height: 80px;
+  text-align: center;
 }
 
 #memory-square__progress-circle {
@@ -278,7 +280,7 @@
   width: 100%;
   height: 100%;
   border-radius: 19px;
-  background: steelblue;
+  background: rgba(69, 69, 69, 0.846);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -298,10 +300,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  border: 2px solid white;
+  border: 3px solid white;
   border-radius: 10px;
   margin-bottom: 20px;
   padding: 5px;
+  font-family: "M PLUS 1", sans-serif;
 }
 
 .memory-square__question-box {
@@ -310,12 +313,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 4px solid white;
+  border: 3px solid white;
   border-radius: 15px;
   text-align: center;
   color: white;
   font-size: 65px;
-  line-height: 100px; /* 垂直中央揃え */
+  line-height: 90px; /* 垂直中央揃え */
+  font-family: "M PLUS 1", sans-serif;
 }
 
 /* --- 中央コンテナ --- */
@@ -329,23 +333,29 @@
 
 /* --- テーブルのスタイル --- */
 .memory-square__table {
-  width: 362px;
-  height: 362px;
-  border: 1px solid white;
+  width: 365px;
+  height: 365px;
+  border: 3px solid white;
+  border-collapse: collapse; /* セルの境界を重ねない */
 }
 
 .memory-square__table td {
   width: 120px;
   height: 120px;
-  border: 1px solid #ffffff;
+  border: 2px solid white;
   text-align: center;
   vertical-align: middle;
   font-size: 80px;
   cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1); /* 背景色を追加 */
+  transition: transform 0.2s, box-shadow 0.2s; /* スムーズな変化のためのトランジション */
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.2); /* セルの凹み効果を持たせるための初期影 */
 }
 
-.memory-square__table td.highlighted {
-  border: 2px solid orange; /* ボーダーを太くし、オレンジに変更 */
+/* アクティブ時の凹み効果 */
+.memory-square__table td:active {
+  transform: translateY(4px); /* 下にスライド */
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4); /* 内側の影を強調 */
 }
 
 /* --- 終了メッセージのスタイル --- */
@@ -354,28 +364,7 @@
   text-align: center;
   color: white;
   line-height: 700px; /* 垂直中央揃え */
-}
-
-/* --- 数字テーブルのスタイル --- */
-.memory-square__number-table {
-  width: 420px;
-  height: 100px;
-}
-
-.memory-square__number-table td {
-  width: 100px;
-  height: 100px;
-  border: 2px solid white;
-  border-radius: 8px;
-  line-height: 100px; /* 垂直中央揃え */
-  font-size: 60px;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-}
-
-.memory-square__number-table td.highlighted {
-  border: 2px solid orange;
+  font-family: "M PLUS 1", sans-serif;
 }
 
 /* --- 数字ボックスのアニメーション --- */
@@ -385,10 +374,28 @@
   border-radius: 8px;
   color: white;
   width: 90px;
-  height: 90px;
-  line-height: 90px; /* 垂直中央揃え */
+  height: 95px;
+  line-height: 85px; /* 垂直中央揃え */
+  font-weight: bold;
   opacity: 0;
   transition: opacity 0.5s, transform 0.5s; /* トランジションを使ってスムーズに */
+  font-family: "M PLUS 1", sans-serif;
+}
+
+.memory-square__number-box--1 {
+  background-color: rgb(241, 77, 77); /* 赤 */
+}
+
+.memory-square__number-box--2 {
+  background-color: rgb(41, 120, 255); /* 青 */
+}
+
+.memory-square__number-box--3 {
+  background-color: rgb(250, 187, 0); /* 黄 */
+}
+
+.memory-square__number-box--4 {
+  background-color: rgb(0, 187, 65); /* 緑 */
 }
 
 .memory-square__number-box.fade-in {
@@ -405,7 +412,73 @@
   height: 20%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+}
+
+/* --- 数字テーブルのスタイル --- */
+.memory-square__number-table {
+  width: 450px;
+  height: 100px;
+}
+
+.memory-square__number-table td {
+  width: 80px;
+  height: 85px;
+  border: 4px solid white;
+  border-radius: 8px;
+  line-height: 80px; /* 垂直中央揃え */
+  font-size: 60px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.1s;
+  font-family: "M PLUS 1", sans-serif;
+}
+
+/* 背景効果 */
+.memory-square__number-table td::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+  transition: all 0.3s;
+  transform: translate3d(0, 0.75rem, -1rem);
+  box-shadow: 0 0.6rem 0 0 rgba(0, 0, 0, 0.2);
+}
+
+/* アクティブ状態の効果 */
+.memory-square__number-table td:active {
+  transform: translate(0, 0.75rem);
+}
+
+.memory-square__number-table td:active::before {
+  transform: translate3d(0, 0, -1rem);
+  box-shadow: 0 0.35rem 0 0 rgba(0, 0, 0, 0.2);
+}
+
+.memory-square__number-table td.highlighted {
+  border: 2px solid orange;
+}
+
+.memory-square__number-one {
+  background-color: rgb(241, 77, 77);
+}
+
+.memory-square__number-two {
+  background-color: rgb(41, 120, 255);
+}
+
+.memory-square__number-three {
+  background-color: rgb(250, 187, 0);
+}
+
+.memory-square__number-four {
+  background-color: rgb(0, 187, 65);
 }
 
 .memory-square__GameStartButton {
