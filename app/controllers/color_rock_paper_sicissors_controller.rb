@@ -14,7 +14,6 @@ class ColorRockPaperSicissorsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-    binding.pry
   end
   
   private

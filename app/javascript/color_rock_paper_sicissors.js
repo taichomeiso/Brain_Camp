@@ -1,8 +1,8 @@
 document.addEventListener("turbo:load", () => {
   //相手の手数の最大数
-  const Mumber_Steps_Max = 6;
+  const Number_Steps_Max = 6;
   //相手の手数の最小数
-  const Mumber_Steps_Min = 1;
+  const Number_Steps_Min = 1;
   //グー、チョキ、パーの要素を取得
   const rock                  = document.getElementById("rock_image_id");
   const scissors              = document.getElementById("scissors_image_id");
@@ -21,8 +21,10 @@ document.addEventListener("turbo:load", () => {
   let color_rock_paper_sicissors_Score = 0;
   //加点するポイント
   const addPoint = 100;
+  //コンボが始まるカウント
+  let commandStartCount = 0;
   //連続で正解した時のコンボによる加点点数
-  let addComd = 0;
+  let addCommand = 0;
   //ゲームが始まる前に表示するメッセージ
   const gameStartButtonImage = "/assets/GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/item/startButton.png";
   //「おわり！」の文字画像を格納
@@ -43,7 +45,7 @@ document.addEventListener("turbo:load", () => {
     6: { color: "red" , type: "scissors" }  // computer_6_image.png
   };
   // 画像番号に基づいて相手の手をランダムに選択する
-  let currentHandNumber = Math.floor(Math.random() * (Mumber_Steps_Max+ 1 - Mumber_Steps_Min)) + Mumber_Steps_Min;
+  let currentHandNumber = Math.floor(Math.random() * (Number_Steps_Max+ 1 - Number_Steps_Min)) + Number_Steps_Min;
   // let imagePath = "/assets/GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/computer/computer_" + currentHandNumber + "_image.png";
   // document.getElementById("color_rock_paper_computer_id").src = imagePath;  
   function displayComputerHand(number){
@@ -125,18 +127,23 @@ function checkResult(playerHandType) {
   console.log(judgement);
   console.log(currentHandNumber, computerHand.type, computerHand.color);
   if (computerHand.color === "blue" && judgement === "勝ち" || computerHand.color === "red" &&  judgement === "負け"){
-    currentHandNumber = Math.floor(Math.random() * (Mumber_Steps_Max + 1 - Mumber_Steps_Min)) + Mumber_Steps_Min;
+    currentHandNumber = Math.floor(Math.random() * (Number_Steps_Max + 1 - Number_Steps_Min)) + Number_Steps_Min;
     const newComputerHand = computerHands[currentHandNumber];
     displayComputerHand(currentHandNumber);
     console.log(currentHandNumber, newComputerHand.type, newComputerHand.color);
-    addComd = addComd + 10;
-    color_rock_paper_sicissors_Score += addPoint + addComd;
-    document.getElementById("score_id").innerText = color_rock_paper_sicissors_Score;
+    //コンボがスタートする判定
+    commandStartCount++;
+    if (commandStartCount >= 2){
+      addCommand = addCommand + 10;
+    }
+    color_rock_paper_sicissors_Score += addPoint + addCommand;
+    document.getElementById("color_rock_paper-socre_id").innerText = color_rock_paper_sicissors_Score;
     localStorage.setItem("color_rock_paper_sicissors_Score", color_rock_paper_sicissors_Score);
     console.log(color_rock_paper_sicissors_Score);
     console.log("保存されたスコア:", localStorage.getItem("color_rock_paper_sicissors_Score"));
   }else{
-    addComd = 0;
+    addCommand = 0;
+    commandStartCount = 0;
   }
 }
 function addCircleToComputerHand(playerHandType) {

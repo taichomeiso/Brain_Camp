@@ -46,7 +46,7 @@
   left: -80px;
 }
 /*スコアのテキスト*/
-.score_text{
+.color_rock_paper-score_text{
   position: absolute;
   writing-mode: horizontal-tb; /* 横書きに設定 */
   text-orientation: mixed;     /* 通常の文字方向 */
