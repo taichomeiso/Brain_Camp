@@ -5,6 +5,10 @@
   <audio id="memory-square__wrong-sound" src="<%= asset_path 'wrong-answer.mp3' %>" preload="auto"></audio>
   <audio id="memory-square__fever-sound" src="<%= asset_path 'fever-scratch.mp3' %>" preload="auto"></audio>
   <audio id="memory-square__square-appearance-sound" src="<%= asset_path 'square-appearance.mp3' %>" preload="auto"></audio>
+  <audio id="memory-square__countdown-sound" src="<%= asset_path 'Countdown03-2.mp3' %>" preload="auto"></audio>
+  <audio id="memory-square__end-sound" src="<%= asset_path 'end-sound.mp3' %>" preload="auto"></audio>
+  
+  
 
   <!-- タイトル画面に戻るボタン -->
   <%= link_to root_path, class: "memory-square__BackTitleButton" do %>
@@ -19,19 +23,53 @@
 
     <!-- チュートリアル画面 -->
     <div class="memory-square__tutorial-movie-screen" >
-      <div class="memory-square__volume-box">
-        <%= image_tag "memory-square-images/music-on.svg", alt: "音量ONのイメージ", class: "memory-square__volume-on-img", style: "display:none;"%>
-        <%= image_tag "memory-square-images/music-off.svg", alt: "音量OFFのイメージ", class: "memory-square__volume-off-img" %>
-      </div>
       <%= video_tag "memory-square-tutorial-movie.mp4", controls: true, autoplay: false, loop: false, class: "memory-square__tutorial-movie" %>
       <div class="memory-square__tutorial-description-wrapper">
-        <h1 class="memory-square__title">〜覚えマス〜</h1>
         <div class="memory-square__upper-tutorial-container">
-          <%= image_tag "memory-square-images/play-tutorial.svg", alt: "動画再生ボタン", class: "memory-square__play-tutorial-image" %>
+          <div class="memory-square__volume-box">
+            <%= image_tag "memory-square-images/music-on.svg", alt: "音量ONのイメージ", class: "memory-square__volume-on-img", style: "display:none;"%>
+            <%= image_tag "memory-square-images/music-off.svg", alt: "音量OFFのイメージ", class: "memory-square__volume-off-img" %>
+          </div>
+          <div class="memory-square__title-container">
+            <div class="memory-square__number-container">
+              <div class="memory-square__upper-number">
+                <div>1</div>
+                <div>2</div>
+              </div>
+              <div class="memory-square__lower-number">
+                <div>3</div>
+                <div>4</div>
+              </div>
+            </div>
+            <h1 class="memory-square__title">覚えマス</h1>
+          </div>
+        </div>
+        <div class="memory-square__middle-tutorial-container">
+          <div class="memory-square__play-tutorial-box">
+            <%= image_tag "memory-square-images/play-tutorial.svg", alt: "動画再生ボタン", class: "memory-square__play-tutorial-image" %>
+          </div>
         </div>
         <div class="memory-square__lower-tutorial-container">
           <h1 class="memory-square__watch-tutorial">ゲーム説明を見る</h1>
+          <div class="memory-square__square-image-container">
+            <div class="memory-square__upper-square">
+              <div>覚</div>
+              <div>え</div>
+              <div></div>
+            </div>
+            <div class="memory-square__middle-square">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="memory-square__lower-square">
+              <div></div>
+              <div>マ</div>
+              <div>ス</div>
+            </div>
+          </div>
         </div>
+
       </div> 
     </div>
 
@@ -63,8 +101,8 @@
     <div class="memory-square__upper-container">
 
       <div class="memory-square__volume-box">
-        <%= image_tag "memory-square-images/music-on.svg", alt: "音量ONのイメージ", class: "memory-square__volume-on-img", style: "display:none;"%>
-        <%= image_tag "memory-square-images/music-off.svg", alt: "音量OFFのイメージ", class: "memory-square__volume-off-img" %>
+        <%= image_tag "memory-square-images/white-music-on.svg", alt: "音量ONのイメージ", class: "memory-square__volume-on-img", style: "display:none;"%>
+        <%= image_tag "memory-square-images/white-music-off.svg", alt: "音量OFFのイメージ", class: "memory-square__volume-off-img" %>
       </div>
 
       <div class="memory-square__count-box">
