@@ -7,7 +7,7 @@ class ResultsController < ApplicationController
 
     return unless request.post?
 
-    @memory_square.assign_attributes(memory_square_params) 
+    @memory_square.assign_attributes(memory_square_params)
     if @memory_square.save
       redirect_to root_path, notice: '記録が登録されました！'
     else
