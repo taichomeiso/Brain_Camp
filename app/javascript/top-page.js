@@ -20,3 +20,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+// ランキングの変更を強調
+document.querySelectorAll(".top-page__trophy-image").forEach((trophy) => {
+  trophy.addEventListener("click", () => {
+    document.querySelectorAll(".top-page__ranking-box").forEach((box) => {
+      box.classList.remove("active");
+      box.classList.add("inactive");
+    });
+
+    const game = trophy.dataset.game;
+    const targetBox = document.querySelector(`.top-page__ranking-box[data-game="${game}"]`);
+    if (targetBox) {
+      targetBox.classList.remove("inactive");
+      targetBox.classList.add("active");
+    }
+  });
+});

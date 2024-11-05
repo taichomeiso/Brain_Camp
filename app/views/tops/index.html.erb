@@ -16,19 +16,18 @@
     </div>
   </div>
 
-  <div class="top-page__middle-container">
-    <h1 class="top-page__game-select-corner">GAME SELECT</h1>
-  </div>
+  
 
   <div class="top-page__lower-container">
     <div class="top-page__left-box">
+       <div class="top-page__section-title">GAME SELECT</div>
       <div class="top-page__left-game-box">
         <div class="top-page__game-box">
           <%= link_to games_color_rock_paper_sicissors_path do %>
             <%= image_tag "top-page-images/color_rock_paper_sicissors_title.svg", class: "top-page__color-rock-paper-scissors-img", alt: "色勝ちじゃんけん" %>
           <% end %>
           <div class="top-page__trophy-box">
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40,data: { game: "color_rock_paper_sicissors" } %>
+            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 60, height: 60,data: { game: "color_rock_paper_sicissors" } %>
           </div>
         </div>
 
@@ -37,7 +36,7 @@
             <%= image_tag "top-page-images/number-master_title.svg", class: "top-page__number-master-img" ,alt: "数の達人"%>
           <% end %> 
           <div class="top-page__trophy-box">
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40,data: { game: "number_master" }%>
+            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 60, height: 60,data: { game: "number_master" }%>
           </div>
         </div>
 
@@ -46,7 +45,7 @@
             <%= image_tag "top-page-images/memory-square_title.svg", class: "top-page__memory-square-img" ,alt: "覚えマス"%>
           <% end %>
           <div class="top-page__trophy-box">
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 ,data: { game: "memory_square" }%>
+            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 60, height: 60 ,data: { game: "memory_square" }%>
           </div>
         </div>
       </div>
@@ -58,7 +57,7 @@
             <%= link_to 'あべこべカラーズ', games_reverse_colors_path, class: 'top-page__game-link' %>
           </div>
           <div class="top-page__trophy-box">
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40,data: { game: "color_rock_paper_sicissors" } %>
+            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 60, height: 60,data: { game: "color_rock_paper_sicissors" } %>
           </div>
         </div>
 
@@ -68,16 +67,18 @@
             <%= link_to 'フィットザシェイプ', games_fit_the_shape_path, class: 'top-page__game-link' %>
           </div>
           <div class="top-page__trophy-box">
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
+            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 60, height: 60 %>
           </div>
         </div>
       </div>
     </div>
 
     <div class="top-page__right-box">
+       <div class="top-page__section-title">RANKING</div>
       <div class="top-page__ranking-box active"  data-game="color_rock_paper_sicissors">
         <div class="top-page__ranking-title-box" >
-          <h1>色勝ちじゃんけん ランキング表</h1>
+         <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
+          <h1>色勝ちじゃんけん </h1>
           <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
         </div>
         <div class="top-page__ranking-number-list">
@@ -100,7 +101,8 @@
 
       <div class="top-page__ranking-box"  data-game="number_master">
         <div class="top-page__ranking-title-box">
-          <h1>数の達人 ランキング表</h1>
+         <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
+          <h1>数の達人</h1>
           <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
         </div>
         <div class="top-page__ranking-number-list">
@@ -123,7 +125,8 @@
 
       <div class="top-page__ranking-box"data-game="memory_square" >
         <div class="top-page__ranking-title-box">
-          <h1>覚えマス!! ランキング表</h1>
+          <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
+          <h1>覚えマス!! </h1>
           <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50%>
        </div>
         <div class="top-page__ranking-number-list">
