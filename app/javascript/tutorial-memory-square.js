@@ -15,6 +15,12 @@ document.addEventListener("turbo:load", () => {
     ".memory-square__tutorial-movie"
   );
 
+  const tutorialMovieBox = document.querySelector(
+    ".memory-square__play-tutorial-box"
+  );
+
+  const watchMovie = document.querySelector(".memory-square__watch-tutorial");
+
   const volumeBoxes = document.querySelectorAll(".memory-square__volume-box");
 
   if (!gameStartButton) {
@@ -28,6 +34,14 @@ document.addEventListener("turbo:load", () => {
       volumeBox.style.display = "none";
     });
     tutorialMovie.play();
+  });
+
+  tutorialMovieBox.addEventListener("click", () => {
+    playTutorialButton.click();
+  });
+
+  watchMovie.addEventListener("click", () => {
+    playTutorialButton.click();
   });
 
   gameStartButton.addEventListener("click", () => {

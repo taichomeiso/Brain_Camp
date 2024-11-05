@@ -4,12 +4,16 @@ document.addEventListener("turbo:load", () => {
     "memory-square__game-start-button"
   );
 
+  const countdownSound = document.getElementById(
+    "memory-square__countdown-sound"
+  );
   const correctSound = document.getElementById("memory-square__correct-sound");
   const wrongSound = document.getElementById("memory-square__wrong-sound");
   const squareAppearanceSound = document.getElementById(
     "memory-square__square-appearance-sound"
   );
   const feverSound = document.getElementById("memory-square__fever-sound");
+  const endSound = document.getElementById("memory-square__end-sound");
   const bgmAudio = document.getElementById("memory-square__bgm-audio");
   const volumeBoxes = document.querySelectorAll(".memory-square__volume-box");
   const volumeOnImages = document.querySelectorAll(
@@ -19,6 +23,7 @@ document.addEventListener("turbo:load", () => {
     ".memory-square__volume-off-img"
   );
 
+  countdownSound.volume = 0.4;
   feverSound.volume = 0.4;
   correctSound.volume = 0.4;
   squareAppearanceSound.volume = 0.4;
@@ -102,6 +107,7 @@ document.addEventListener("turbo:load", () => {
     return null;
   } // テーブルや質問ボックスが無い場合は終了
 
+  questionBox.style.fontFamily = '"M PLUS 1", sans-serif';
   volumeBoxes.forEach((volumeBox, index) => {
     volumeBox.addEventListener("click", (event) => {
       event.stopPropagation(); // バブリングを防ぐ
@@ -147,6 +153,7 @@ document.addEventListener("turbo:load", () => {
   let hardModeEnabled = false;
 
   gameStartButton.addEventListener("click", () => {
+    countdownSound.play();
     gameStartButton.style.opacity = 0;
     gameStartButton.style.cursor = "none";
     gameStartButton.style.pointerEvents = "none";
@@ -203,6 +210,8 @@ document.addEventListener("turbo:load", () => {
           }
         } else {
           bgmAudio.pause(); // 再生停止
+          endSound.play();
+
           clearInterval(gameTimer);
           upperContainer.style.display = "none";
           middleContainer.style.display = "none";
@@ -213,7 +222,7 @@ document.addEventListener("turbo:load", () => {
           localStorage.setItem("memorySquareYourScore", memorySquareYourScore);
           setTimeout(() => {
             window.location.href = `/results/memory_square`;
-          }, 2000);
+          }, 4000);
         }
       }, interval);
 
@@ -301,7 +310,6 @@ document.addEventListener("turbo:load", () => {
                   Math.random() * questionArray.length
                 );
                 makeQuestion = questionArray[randomQuestion];
-                console.log(questionArray);
                 questionBox.textContent = makeQuestion;
                 questionActive = true;
 
@@ -318,6 +326,7 @@ document.addEventListener("turbo:load", () => {
 
             if (i >= countMax) {
               bgmAudio.pause(); // 再生停止
+              endSound.play();
               clearInterval(setQuestions);
               upperContainer.style.display = "none";
               middleContainer.style.display = "none";
@@ -362,7 +371,7 @@ document.addEventListener("turbo:load", () => {
       memorySquareComboCombo.style.display = "block";
       memorySquareComboCount.style.display = "block";
       memorySquareComboCount.textContent = correctComboLength;
-    } else if (correctComboLength === 8) {
+    } else if (correctComboLength === 9) {
       feverTimeText.style.display = "flex"; // フォントサイズを30に変更
       memorySquareComboCount.style.display = "none";
       memorySquareComboCombo.style.display = "none";
