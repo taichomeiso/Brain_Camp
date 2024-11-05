@@ -274,7 +274,11 @@
   align-items: center;
   justify-content: center;
 }
-
+.top-page__ranking-score-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .top-page__ranking-number1 {
   font-size: 46px;
   font-weight: bold;
