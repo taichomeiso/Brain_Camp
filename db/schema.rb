@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 20_241_031_063_951) do
     t.datetime 'updated_at', null: false
   end
 
-  create_table 'memory_squares', charset: 'utf8', force: :cascade do |t|
+  create_table 'memory_squares', charset: 'utf8mb3', force: :cascade do |t|
     t.string 'nickname'
     t.integer 'score'
     t.datetime 'created_at', null: false
