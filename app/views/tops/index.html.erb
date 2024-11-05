@@ -23,43 +23,30 @@
   <div class="top-page__lower-container">
     <div class="top-page__left-box">
       <div class="top-page__left-game-box">
-
-        <%# <%= link_to '色勝ちじゃんけん', games_color_rock_paper_sicissors_path, class: 'top-page__game-link' %> 
-          <%# <div class="top-page__game-box">の要素を押したら上のコードがクリックされるようにするかlink_to doで包むかはお任せします
-            前者の場合アニメーションなどをjsで加えることができます %>
-            <%#画像を組み合わせたものではなく全て一つのものにしました%>
         <div class="top-page__game-box">
-          <%= link_to games_color_rock_paper_sicissors_path do%>
-          <%= image_tag "top-page-images/color_rock_paper_sicissors_title.svg", class: "top-page__color-rock-paper-scissors-img", alt: "色勝ちじゃんけん" %>
-           <% end %>
+          <%= link_to games_color_rock_paper_sicissors_path do %>
+            <%= image_tag "top-page-images/color_rock_paper_sicissors_title.svg", class: "top-page__color-rock-paper-scissors-img", alt: "色勝ちじゃんけん" %>
+          <% end %>
           <div class="top-page__trophy-box">
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
+            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40,data: { game: "color_rock_paper_sicissors" } %>
           </div>
         </div>
 
-        <%# <%= link_to '数の達人', games_number_master_path, class: 'top-page__game-link' %> 
-        <%# <div class="top-page__game-box">の要素を押したら上のコードがクリックされるようにするかlink_to doで包むかはお任せします
-            前者の場合アニメーションなどをjsで加えることができます %>
-
         <div class="top-page__game-box">
-          <%= link_to games_number_master_path do%>
-           <%= image_tag "top-page-images/number-master_title.svg",class:"top-page__number-master-img"%>
-           <% end %> 
+          <%= link_to games_number_master_path do %>
+            <%= image_tag "top-page-images/number-master_title.svg", class: "top-page__number-master-img" ,alt: "数の達人"%>
+          <% end %> 
           <div class="top-page__trophy-box">
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
+            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40,data: { game: "number_master" }%>
           </div>
         </div>
-
-        <%# <%= link_to '覚えマス!!', games_memory_square_path, class: 'top-page__game-link' %> 
-        <%# <div class="top-page__game-box">の要素を押したら上のコードがクリックされるようにするかlink_to doで包むかはお任せします
-            前者の場合アニメーションなどをjsで加えることができます %>
 
         <div class="top-page__game-box">
           <%= link_to games_memory_square_path do %>
-           <%= image_tag "top-page-images/memory-square_title.svg" ,class:"top-page__memory-square-img"%>
-           <% end %>
+            <%= image_tag "top-page-images/memory-square_title.svg", class: "top-page__memory-square-img" ,alt: "覚えマス"%>
+          <% end %>
           <div class="top-page__trophy-box">
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
+            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 ,data: { game: "memory_square" }%>
           </div>
         </div>
       </div>
@@ -71,7 +58,7 @@
             <%= link_to 'あべこべカラーズ', games_reverse_colors_path, class: 'top-page__game-link' %>
           </div>
           <div class="top-page__trophy-box">
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40 %>
+            <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 40, height: 40,data: { game: "color_rock_paper_sicissors" } %>
           </div>
         </div>
 
@@ -88,185 +75,79 @@
     </div>
 
     <div class="top-page__right-box">
-      <div class="top-page__ranking-box">
-        <div class="top-page__ranking-title-box">
-          <h1>色勝ちじゃんけん　ランキング表</h1>
+      <div class="top-page__ranking-box active"  data-game="color_rock_paper_sicissors">
+        <div class="top-page__ranking-title-box" >
+          <h1>色勝ちじゃんけん ランキング表</h1>
           <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
         </div>
         <div class="top-page__ranking-number-list">
-          <div class="top-page__ranking-number1">
-            <div class="top-page__ranking-number-box">
-              <span class="top-page__gold-number">1位</span>
-            </div>
-            <div class="top-page__ranking-nickname-box">ニックネーム</div>
-          </div>
-          <div class="top-page__ranking-number2">
-            <div class="top-page__ranking-number-box">
-              <span class="top-page__silver-number">2位</span>
-            </div>
-            <div class="top-page__ranking-nickname-box">ニックネーム</div>
-          </div>
-          <div class="top-page__ranking-number3">
-            <div class="top-page__ranking-number-box">
-              <span class="top-page__bronze-number">3位</span>
-            </div>
-            <div class="top-page__ranking-nickname-box">ニックネーム</div>
-          </div>
-          <div class="top-page__ranking-number4">
-            <div class="top-page__ranking-number-box">4位</div>
-            <div class="top-page__ranking-nickname-box">ニックネーム</div>
-          </div>
-          <div class="top-page__ranking-number5">
-            <div class="top-page__ranking-number-box">5位</div>
-            <div class="top-page__ranking-nickname-box">ニックネーム</div>
-          </div>
+          <% if @color_rock_paper_sicissor.present? %>
+             <% @color_rock_paper_sicissor.each_with_index do |ranking, index| %>
+             <div class="top-page__ranking-number<%= index + 1 <= 3 ? index + 1 : ' other' %>">
+               <div class="top-page__ranking-number-box">
+                <span class="<%= index == 0 ? 'top-page__gold-number' : index == 1 ? 'top-page__silver-number' : index == 2 ? 'top-page__bronze-number' : '' %>">
+                 <%= index + 1 %>位
+                </span>
+               </div>
+               <div class="top-page__ranking-nickname-box"><%= ranking.nickname %></div>
+             </div>
+            <% end %>
+          <% else %>
+            <p>メモリスクエアのランキングデータがありません。</p>
+          <% end %>
         </div>
+      </div>
 
-        <div class="top-page__ranking-box" style="display: none;">
-          <div class="top-page__ranking-title-box">
-            <h1>数の達人　ランキング表</h1>
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
-          </div>
-          <div class="top-page__ranking-number-list">
-            <div class="top-page__ranking-number1">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__gold-number">1位</span>
-              </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number2">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__silver-number">2位</span>
-              </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number3">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__bronze-number">3位</span>
-              </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number4">
-              <div class="top-page__ranking-number-box">4位</div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number5">
-              <div class="top-page__ranking-number-box">5位</div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-          </div>
+      <div class="top-page__ranking-box"  data-game="number_master">
+        <div class="top-page__ranking-title-box">
+          <h1>数の達人 ランキング表</h1>
+          <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
         </div>
-
-        <div class="top-page__ranking-box" style="display: none;">
-          <div class="top-page__ranking-title-box">
-            <h1>覚えマス!!　ランキング表</h1>
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
-          </div>
-          <div class="top-page__ranking-number-list">
-            <div class="top-page__ranking-number1">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__gold-number">1位</span>
+        <div class="top-page__ranking-number-list">
+          <% if @number_master.present? %>
+            <% @number_master.each_with_index do |ranking, index| %>
+              <div class="top-page__ranking-number<%= index + 1 <= 3 ? index + 1 : ' other' %>">
+                <div class="top-page__ranking-number-box">
+                  <span class="<%= index == 0 ? 'top-page__gold-number' : index == 1 ? 'top-page__silver-number' : index == 2 ? 'top-page__bronze-number' : '' %>">
+                 <%= index + 1 %>位
+                </span>
+                </div>
+                <div class="top-page__ranking-nickname-box"><%= ranking.nickname %></div>
               </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number2">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__silver-number">2位</span>
-              </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number3">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__bronze-number">3位</span>
-              </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number4">
-              <div class="top-page__ranking-number-box">4位</div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number5">
-              <div class="top-page__ranking-number-box">5位</div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-          </div>
+            <% end %>
+          <% else %>
+            <p>メモリスクエアのランキングデータがありません。</p>
+          <% end %>
         </div>
+      </div>
 
-        <div class="top-page__ranking-box" style="display: none;">
-          <div class="top-page__ranking-title-box">
-            <h1>あべこべカラーズ　ランキング表</h1>
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
-          </div>
-          <div class="top-page__ranking-number-list">
-            <div class="top-page__ranking-number1">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__gold-number">1位</span>
+      <div class="top-page__ranking-box"data-game="memory_square" >
+        <div class="top-page__ranking-title-box">
+          <h1>覚えマス!! ランキング表</h1>
+          <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50%>
+       </div>
+        <div class="top-page__ranking-number-list">
+          <% if @memory_squares.present? %>
+            <% @memory_squares.each_with_index do |ranking, index| %>
+              <div class="top-page__ranking-number<%= index + 1 <= 3 ? index + 1 : ' other' %>">
+                <div class="top-page__ranking-number-box">
+                 <span class="<%= index == 0 ? 'top-page__gold-number' : index == 1 ? 'top-page__silver-number' : index == 2 ? 'top-page__bronze-number' : '' %>">
+                   <%= index + 1 %>位
+                </span>
+                </div>
+                <div class="top-page__ranking-nickname-box"><%= ranking.nickname %></div>
               </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number2">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__silver-number">2位</span>
-              </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number3">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__bronze-number">3位</span>
-              </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number4">
-              <div class="top-page__ranking-number-box">4位</div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number5">
-              <div class="top-page__ranking-number-box">5位</div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="top-page__ranking-box" style="display: none;">
-          <div class="top-page__ranking-title-box">
-            <h1>フィットザシェイプ　ランキング表</h1>
-            <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
-          </div>
-          <div class="top-page__ranking-number-list">
-            <div class="top-page__ranking-number1">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__gold-number">1位</span>
-              </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number2">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__silver-number">2位</span>
-              </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number3">
-              <div class="top-page__ranking-number-box">
-                <span class="top-page__bronze-number">3位</span>
-              </div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number4">
-              <div class="top-page__ranking-number-box">4位</div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-            <div class="top-page__ranking-number5">
-              <div class="top-page__ranking-number-box">5位</div>
-              <div class="top-page__ranking-nickname-box">ニックネーム</div>
-            </div>
-          </div>
+            <% end %>
+          <% else %>
+            <p>メモリスクエアのランキングデータがありません。</p>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
 <footer class="top-page__footer">
-    <p>&copy; 2024 ktkt. All rights reserved.</p>
+  <p>&copy; 2024 ktkt. All rights reserved.</p>
 </footer>
+<%= javascript_include_tag 'top-page', defer: true %>

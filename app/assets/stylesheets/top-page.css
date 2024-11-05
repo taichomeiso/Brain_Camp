@@ -190,13 +190,16 @@
   height: 95%;
   border: 1px solid white;
   border-radius: 10px;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   font-family: "M PLUS 1", sans-serif;
   font-weight: 600;
   padding: 5px;
+}
+.top-page__ranking-box.active {
+  display: flex;
 }
 
 .top-page__ranking-title-box {
@@ -220,6 +223,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  overflow-y: auto;
 }
 
 .top-page__ranking-number-box {
@@ -284,8 +288,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-.top-page__ranking-number4,
-.top-page__ranking-number5 {
+.top-page__ranking-number.other {
   font-size: 24px;
   margin: 0;
   width: 100%;
