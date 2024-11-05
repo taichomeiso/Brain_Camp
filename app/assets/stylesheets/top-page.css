@@ -171,14 +171,14 @@
   position: absolute;
   top: 0;
   right: -40px;
-  perspective: 1000px;
+  perspective: 1000px;/* 3D適用時の奥行き*/
 }
 
 .top-page__trophy-image {
   cursor: pointer;
   margin-left: 15px;
   margin-top:10px;
-  transform-style: preserve-3d;
+  transform-style: preserve-3d;/* 3D適用*/
   transition: transform 0.8s ease, filter 0.3s ease;
   /* ホバー前の状態 */
 }
@@ -188,8 +188,8 @@
   }
 
 
-/* 各ゲームリンクのホバーに応じて、その中のトロフィー画像のみを回転させる */
-.top-page__game-box:hover .top-page__trophy-image {
+/* 各ゲームリンクのホバーに応じて、その中のトロフィー画像のみをY軸で回転させる */
+.top-page__game-box:hover .top-page__trophy-image.rotate-once {
   transform: rotateY(180deg);
 }
 
@@ -274,7 +274,11 @@
   align-items: center;
   justify-content: center;
 }
-
+.top-page__ranking-score-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .top-page__ranking-number1 {
   font-size: 46px;
   font-weight: bold;

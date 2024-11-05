@@ -1,7 +1,7 @@
 class TopsController < ApplicationController
   def index
     # @memory_squares = MemorySquare.order(score: :desc).limit(10)
-    # @color_rock_paper_sicissor = MemorySquare.order(score: :desc).limit(10)
+    # @color_rock_paper_sicissor = ColorRockPaperSicissor.order(score: :desc).limit(10)
     # 仮のランキングデータを定義
     @memory_squares = [
       OpenStruct.new(nickname: 'Player1', score: 120),
