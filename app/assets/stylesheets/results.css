@@ -1,5 +1,5 @@
 .result-body {
-  background-color: #89DAF5;
+  background-color: #89daf5;
   height: 100vh;
   width: 100vw;
   margin: 0;
@@ -25,7 +25,7 @@
   font-size: 125px;
   font-family: "M PULS 1", sans-serif;
   font-weight: 800;
-  transform: rotate(-3deg) translateX(-40px); /* 左に20px寄せる */;
+  transform: rotate(-3deg) translateX(-40px); /* 左に20px寄せる */
   width: fit-content;
   line-height: 1;
   margin: 0 auto;
@@ -37,11 +37,11 @@
 .color_rock_paper_sicissors-result-page__score-display {
   color: white;
   font-size: 120px;
-  font-family: "Dela Gothic One", sans-serif;
+  font-family: "M PULS 1", sans-serif;
   font-weight: 600;
   font-style: normal;
   text-shadow: 0px 4px 4px #00000040;
-  transform:translateX(-30px); /* 左に20px寄せる */
+  transform: translateX(-30px); /* 左に20px寄せる */
   margin: 0 auto;
   margin-bottom: 30px;
   width: fit-content;
@@ -53,7 +53,7 @@
   align-items: center;
   gap: 12px;
   width: 100%;
-  margin-top:20px;
+  margin-top: 20px;
   margin-left: 40px;
   justify-content: center;
 }
@@ -63,7 +63,7 @@
   align-items: center;
   gap: 12px;
   height: 80px;
-  background-color: #89DAF5;
+  background-color: #89daf5;
   border: 6px solid white;
   padding: 4px;
   border-radius: 10px;
@@ -163,9 +163,10 @@
 .result-page__retry-button:hover,
 .result-page__back-to-home-button:hover {
   color: #333333;
-  box-shadow: none; 
+  box-shadow: none;
   text-decoration: underline;
-  transition: background-color 0.3s ease, color 0.3s ease, text-decoration 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    text-decoration 0.3s ease;
 }
 
 /* ボタンの通常スタイル */
@@ -230,4 +231,3 @@
   bottom: 30px;
   right: 90px;
 }
-

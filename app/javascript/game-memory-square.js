@@ -4,12 +4,29 @@ document.addEventListener("turbo:load", () => {
     "memory-square__game-start-button"
   );
 
-  const bgmAudio = document.getElementById("memory-square_bgm-audio");
-  const volumeBox = document.querySelector(".memory-square__volume-box");
-  const volumeOnImage = document.querySelector(".memory-square__volume-on-img");
-  const volumeOffImage = document.querySelector(
+  const countdownSound = document.getElementById(
+    "memory-square__countdown-sound"
+  );
+  const correctSound = document.getElementById("memory-square__correct-sound");
+  const wrongSound = document.getElementById("memory-square__wrong-sound");
+  const squareAppearanceSound = document.getElementById(
+    "memory-square__square-appearance-sound"
+  );
+  const feverSound = document.getElementById("memory-square__fever-sound");
+  const endSound = document.getElementById("memory-square__end-sound");
+  const bgmAudio = document.getElementById("memory-square__bgm-audio");
+  const volumeBoxes = document.querySelectorAll(".memory-square__volume-box");
+  const volumeOnImages = document.querySelectorAll(
+    ".memory-square__volume-on-img"
+  );
+  const volumeOffImages = document.querySelectorAll(
     ".memory-square__volume-off-img"
   );
+
+  countdownSound.volume = 0.4;
+  feverSound.volume = 0.4;
+  correctSound.volume = 0.4;
+  squareAppearanceSound.volume = 0.4;
 
   const countdownScreen = document.querySelector(
     ".memory-square__countdown-screen"
@@ -90,27 +107,37 @@ document.addEventListener("turbo:load", () => {
     return null;
   } // テーブルや質問ボックスが無い場合は終了
 
-  volumeBox.addEventListener("click", (event) => {
-    event.stopPropagation(); // バブリングを防ぐ
+  questionBox.style.fontFamily = '"M PLUS 1", sans-serif';
+  volumeBoxes.forEach((volumeBox, index) => {
+    volumeBox.addEventListener("click", (event) => {
+      event.stopPropagation(); // バブリングを防ぐ
 
-    // 要素の現在の表示状態を確認
-    if (volumeOnImage.style.display === "none") {
-      bgmAudio.pause(); // 再生停止
-      bgmAudio.currentTime = 0; // 再生位置を最初に戻す
-      volumeOnImage.style.display = "flex";
-      volumeOffImage.style.display = "none";
-    } else if (volumeOnImage.style.display === "flex") {
-      bgmAudio.loop = true;
-      bgmAudio.play();
-      bgmAudio.volume = 0.2; // 音量を設定
-      volumeOffImage.style.display = "flex";
-      volumeOnImage.style.display = "none";
-    }
+      const volumeOnImage = volumeOnImages[index];
+      const volumeOffImage = volumeOffImages[index];
+
+      // 要素の現在の表示状態を確認
+      if (volumeOnImage.style.display === "none") {
+        bgmAudio.pause(); // 再生停止
+        bgmAudio.currentTime = 0; // 再生位置を最初に戻す
+        volumeOnImage.style.display = "flex";
+        volumeOffImage.style.display = "none";
+      } else if (volumeOnImage.style.display === "flex") {
+        bgmAudio.loop = true;
+        bgmAudio.play();
+        bgmAudio.volume = 0.4; // 音量を設定
+        volumeOffImage.style.display = "flex";
+        volumeOnImage.style.display = "none";
+      }
+    });
   });
 
   // 初期表示の設定
-  volumeOnImage.style.display = "flex"; // 初期状態を表示に設定
-  volumeOffImage.style.display = "none"; // 初期状態を非表示に設定
+  volumeOnImages.forEach((volumeOnImage) => {
+    volumeOnImage.style.display = "flex"; // 初期状態を表示に設定
+  });
+  volumeOffImages.forEach((volumeOffImage) => {
+    volumeOffImage.style.display = "none"; // 初期状態を非表示に設定
+  });
 
   const tableDataArray = [];
   const squareArray = [];
@@ -126,6 +153,7 @@ document.addEventListener("turbo:load", () => {
   let hardModeEnabled = false;
 
   gameStartButton.addEventListener("click", () => {
+    countdownSound.play();
     gameStartButton.style.opacity = 0;
     gameStartButton.style.cursor = "none";
     gameStartButton.style.pointerEvents = "none";
@@ -133,6 +161,9 @@ document.addEventListener("turbo:load", () => {
     upperContainer.style.display = "none";
     middleContainer.style.display = "none";
     lowerContainer.style.display = "none";
+    volumeBoxes.forEach((volumeBox) => {
+      volumeBox.style.display = "flex";
+    });
 
     // カウントダウンの設定
     let countdown = 3; // 3秒からスタート
@@ -164,7 +195,7 @@ document.addEventListener("turbo:load", () => {
             const progressPercentage = (1 - timeLimit / totalGameTime) * 360;
 
             // プログレスバーの色を更新
-            memorySquareCountCircle.style.background = `conic-gradient(#232323 ${progressPercentage}deg, steelblue ${progressPercentage}deg)`;
+            memorySquareCountCircle.style.background = `conic-gradient( rgb(148, 148, 148) ${progressPercentage}deg, rgba(69, 69, 69, 0.846) ${progressPercentage}deg)`;
 
             // カウントダウン表示の更新（整数のみ表示）
             memorySquareCount.textContent = Math.floor(timeLimit);
@@ -178,6 +209,9 @@ document.addEventListener("turbo:load", () => {
             }
           }
         } else {
+          bgmAudio.pause(); // 再生停止
+          endSound.play();
+
           clearInterval(gameTimer);
           upperContainer.style.display = "none";
           middleContainer.style.display = "none";
@@ -188,7 +222,7 @@ document.addEventListener("turbo:load", () => {
           localStorage.setItem("memorySquareYourScore", memorySquareYourScore);
           setTimeout(() => {
             window.location.href = `/results/memory_square`;
-          }, 2000);
+          }, 4000);
         }
       }, interval);
 
@@ -227,44 +261,14 @@ document.addEventListener("turbo:load", () => {
             );
             let makeQuestion = questionArray[randomQuestion];
 
-            randomTableData.innerHTML = `<div class="memory-square__number-box fade-in">${squareNumber}</div>`;
+            // numberに応じたクラスを設定
+            const numberBoxClass = `memory-square__number-box memory-square__number-box--${squareNumber}`;
+            squareAppearanceSound.play();
+            randomTableData.innerHTML = `<div class="${numberBoxClass} fade-in">${squareNumber}</div>`;
+
             previousTd = randomTableData;
             tableDataArray.push(randomTableData);
             squareArray.push(squareNumber);
-
-            if (
-              questionBox.textContent === "◯" ||
-              questionBox.textContent === "×"
-            ) {
-              correctOrWrongArray.push(questionBox.textContent);
-              if (questionBox.textContent === "×") {
-                correctOrWrongArray = [];
-                hardModeEnabled = false;
-              }
-            }
-
-            // コレクトコンボの処理
-            setInterval(() => {
-              let correctComboLength = correctOrWrongArray.length;
-
-              if (correctComboLength >= 2 && correctComboLength <= 8) {
-                feverTimeText.style.display = "none";
-                memorySquareComboContainer.style.display = "flex";
-                memorySquareComboCombo.style.display = "block";
-                memorySquareComboCount.style.display = "block";
-                memorySquareComboCount.textContent = correctComboLength;
-              }
-
-              if (correctComboLength >= 9) {
-                feverTimeText.style.display = "flex"; // フォントサイズを30に変更
-                memorySquareComboCount.style.display = "none";
-                memorySquareComboCombo.style.display = "none";
-              }
-
-              if (correctComboLength === 0) {
-                memorySquareComboContainer.style.display = "none";
-              }
-            }, 1000);
 
             let previousSquareNumber = squareArray[squareArray.length - 2];
             let previousSquareNumber2 = squareArray[squareArray.length - 3];
@@ -295,6 +299,8 @@ document.addEventListener("turbo:load", () => {
                 hardModeEnabled === false
               ) {
                 hardModeEnabled = true;
+                feverSound.play();
+                bgmAudio.play();
               }
 
               // ハードモードが有効な場合の質問設定
@@ -304,7 +310,6 @@ document.addEventListener("turbo:load", () => {
                   Math.random() * questionArray.length
                 );
                 makeQuestion = questionArray[randomQuestion];
-                console.log(questionArray);
                 questionBox.textContent = makeQuestion;
                 questionActive = true;
 
@@ -320,6 +325,8 @@ document.addEventListener("turbo:load", () => {
             }
 
             if (i >= countMax) {
+              bgmAudio.pause(); // 再生停止
+              endSound.play();
               clearInterval(setQuestions);
               upperContainer.style.display = "none";
               middleContainer.style.display = "none";
@@ -347,6 +354,37 @@ document.addEventListener("turbo:load", () => {
       );
     };
   });
+
+  function updateComboDisplay() {
+    let correctComboLength = correctOrWrongArray.length;
+
+    // コンボ数に応じたスコア加算
+    if (correctComboLength >= 2 && correctComboLength < 5) {
+      memorySquareYourScore += 5;
+    } else if (correctComboLength >= 5) {
+      memorySquareYourScore += 10;
+    }
+
+    if (correctComboLength >= 2 && correctComboLength <= 8) {
+      feverTimeText.style.display = "none";
+      memorySquareComboContainer.style.display = "flex";
+      memorySquareComboCombo.style.display = "block";
+      memorySquareComboCount.style.display = "block";
+      memorySquareComboCount.textContent = correctComboLength;
+    } else if (correctComboLength === 9) {
+      feverTimeText.style.display = "flex"; // フォントサイズを30に変更
+      memorySquareComboCount.style.display = "none";
+      memorySquareComboCombo.style.display = "none";
+    } else if (correctComboLength >= 9) {
+      console.log("fever!!");
+    } else if (correctComboLength === 0) {
+      bgmAudio.pause(); // 再生停止
+      memorySquareComboContainer.style.display = "none";
+    }
+
+    // スコア表示を更新
+    yourScoreBox.textContent = memorySquareYourScore;
+  }
 
   // 数字のクリックを待つ関数 (Promiseでクリック待機)
   function waitForUserNumberClick() {
@@ -385,32 +423,41 @@ document.addEventListener("turbo:load", () => {
     previousSquareNumber2,
     previousSquareNumber3
   ) {
-    if (!questionActive) return; // 質問がアクティブでない場合はスコア処理を行わない
+    if (!questionActive) return;
 
     if (
       clickedNumber.textContent === String(previousSquareNumber) ||
       clickedNumber.textContent === String(previousSquareNumber2)
     ) {
-      questionBox.textContent = "◯"; // 正解
-      memorySquareYourScore += 50; // スコア加算
+      questionBox.textContent = "◯";
+      correctSound.play();
+      memorySquareYourScore += 50;
       if (hardModeEnabled) {
         memorySquareYourScore += 50;
       }
-      yourScoreBox.textContent = memorySquareYourScore;
+      correctOrWrongArray.push("◯"); // 正解をコンボ配列に追加
+      updateComboDisplay(); // 即座にコンボ表示を更新
     } else if (
       questionBox.textContent === "3個前の数字" &&
       clickedNumber.textContent === String(previousSquareNumber3)
     ) {
-      questionBox.textContent = "◯"; // 3個前の数字に対してのみ75点加算
+      questionBox.textContent = "◯";
+      correctSound.play();
       memorySquareYourScore += 100;
       if (hardModeEnabled) {
         memorySquareYourScore += 100;
       }
-      yourScoreBox.textContent = memorySquareYourScore;
+      correctOrWrongArray.push("◯");
+      updateComboDisplay();
     } else {
-      questionBox.textContent = "×"; // 不正解
+      questionBox.textContent = "×";
+      wrongSound.play();
+      correctOrWrongArray = []; // コンボ配列をリセット
+      updateComboDisplay();
+      hardModeEnabled = false;
     }
-    questionActive = false; // 質問が終了
+    yourScoreBox.textContent = memorySquareYourScore;
+    questionActive = false;
   }
 
   function checkUserSquareClick(
@@ -419,33 +466,42 @@ document.addEventListener("turbo:load", () => {
     previousSquare2,
     previousSquare3
   ) {
-    if (!questionActive) return; // 質問がアクティブでない場合はスコア処理を行わない
+    if (!questionActive) return;
 
     if (
       (previousSquare && clickedSquare.id === previousSquare.id) ||
       (previousSquare2 && clickedSquare.id === previousSquare2.id)
     ) {
-      questionBox.textContent = "◯"; // 正解
-      memorySquareYourScore += 50; // スコア加算
+      questionBox.textContent = "◯";
+      correctSound.play();
+      memorySquareYourScore += 50;
       if (hardModeEnabled) {
         memorySquareYourScore += 50;
       }
-      yourScoreBox.textContent = memorySquareYourScore;
+      correctOrWrongArray.push("◯");
+      updateComboDisplay();
     } else if (
       questionBox.textContent === "3個前の場所" &&
       previousSquare3 &&
       clickedSquare.id === previousSquare3.id
     ) {
-      questionBox.textContent = "◯"; // 3個前の場所に対してのみ75点加算
+      questionBox.textContent = "◯";
+      correctSound.play();
       memorySquareYourScore += 100;
       if (hardModeEnabled) {
         memorySquareYourScore += 100;
       }
-      yourScoreBox.textContent = memorySquareYourScore;
+      correctOrWrongArray.push("◯");
+      updateComboDisplay();
     } else {
-      questionBox.textContent = "×"; // 不正解
+      questionBox.textContent = "×";
+      wrongSound.play();
+      correctOrWrongArray = [];
+      updateComboDisplay();
+      hardModeEnabled = false;
     }
-    questionActive = false; // 質問が終了
+    yourScoreBox.textContent = memorySquareYourScore;
+    questionActive = false;
   }
 
   // 質問への回答を待つ処理 (非同期で数字またはマスのクリックを待つ)
@@ -467,7 +523,7 @@ document.addEventListener("turbo:load", () => {
       highlightNumbers.forEach((number) => {
         if (number) {
           number.addEventListener("mouseover", () => {
-            number.style.border = "2px solid orange";
+            number.style.border = "3px solid orange";
           });
           number.addEventListener("mouseout", () => {
             number.style.border = "";
@@ -507,7 +563,7 @@ document.addEventListener("turbo:load", () => {
       highlightSquares.forEach((td) => {
         if (td) {
           td.addEventListener("mouseover", () => {
-            td.style.border = "2px solid orange";
+            td.style.border = "3px solid orange";
           });
           td.addEventListener("mouseout", () => {
             td.style.border = "";

@@ -12,22 +12,23 @@
 }
 
 #buttons button {
-  padding: 10px 20px;          
-  background-color: #4CAF50;   
-  color: white;                
-  border: none;                
-  border-radius: 10px;        
-  font-size: 40px;             
-  cursor: pointer;             
-  margin: 5px;                 
-  transition: background-color 0.3s ease; 
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 40px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background-color 0.3s ease;
 }
 
-table {
+.number-master_table {
   border-collapse: collapse;
   margin: 30px auto;
 }
-td {
+
+.number-master_table td {
   border: 1px solid black;
   width: 70px;
   height: 70px;
@@ -41,10 +42,12 @@ input {
   border: none;
 }
 /* 太い線で 2×2 のブロックを分ける */
-td:nth-child(2), td:nth-child(4) {
+.number-master_table td:nth-child(2),
+.number-master_table td:nth-child(4) {
   border-right: 2px solid black;
 }
-tr:nth-child(2) td, tr:nth-child(4) td {
+.number_master tr:nth-child(2) td,
+.number-master_table tr:nth-child(4) td {
   border-bottom: 2px solid black;
 }
 
