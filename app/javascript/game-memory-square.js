@@ -3,6 +3,9 @@ document.addEventListener("turbo:load", () => {
   const gameStartButton = document.getElementById(
     "memory-square__game-start-button"
   );
+  const backTitleButton = document.querySelector(
+    ".memory-square__BackTitleButton"
+  );
 
   const countdownSound = document.getElementById(
     "memory-square__countdown-sound"
@@ -150,6 +153,9 @@ document.addEventListener("turbo:load", () => {
   gameStartButton.addEventListener("click", () => {
     countdownSound.volume = 0.4;
     countdownSound.play();
+    backTitleButton.style.opacity = 0;
+    backTitleButton.style.cursor = "none";
+    backTitleButton.style.pointerEvents = "none";
     gameStartButton.style.opacity = 0;
     gameStartButton.style.cursor = "none";
     gameStartButton.style.pointerEvents = "none";
