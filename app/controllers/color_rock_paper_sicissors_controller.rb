@@ -10,9 +10,9 @@ class ColorRockPaperSicissorsController < ApplicationController
   def create
     @color_rock_paper_sicissor = ColorRockPaperSicissor.new(create_params)
     if @color_rock_paper_sicissor.save
-      render json: { message: 'スコアが保存されました' }, status: :created
+      redirect_to root_path
     else
-      render json: { errors: score.errors.full_messages }, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
   

@@ -8,8 +8,8 @@
   <div class="game-page__MainGameScreen">
     <div class="item_user-interface">
       <!--スコアの表示-->
-      <div class="score_text">
-        <span id="score_id">0</span>
+      <div class="color_rock_paper-score_text">
+        <span id="color_rock_paper-socre_id">0</span>
       </div>
       <!--スコアの表示ここまで-->
       <%= image_tag "" ,id:"game-start-button_image_id", class:"game-start-button_image", style: "display: none;"%>
@@ -24,7 +24,7 @@
         <div style="height: 100%" id="time-limit_gauge_id"></div>
       </div>
       <div class="instructions_text">
-        青には勝ち、赤には負けてみよう！
+        <span style="color:blue">青</span>には勝ち、<span style="color:red">赤</span>には負けてみよう！
       </div>
       <!-- 制限時間のゲージ表示ここまで -->
     </div>
