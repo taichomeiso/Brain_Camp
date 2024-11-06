@@ -1,0 +1,8 @@
+.color_rock_paper_sicissors-MainGameScreen{
+  width: 700px;
+  height: 700px;
+  border-radius: 20px;
+  background-color: darkgray;
+  border: 2px solid #000000;
+  margin-bottom: 10px;
+}

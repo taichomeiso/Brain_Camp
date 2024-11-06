@@ -5,7 +5,10 @@
      <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>   
   <% end %>
   <!-- タイトルに戻るボタンの表示ここまで -->
-  <div class="game-page__MainGameScreen">
+  <div class="color_rock_paper_sicissors-MainGameScreen">
+    <div class="color_rock_paper_sicissors-tutorial-movie-screen" >
+      <%= video_tag "color_rock_paper_sicissors-tutorial-movie.mp4", controls: true, autoplay: false, loop: false, class: "color_rock_paper_sicissors-tutorial-movie" %>
+    </div>
     <div class="item_user-interface">
       <!--スコアの表示-->
       <div class="color_rock_paper-score_text">
