@@ -1,7 +1,7 @@
 /* --- アニメーション --- */
 
 /* フェードインアニメーション */
-@keyframes fadeIn {
+@keyframes fadeInSquare {
   0% {
     opacity: 0; /* 初期は透明 */
     transform: translateY(20px); /* 下から突き出る */
@@ -12,7 +12,7 @@
   }
 }
 
-@keyframes fadeOut {
+@keyframes fadeOutSquare {
   0% {
     opacity: 1; /* 完全に表示 */
     transform: translateY(0); /* 元の位置 */
@@ -256,10 +256,12 @@
 }
 
 .memory-square__tutorial-movie {
-  width: 90%;
-  height: 90%;
-  border-radius: 20px;
+  width: 180%;
+  height: 170%;
+  border-radius: 10px;
+  border: 8px solid rgb(250, 187, 0);
   display: none;
+  background-color: black;
 }
 
 .memory-square__lower-tutorial-container {
@@ -441,7 +443,7 @@
 .memory-square__combo8.fade-in,
 .memory-square__combo9.fade-in {
   display: flex; /* フェードイン時に表示 */
-  animation: fadeIn 0.5s forwards;
+  animation: fadeInSquare 0.5s forwards;
 }
 
 .memory-square__combo1.fade-out,
@@ -453,7 +455,7 @@
 .memory-square__combo7.fade-out,
 .memory-square__combo8.fade-out,
 .memory-square__combo9.fade-out {
-  animation: fadeOut 0.5s forwards;
+  animation: fadeOutSquare 0.5s forwards;
   display: none; /* フェードアウト後に非表示 */
 }
 
@@ -627,11 +629,11 @@
 }
 
 .memory-square__number-box.fade-in {
-  animation: fadeIn 0.5s forwards; /* フェードインアニメーション */
+  animation: fadeInSquare 0.5s forwards; /* フェードインアニメーション */
 }
 
 .memory-square__number-box.fade-out {
-  animation: fadeOut 0.5s forwards; /* フェードアウトアニメーション */
+  animation: fadeOutSquare 0.5s forwards; /* フェードアウトアニメーション */
 }
 
 /* --- 下部コンテナ --- */
