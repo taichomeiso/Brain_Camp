@@ -21,12 +21,20 @@ class ResultsController < ApplicationController
   end
 
   def create_number_master
-    if params[:number_master].nil?
-      Rails.logger.debug "number_master param is missing"
-      render :number_master, alert: 'number_master param is missing'
-      return
-    end
-    @number_master = NumberMaster.new(number_master_params)
+    game_time_str = params[:number_master][:game_time] 
+    time_parts = game_time_str.split(':')
+    minutes = time_parts[0].to_i
+    seconds_and_milliseconds = time_parts[1].to_f
+  
+    seconds = seconds_and_milliseconds.to_i
+    milliseconds = ((seconds_and_milliseconds - seconds) * 1000).round
+  
+    total_game_time = (minutes * 60) + seconds + (milliseconds / 1000.0)
+  
+    @number_master = NumberMaster.new(number_master_params.except(:game_time).merge(game_time: total_game_time))
+  
+    Rails.logger.debug "Nickname: #{@number_master.nickname}, Game Time: #{@number_master.game_time}"
+  
     if @number_master.save
       redirect_to root_path, notice: '記録が登録されました！'
     else
@@ -34,6 +42,13 @@ class ResultsController < ApplicationController
       render :number_master, alert: '記録の登録に失敗しました。'
     end
   end
+
+  def format_time(seconds)
+    minutes = seconds.to_i / 60
+    remaining_seconds = (seconds % 60).round(3)  # 小数点以下3桁まで表示
+    format("%d:%05.3f", minutes, remaining_seconds)  # 小数点以下3桁で表示
+  end
+  
 
   private
 
