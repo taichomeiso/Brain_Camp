@@ -443,6 +443,7 @@ document.addEventListener("turbo:load", () => {
       updateComboDisplay();
     } else {
       questionBox.textContent = "×";
+      wrongSound.volume = 0.5;
       wrongSound.play();
       correctOrWrongArray = []; // コンボ配列をリセット
       updateComboDisplay();
