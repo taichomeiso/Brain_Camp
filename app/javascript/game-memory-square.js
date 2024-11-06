@@ -19,9 +19,6 @@ document.addEventListener("turbo:load", () => {
     ".memory-square__volume-off-img"
   );
 
-  feverSound.volume = 0.4;
-  correctSound.volume = 0.4;
-  squareAppearanceSound.volume = 0.4;
 
   const countdownScreen = document.querySelector(
     ".memory-square__countdown-screen"
@@ -254,6 +251,7 @@ document.addEventListener("turbo:load", () => {
 
             // numberに応じたクラスを設定
             const numberBoxClass = `memory-square__number-box memory-square__number-box--${squareNumber}`;
+            squareAppearanceSound.volume = 0.4;
             squareAppearanceSound.play();
             randomTableData.innerHTML = `<div class="${numberBoxClass} fade-in">${squareNumber}</div>`;
 
@@ -290,6 +288,7 @@ document.addEventListener("turbo:load", () => {
                 hardModeEnabled === false
               ) {
                 hardModeEnabled = true;
+                feverSound.volume = 0.4;
                 feverSound.play();
                 bgmAudio.play();
               }
@@ -421,6 +420,7 @@ document.addEventListener("turbo:load", () => {
       clickedNumber.textContent === String(previousSquareNumber2)
     ) {
       questionBox.textContent = "◯";
+      correctSound.volume = 0.4;
       correctSound.play();
       memorySquareYourScore += 50;
       if (hardModeEnabled) {
@@ -433,6 +433,7 @@ document.addEventListener("turbo:load", () => {
       clickedNumber.textContent === String(previousSquareNumber3)
     ) {
       questionBox.textContent = "◯";
+      correctSound.volume = 0.4;
       correctSound.play();
       memorySquareYourScore += 100;
       if (hardModeEnabled) {
@@ -464,6 +465,7 @@ document.addEventListener("turbo:load", () => {
       (previousSquare2 && clickedSquare.id === previousSquare2.id)
     ) {
       questionBox.textContent = "◯";
+      correctSound.volume = 0.4;
       correctSound.play();
       memorySquareYourScore += 50;
       if (hardModeEnabled) {
@@ -477,6 +479,7 @@ document.addEventListener("turbo:load", () => {
       clickedSquare.id === previousSquare3.id
     ) {
       questionBox.textContent = "◯";
+      correctSound.volume = 0.4;
       correctSound.play();
       memorySquareYourScore += 100;
       if (hardModeEnabled) {
