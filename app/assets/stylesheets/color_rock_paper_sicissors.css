@@ -66,6 +66,47 @@
   width: 300px; /* 幅を300pxに設定 */
   height: auto; /* 高さを自動調整 */
 }
+/* 勝敗アイコンのスタイル */
+.result-feedback {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 300px;
+  font-weight: bold;
+  display: none;
+  z-index: 10;
+}
+
+.result-feedback.win {
+  color: red; /* 勝ちのときは緑色の○ */
+}
+
+.result-feedback.lose {
+  color: red; /* 負けのときは赤色の× */
+    font-size: 400px; /* バツを大きく */
+    top: 45%; /* 少し上に配置 */
+  }
+
+@keyframes fadeInOut {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* アイコン切り替えアニメーションを適用するクラス */
+.icon-transition {
+  animation: fadeInOut 0.5s ease;
+}
+/* ゲーム画面のフラッシュエフェクト */
+.flash-red {
+  animation: flashRed 0.3s ease;
+}
+
+@keyframes flashRed {
+  from { background-color: rgba(255, 0, 0, 0.5); }
+  to { background-color: transparent; }
+}
 /*「おわり！」の画像のサイズ*/
 .game-end-image {
   position: absolute;

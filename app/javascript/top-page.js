@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   // 初期状態で「色勝ちじゃんけん」ランキングを表示
   document.querySelector('.top-page__ranking-box[data-game="color_rock_paper_sicissors"]').classList.add("active");
 
