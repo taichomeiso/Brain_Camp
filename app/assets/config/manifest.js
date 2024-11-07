@@ -7,5 +7,3 @@
 //= link wrong-answer.mp3
 //= link fever-scratch.mp3
 //= link square-appearance.mp3
-//= link Countdown03-2.mp3
-//= link end-sound.mp3

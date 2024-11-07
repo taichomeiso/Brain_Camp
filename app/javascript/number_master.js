@@ -21,6 +21,22 @@ document.addEventListener("turbo:load", () => {
       document.getElementById("timer").innerText = "00:00.00秒";
       timerInterval = setInterval(updateTimer, 10);
     }
+    
+    if (!memorySquareTable || !questionBox) {
+      return null;
+    } // テーブルや質問ボックスが無い場合は終了
+  }
+
+  // クエリパラメータからゲームタイムを取得
+  const urlParams = new URLSearchParams(window.location.search);
+  const gameTime = urlParams.get("game_time");
+
+  // ゲームタイムを表示する要素にセット
+  if (gameTime) {
+    const gameTimeElement = document.querySelector(".gameTime");
+    if (gameTimeElement) {
+      gameTimeElement.innerText = `ゲームタイム: ${gameTime}秒`;
+    }
   }
 
   function showMessage(text, type = "success") {
@@ -156,9 +172,16 @@ document.addEventListener("turbo:load", () => {
     showFireworks(); // ゲームクリア時に花火を表示
     showMessage("🎉 おめでとうございます！ゲームクリアです！ 🎉", "success");
 
-    // ゲームクリアのメッセージ表示が消えた後にリザルト画面へ遷移
+    // ゲームタイムを取得
+  const totalSeconds = Math.floor(timer / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = (totalSeconds % 60).toString().padStart(2, '0');
+  const milliseconds = (timer % 1000).toString().padStart(3, '0').slice(0, 2);
+  const gameTime = `${minutes}:${seconds}.${milliseconds}`;
+
+  // リザルト画面へゲームタイムをクエリパラメータで渡す
     setTimeout(() => {
-      window.location.href = '/results/number_master'; // リザルト画面のパスに置き換えてください
+      window.location.href = `/results/number_master?game_time=${encodeURIComponent(gameTime)}`;
     }, 3500); // メッセージの表示時間と合わせる
 
     return true;

@@ -32,7 +32,7 @@
   margin-bottom: 25px;
 }
 
-.number_master-result-page__score-display,
+
 .memory-square-result-page__score-display,
 .color_rock_paper_sicissors-result-page__score-display {
   color: white;
@@ -230,4 +230,14 @@
   position: absolute;
   bottom: 30px;
   right: 90px;
+}
+
+
+.gameTime {
+  font-size: 3rem; /* フォントサイズを大きく調整 */
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin: 70px 0 30px 0;
 }

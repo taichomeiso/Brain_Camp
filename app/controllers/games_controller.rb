@@ -13,4 +13,6 @@ class GamesController < ApplicationController
 
   def fit_the_shape
   end
+
+  
 end
