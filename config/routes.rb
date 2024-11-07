@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   # 結果登録に関する POST ルーティング
   post 'results/color_rock_paper_sicissors', to: 'results#color_rock_paper_sicissors'
   post 'results/memory_square', to: 'results#memory_square'
+  post 'results/create_number_master', to: 'results#create_number_master'
 end

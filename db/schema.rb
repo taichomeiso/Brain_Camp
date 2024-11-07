@@ -10,24 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_10_25_030014) do
-  create_table "color_rock_paper_sicissors", charset: "utf8mb3", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2024_11_07_024335) do
+  create_table "color_rock_paper_sicissors", charset: "utf8", force: :cascade do |t|
     t.string "nickname"
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "memory_squares", charset: "utf8mb3", force: :cascade do |t|
+  create_table "memory_squares", charset: "utf8", force: :cascade do |t|
     t.string "nickname"
     t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "results", charset: "utf8mb3", force: :cascade do |t|
+  create_table "number_masters", charset: "utf8", force: :cascade do |t|
     t.string "nickname"
-    t.float "game_time"
+    t.decimal "game_time", precision: 6, scale: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
