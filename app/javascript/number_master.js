@@ -1,4 +1,5 @@
 document.addEventListener("turbo:load", () => {
+
   let timer = 0;
   let timerInterval;
   let gameStarted = false;
@@ -11,14 +12,14 @@ document.addEventListener("turbo:load", () => {
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = (totalSeconds % 60).toString().padStart(2, '0');
     const milliseconds = (timer % 1000).toString().padStart(3, '0').slice(0, 2);
-    document.getElementById("timer").innerText = `${minutes}:${seconds}.${milliseconds}秒`;
+    document.getElementById("number_master_timer").innerText = `${minutes}:${seconds}.${milliseconds}秒`;
   }
 
   function startGame() {
     if (!gameStarted) {
       gameStarted = true;
       timer = 0;
-      document.getElementById("timer").innerText = "00:00.00秒";
+      document.getElementById("number_master_timer").innerText = "00:00.00秒";
       timerInterval = setInterval(updateTimer, 10);
     }
 
