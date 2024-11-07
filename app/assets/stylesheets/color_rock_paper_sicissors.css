@@ -79,7 +79,7 @@
 }
 
 .result-feedback.win {
-  color: red; /* 勝ちのときは緑色の○ */
+  color: red; /* 勝ちのときは赤色の○ */
 }
 
 .result-feedback.lose {
