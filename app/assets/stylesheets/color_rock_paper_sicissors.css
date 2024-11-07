@@ -1,3 +1,127 @@
+/*チュートリアルの画面のクラス*/
+@keyframes fade{
+  0%, 50%, 100% {
+    opacity: 0;
+  }
+  10%, 40% {
+    opacity: 1;
+  }
+}
+.color_rock_paper_sicissors-tutorial-movie-screen{
+  position: fixed;
+  width: 695px;
+  height: 695px;
+  border: 8px solid rgb(7, 197, 245);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(208, 208, 208);
+  margin-bottom: 10px;
+  z-index: 1001;
+  color: rgb(28, 145, 199);
+  font-family: "M PLUS 1", sans-serif;
+}
+.color_rock_paper_sicissors-tutorial-description-wrapper {
+  position: fixed;
+  width: 700px;
+  height: 690px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1002;
+}
+.color_rock_paper_sicissors-tutorial-movie{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  display: none;
+}
+.color_rock_paper_sicissors-play-button{
+  width: 60%;
+  height: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 8px solid rgb(241, 77, 77);
+  border-radius: 10px;
+  background-color: rgb(191, 191, 191);
+  cursor: pointer;
+}
+.color_rock_paper_sicissors_play-tutorial-image {
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+  display: block;
+  border-radius: 50%;
+
+  /* ホバー時の影を変更 */
+  transition: box-shadow 0.3s ease; /* ホバー時のトランジション */
+}
+.color_rock_paper_sicissors_play-tutorial-image:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* ホバー時の影を強くする */
+  transform: translateY(4px); /* 少し下に移動させる */
+}
+.color_rock_paper_sicissors-play-button:hover{
+    /* ホバー時の影を小さくして凹んでいるように見せる */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+    /* 小さな影 */ 0 2px 4px rgba(0, 0, 0, 0.2); /* 近くの影 */
+
+  transform: translateY(4px); /* 少し下に移動させる */
+}
+.base-color_rock_paper_sicissors-titel{
+  font-size: 90px;
+  margin-bottom: 25px;
+  z-index: inherit;
+  color: rgba(69, 69, 69);
+  letter-spacing: 10px;
+  
+}
+.color_rock_paper_sicissors_color-win-titel{
+  background: linear-gradient(0.55turn, #3f87a6, #ebf8e1, #113392);
+  border-radius: 10px;
+  border: 3px solid rgb(230, 99, 99);
+  text-align: center;
+  margin: 25px auto;
+}
+.color_rock_paper_sicissors_titel{
+  background: linear-gradient(0.45turn, #dd6767, #ebf8e1, #cf3737);
+  border-radius: 10px;
+  border: 3px solid rgb(73, 194, 224);
+  margin: 30px auto;
+}
+.base-explanatory-text{
+  position: relative;
+  width: 350px;
+  height: 80px;
+  overflow: hidden;
+}
+.explanatory-text{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  opacity: 0;
+  animation: fade 4s ease-in-out infinite;
+}
+.explanatory-text-play-button{
+  width: 45px;
+  height: 45px;
+}
+.color_rock_paper_sicissors-explanatory-text1{
+  animation-delay: 0s;
+}
+.color_rock_paper_sicissors-explanatory-text2{
+  animation-delay: 2s;
+}
+/*チュートリアルの画面のクラスここまで*/
+
+/*ゲームメインのクラス*/
 /* 相手クラス*/
 .item_user-interface{
   position: relative;
@@ -158,3 +282,4 @@ button {
 button img {
   display: block;
 }
+/*ゲームメインのクラスここまで*/
