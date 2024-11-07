@@ -26,9 +26,10 @@
       </div>
     </div>
     <div class="item_user-interface">
+       <div class="result-feedback" id="result-feedback"></div>
       <!--スコアの表示-->
       <div class="color_rock_paper-score_text">
-        <span id="color_rock_paper-socre_id">0</span>
+        <span id="color_rock_paper-score_id">0</span>
       </div>
       <!--スコアの表示ここまで-->
       <%= image_tag "" ,id:"game-start-button_image_id", class:"game-start-button_image", style: "display: none;"%>
@@ -38,6 +39,10 @@
       <!-- コンピューターが出す手を表示 -->
       <%= image_tag "GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/computer/computer_1_image.png", id: "color_rock_paper_computer_id", style:"display: none;" %>
       <!-- コンピューターが出す手を表示ここまで -->
+       <!-- 正解不正解の音声 -->
+      <audio id="win-sound" src="<%= asset_path('color-true.mp3') %>" preload="auto"></audio>
+      <audio id="lose-sound" src="<%= asset_path('color-false.mp3') %>" preload="auto"></audio>
+
       <!-- 制限時間のゲージ表示 -->
        <div class="time-limit_gauge">
         <div style="height: 100%" id="time-limit_gauge_id"></div>
@@ -64,6 +69,7 @@
   </div>
    <!-- ゲームスタートボタン -->
   <button id="color_rock_paper_gameStartButton_id" class="game-page__GameStartButton">ゲームスタート</button>
+  
   <!-- ゲームスタートボタンここまで -->
 </div>
 <!-- ゲーム画面の全体の表示ここまで -->
