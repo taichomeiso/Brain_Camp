@@ -7,7 +7,23 @@
   <!-- タイトルに戻るボタンの表示ここまで -->
   <div class="color_rock_paper_sicissors-MainGameScreen">
     <div class="color_rock_paper_sicissors-tutorial-movie-screen" >
-      <%= video_tag "color_rock_paper_sicissors-tutorial-movie.mp4", controls: true, autoplay: false, loop: false, class: "color_rock_paper_sicissors-tutorial-movie" %>
+      <%= video_tag "color_rock_paper_sicissors-tutorial-movie.mp4", controls: true, autoplay: false, loop: true, class: "color_rock_paper_sicissors-tutorial-movie" %>
+      <div class="color_rock_paper_sicissors-tutorial-description-wrapper">
+        <div class="base-color_rock_paper_sicissors-titel">
+          <div class="color_rock_paper_sicissors_color-win-titel">色勝ち</div>
+          <div class="color_rock_paper_sicissors_titel">じゃんけん</div>
+        </div>
+        <%= image_tag "GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/item/playButton.png", alt: "動画再生ボタン", class: "color_rock_paper_sicissors_play-tutorial-image" %>
+        <div class="base-explanatory-text">
+          <div class="explanatory-text color_rock_paper_sicissors-explanatory-text1">
+            <%= image_tag "GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/item/playButton.png", class: "explanatory-text-play-button" %>
+            を押して説明の動画をみよう！
+          </div>
+          <div class="explanatory-text color_rock_paper_sicissors-explanatory-text2">
+            ゲームがしたいときは下のボタンを押してね！
+          </div>
+        </div>
+      </div>
     </div>
     <div class="item_user-interface">
       <!--スコアの表示-->
