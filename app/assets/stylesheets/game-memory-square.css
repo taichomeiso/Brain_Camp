@@ -1,7 +1,7 @@
 /* --- アニメーション --- */
 
 /* フェードインアニメーション */
-@keyframes fadeIn {
+@keyframes fadeInSquare {
   0% {
     opacity: 0;
     /* 初期は透明 */
@@ -17,7 +17,7 @@
   }
 }
 
-@keyframes fadeOut {
+@keyframes fadeOutSquare {
   0% {
     opacity: 1;
     /* 完全に表示 */
@@ -228,10 +228,12 @@
 }
 
 .memory-square__tutorial-movie {
-  width: 90%;
-  height: 90%;
-  border-radius: 20px;
+  width: 180%;
+  height: 170%;
+  border-radius: 10px;
+  border: 8px solid rgb(250, 187, 0);
   display: none;
+  background-color: black;
 }
 
 .memory-square__lower-tutorial-container {
