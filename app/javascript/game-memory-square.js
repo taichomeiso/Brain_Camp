@@ -3,6 +3,9 @@ document.addEventListener("turbo:load", () => {
   const gameStartButton = document.getElementById(
     "memory-square__game-start-button"
   );
+  const backTitleButton = document.querySelector(
+    ".memory-square__BackTitleButton"
+  );
 
   const countdownSound = document.getElementById(
     "memory-square__countdown-sound"
@@ -22,11 +25,6 @@ document.addEventListener("turbo:load", () => {
   const volumeOffImages = document.querySelectorAll(
     ".memory-square__volume-off-img"
   );
-
-  countdownSound.volume = 0.4;
-  feverSound.volume = 0.4;
-  correctSound.volume = 0.4;
-  squareAppearanceSound.volume = 0.4;
 
   const countdownScreen = document.querySelector(
     ".memory-square__countdown-screen"
@@ -153,7 +151,11 @@ document.addEventListener("turbo:load", () => {
   let hardModeEnabled = false;
 
   gameStartButton.addEventListener("click", () => {
+    countdownSound.volume = 0.4;
     countdownSound.play();
+    backTitleButton.style.opacity = 0;
+    backTitleButton.style.cursor = "none";
+    backTitleButton.style.pointerEvents = "none";
     gameStartButton.style.opacity = 0;
     gameStartButton.style.cursor = "none";
     gameStartButton.style.pointerEvents = "none";
@@ -263,6 +265,7 @@ document.addEventListener("turbo:load", () => {
 
             // numberに応じたクラスを設定
             const numberBoxClass = `memory-square__number-box memory-square__number-box--${squareNumber}`;
+            squareAppearanceSound.volume = 0.4;
             squareAppearanceSound.play();
             randomTableData.innerHTML = `<div class="${numberBoxClass} fade-in">${squareNumber}</div>`;
 
@@ -299,6 +302,7 @@ document.addEventListener("turbo:load", () => {
                 hardModeEnabled === false
               ) {
                 hardModeEnabled = true;
+                feverSound.volume = 0.4;
                 feverSound.play();
                 bgmAudio.play();
               }
@@ -430,6 +434,7 @@ document.addEventListener("turbo:load", () => {
       clickedNumber.textContent === String(previousSquareNumber2)
     ) {
       questionBox.textContent = "◯";
+      correctSound.volume = 0.4;
       correctSound.play();
       memorySquareYourScore += 50;
       if (hardModeEnabled) {
@@ -442,6 +447,7 @@ document.addEventListener("turbo:load", () => {
       clickedNumber.textContent === String(previousSquareNumber3)
     ) {
       questionBox.textContent = "◯";
+      correctSound.volume = 0.4;
       correctSound.play();
       memorySquareYourScore += 100;
       if (hardModeEnabled) {
@@ -451,6 +457,7 @@ document.addEventListener("turbo:load", () => {
       updateComboDisplay();
     } else {
       questionBox.textContent = "×";
+      wrongSound.volume = 0.5;
       wrongSound.play();
       correctOrWrongArray = []; // コンボ配列をリセット
       updateComboDisplay();
@@ -473,6 +480,7 @@ document.addEventListener("turbo:load", () => {
       (previousSquare2 && clickedSquare.id === previousSquare2.id)
     ) {
       questionBox.textContent = "◯";
+      correctSound.volume = 0.4;
       correctSound.play();
       memorySquareYourScore += 50;
       if (hardModeEnabled) {
@@ -486,6 +494,7 @@ document.addEventListener("turbo:load", () => {
       clickedSquare.id === previousSquare3.id
     ) {
       questionBox.textContent = "◯";
+      correctSound.volume = 0.4;
       correctSound.play();
       memorySquareYourScore += 100;
       if (hardModeEnabled) {

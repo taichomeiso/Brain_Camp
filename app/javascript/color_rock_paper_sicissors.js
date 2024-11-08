@@ -1,4 +1,7 @@
 document.addEventListener("turbo:load", () => {
+   // 必要な要素を取得
+  const resultFeedback = document.getElementById("result-feedback");
+  const gameScreenBase = document.querySelector(".game-page__GameScreenBase");
   //相手の手数の最大数
   const Number_Steps_Max = 6;
   //相手の手数の最小数
@@ -49,10 +52,25 @@ document.addEventListener("turbo:load", () => {
   // let imagePath = "/assets/GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/computer/computer_" + currentHandNumber + "_image.png";
   // document.getElementById("color_rock_paper_computer_id").src = imagePath;  
   function displayComputerHand(number){
-    let imagePath = `/assets/GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/computer/computer_${number}_image.png`;
-    document.getElementById("color_rock_paper_computer_id").src = imagePath;
+     // let imagePath = `/assets/GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/computer/computer_${number}_image.png`;
+     // document.getElementById("color_rock_paper_computer_id").src = imagePath;
+     const computerImage = document.getElementById("color_rock_paper_computer_id");
+  
+     // アニメーションクラスを一時的に追加してアイコンが切り替わる演出を作成
+     computerImage.classList.add("icon-transition");
+   
+     // アイコン画像を切り替え
+     const imagePath = `/assets/GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/computer/computer_${number}_image.png`;
+     computerImage.src = imagePath;
+   
+     // アニメーションクラスを0.5秒後に削除して元に戻す
+     setTimeout(() => {
+       computerImage.classList.remove("icon-transition");
+     }, 500); // アニメーション時間に合わせて0.5秒
+     
+    
   }
-  // カウントダウンを表示し、終了後にゲームを開始する関数
+ 
 
   // クリックを無効化する関数
   function disableClicks() {
@@ -124,6 +142,16 @@ function checkResult(playerHandType) {
                  (computerHand.type === "scissors" && playerHandType === "paper") ||
                  (computerHand.type === "paper" && playerHandType === "rock")) ? "負け" : "勝ち";
   }
+  if (judgement === "勝ち" || judgement === "負け" || judgement === "あいこ") {
+  if (computerHand.color === "blue") {
+    // 青の場合：勝ちで○、負け・あいこで×
+    displayFeedback(judgement === "勝ち" ? "○" : "×", judgement === "勝ち" ? "win" : "lose");
+  } else if (computerHand.color === "red") {
+    // 赤の場合：負けで○、勝ち・あいこで×
+    displayFeedback(judgement === "負け" ? "○" : "×", judgement === "負け" ? "win" : "lose");
+  }
+}
+
   console.log(judgement);
   console.log(currentHandNumber, computerHand.type, computerHand.color);
   if (computerHand.color === "blue" && judgement === "勝ち" || computerHand.color === "red" &&  judgement === "負け"){
@@ -137,7 +165,8 @@ function checkResult(playerHandType) {
       addCommand = addCommand + 10;
     }
     color_rock_paper_sicissors_Score += addPoint + addCommand;
-    document.getElementById("color_rock_paper-socre_id").innerText = color_rock_paper_sicissors_Score;
+    //idのscoreがsocreになっていたので修正
+    document.getElementById("color_rock_paper-score_id").innerText = color_rock_paper_sicissors_Score;
     localStorage.setItem("color_rock_paper_sicissors_Score", color_rock_paper_sicissors_Score);
     console.log(color_rock_paper_sicissors_Score);
     console.log("保存されたスコア:", localStorage.getItem("color_rock_paper_sicissors_Score"));
@@ -146,13 +175,56 @@ function checkResult(playerHandType) {
     commandStartCount = 0;
   }
 }
-function addCircleToComputerHand(playerHandType) {
-  const computerImage = document.getElementById(playerHandType);
-  computerImage.style.border = "5px solid red";  // 丸を付けるためのスタイル
-  setTimeout(() => {
-    computerImage.style.border = "";  // 丸を消す
-  }, 1000);
+
+
+function displayFeedback(symbol, type) {
+  resultFeedback.textContent = symbol;
+  resultFeedback.className = `result-feedback ${type}`;
+  resultFeedback.style.display = "block";
+  // 点滅のコードを.item_user-interfaceに付与
+  function flashRedScreen() {
+    const userInterfaceElement = document.querySelector(".item_user-interface");
+    userInterfaceElement.classList.add("flash-red");
+    setTimeout(() => {
+      userInterfaceElement.classList.remove("flash-red");
+    }, 200); // 点滅時間に合わせて解除
+  }
+  // バツのときに赤く点滅
+  if (symbol === "×") {
+    flashRedScreen();
+  }
+  const winSound = document.getElementById("win-sound");
+  const loseSound = document.getElementById("lose-sound");
+
+  // playWinSound 関数の定義
+  function playWinSound() {
+    if (winSound) {
+      winSound.currentTime = 0; // 再生位置をリセット
+      winSound.play();          // 再生
+    }
+  }
+
+  // playLoseSound 関数の定義
+  function playLoseSound() {
+    if (loseSound) {
+      loseSound.currentTime = 0; // 再生位置をリセット
+      loseSound.play();          // 再生
+    }
+  }
+
+  // マルバツの音声
+  if (symbol === "○") {
+    playWinSound();
+} else if (symbol === "×") {
+    playLoseSound();
 }
+
+  setTimeout(() => {
+    resultFeedback.style.display = "none";
+  }, 800); // 0.8秒後に非表示
+}
+
+
 //ゲームが終わった時のメッセージ
 function  gameEnd(){
   const gameEndImageElement = document.getElementById("game-End_Image_Id");
