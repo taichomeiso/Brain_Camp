@@ -5,6 +5,10 @@ document.addEventListener("turbo:load", () => {
   const grid = [...Array(4)].map(() => Array(4).fill(null));
   let activeCell = null;
 
+
+  const startButton = document.getElementById("startButton");
+  const backButton = document.querySelector(".game-page__BackTitleButton");
+
   function updateTimer() {
     timer += 10;
     const totalSeconds = Math.floor(timer / 1000);
@@ -21,6 +25,10 @@ document.addEventListener("turbo:load", () => {
       document.getElementById("number_master_timer").innerText = "00:00.00秒";
       timerInterval = setInterval(updateTimer, 10);
     }
+
+    // スタートボタンを非表示にする
+    startButton.classList.add("hidden");
+    backButton.classList.add("hidden");
 
     if (!memorySquareTable || !questionBox) {
       return null;

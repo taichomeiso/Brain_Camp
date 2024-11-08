@@ -1,14 +1,25 @@
 .number_master_timer {
   font-size: 70px;
   margin: 20px;
+  margin: 50px 0;
   display: flex;
   justify-content: center;
 }
 
 #buttons {
-  font-size: 50px;
+  /* font-size: 50px;
+  text-align: center;
+  margin-top: 20px; */
+  font-size: 30px;
+  /* フォントサイズを調整 */
   text-align: center;
   margin-top: 20px;
+  /* 上部の余白調整 */
+  display: flex;
+  justify-content: center;
+  /* ボタンを中央に配置 */
+  gap: 20px;
+  /* ボタンの間隔を追加 */
 }
 
 #buttons button {
@@ -19,19 +30,23 @@
   border-radius: 10px;
   font-size: 40px;
   cursor: pointer;
-  margin: 5px;
+  margin: 10px;
   transition: background-color 0.3s ease;
 }
 
 .number-master_table {
   border-collapse: collapse;
   margin: 30px auto;
+  /* width: 80%; */
+  /* グリッドの幅を画面幅に合わせる */
+  max-width: 350px;
+  /* 最大幅を設定 */
 }
 
 .number-master_table td {
   border: 1px solid black;
-  width: 70px;
-  height: 70px;
+  width: 25%;
+  height: 85px;
   text-align: center;
 }
 
@@ -62,4 +77,8 @@ input {
   transition: transform 1s, opacity 1s;
   width: 300px;
   height: 300px;
+}
+
+.hidden {
+  display: none;
 }
