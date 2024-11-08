@@ -94,7 +94,7 @@
 }
 .base-explanatory-text{
   position: relative;
-  width: 350px;
+  width: 480px;
   height: 80px;
   overflow: hidden;
 }
@@ -107,6 +107,7 @@
   align-items: center;
   top: 0;
   opacity: 0;
+  font-size: 22px;
   animation: fade 4s ease-in-out infinite;
 }
 .explanatory-text-play-button{
