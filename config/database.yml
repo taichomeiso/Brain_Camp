@@ -51,5 +51,7 @@ test:
 production:
   <<: *default
   database: Brain_Camp_production
-  username: Brain_Camp
-  password: <%= ENV["BRAIN_CAMP_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %> # DATABASE_URL を使用して接続
+  username: <%= ENV["BRAIN_CAMP_DATABASE_USERNAME"] %> # 環境変数から取得
+  password: <%= ENV["BRAIN_CAMP_DATABASE_PASSWORD"] %> # 環境変数から取得
