@@ -1,5 +1,4 @@
 document.addEventListener("turbo:load", () => {
-
   let timer = 0;
   let timerInterval;
   let gameStarted = false;
@@ -39,6 +38,9 @@ document.addEventListener("turbo:load", () => {
       gameTimeElement.innerText = `ゲームタイム: ${gameTime}秒`;
     }
   }
+
+
+
 
   function showMessage(text, type = "success") {
     const messageDiv = document.createElement("div");
@@ -218,10 +220,18 @@ document.addEventListener("turbo:load", () => {
     }
   };
 
+
   document.querySelectorAll(".sudoku-cell").forEach(cell => {
     cell.addEventListener('click', () => {
+      // 前のアクティブセルのスタイルをリセット
+      if (activeCell) {
+        activeCell.style.backgroundColor = ""; // 以前選ばれていたセルの背景色をリセット
+      }
+
+      // 新しいアクティブセルのスタイルを変更
       activeCell = cell;
       cell.focus();
+      cell.style.backgroundColor = "lightblue"; // アクティブなセルに背景色を追加
       console.log("アクティブなセルが設定されました。", activeCell);
     });
     cell.setAttribute('readonly', true);
@@ -233,4 +243,5 @@ document.addEventListener("turbo:load", () => {
       setNumber(parseInt(number));
     });
   });
+
 });
