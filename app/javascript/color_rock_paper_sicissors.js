@@ -16,6 +16,7 @@ document.addEventListener("turbo:load", () => {
   const gauge                = document.getElementById("time-limit_gauge_id");
   const startMessageImage    = document.getElementById("game-start-button_image_id");
   const gameStartButton      = document.getElementById("color_rock_paper_gameStartButton_id");
+  const backTitleButton      = document.querySelector(".game-page__BackTitleButton");
   //秒数管理
   const totalTimeInSeconds = 30;
   //減少させる割合
@@ -238,7 +239,16 @@ function  gameEnd(){
 }
 disableClicks(); // ゲームが開始されるまではクリックを無効化
   gameStartButton.addEventListener("click", () => {
+    backTitleButton.style.opacity = 0;
+    backTitleButton.style.cursor = "none";
+    backTitleButton.style.pointerEvents = "none";
+    backTitleButton.style.display = "none";
+    gameStartButton.style.opacity = 0;
+    gameStartButton.style.cursor = "none";
+    gameStartButton.style.pointerEvents = "none";
+    gameStartButton.style.display = "none";
     startMessageImage.style.display = "none"; // スタートボタンが押されたら非表示に
     startCountdown(); // カウントダウン開始
   });
+
 });
