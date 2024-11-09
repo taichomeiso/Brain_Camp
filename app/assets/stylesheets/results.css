@@ -265,11 +265,7 @@
   transform: scale(0.2); /* 初期のサイズ */
   transition: transform 0.4s ease-in-out; /* アニメーションの速度とイージング */
 }
-.number_master-result-page__score-display {
-  transform: scale(0.2); /* 初期のサイズ */
-  transition: transform 0.4s ease-in-out; /* アニメーションの速度とイージング */
-}
 
-.gameTime.animate-scale{
+.gameTime.animate-scale {
   transform: scale(1); /* 拡大後のサイズ */
 }
