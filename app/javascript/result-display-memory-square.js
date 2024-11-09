@@ -13,6 +13,10 @@ document.addEventListener("turbo:load", () => {
   // 画面にスコアを表示する
   scoreBox.textContent = memorySquareScore + "点!!";
 
+  setTimeout(() => {
+    scoreBox.classList.add("animate-scale");
+  }, 100); // 100msの遅延
+
   // フォームの隠しフィールドにスコアをセットする
   const scoreField = document.getElementById(
     "memory-square-result-page__score-field"

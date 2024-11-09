@@ -21,12 +21,13 @@ document.addEventListener("turbo:load", () => {
     tutorialDescriptionScreen.style.display = "none";
     tutorialMovie.style.display = "flex";
     // volumeBoxes.forEach((volumeBox) => {
-      // volumeBox.style.display = "none";
+    // volumeBox.style.display = "none";
     // });
     tutorialMovie.play();
   });
 
   gameStartButton.addEventListener("click", () => {
+    tutorialMovie.pause();
     tutorialScreen.style.display = "none";
   });
 });
