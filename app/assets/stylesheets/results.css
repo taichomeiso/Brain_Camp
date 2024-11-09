@@ -33,7 +33,6 @@
   margin-bottom: 25px;
 }
 
-.number_master-result-page__score-display,
 .memory-square-result-page__score-display,
 .color_rock_paper_sicissors-result-page__score-display {
   color: white;
@@ -48,6 +47,23 @@
   margin-bottom: 30px;
   width: fit-content;
   line-height: 1;
+}
+.color_rock_paper_sicissors-result-page__score-display {
+  transform: scale(0.2); /* 初期のサイズ */
+  transition: transform 0.4s ease-in-out; /* アニメーションの速度とイージング */
+}
+
+.color_rock_paper_sicissors-result-page__score-display.animate-scale {
+  transform: scale(1); /* 拡大後のサイズ */
+}
+
+.memory-square-result-page__score-display {
+  transform: scale(0.2); /* 初期のサイズ */
+  transition: transform 0.4s ease-in-out; /* アニメーションの速度とイージング */
+}
+
+.memory-square-result-page__score-display.animate-scale {
+  transform: scale(1); /* 拡大後のサイズ */
 }
 
 .result-page__Registration-form {
@@ -243,4 +259,13 @@
   display: flex;
   justify-content: center;
   margin: 70px 0 30px 0;
+}
+
+.gameTime {
+  transform: scale(0.2); /* 初期のサイズ */
+  transition: transform 0.4s ease-in-out; /* アニメーションの速度とイージング */
+}
+
+.gameTime.animate-scale {
+  transform: scale(1); /* 拡大後のサイズ */
 }
