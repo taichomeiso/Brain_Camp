@@ -158,7 +158,18 @@
   text-decoration: none;
   color: white;
 }
+/* ホバー時のボタン浮遊効果 */
+.top-page__game-box:hover {
+  transform: translateY(-5px); /* ボタンが浮いて見える */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* シャドウを追加 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* スムーズなアニメーション */
+}
 
+/* クリック時のボタン押下効果 */
+.top-page__game-box:active {
+  transform: translateY(2px); /* 少し下がって押された印象に */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* シャドウを少し小さく */
+}
 
 
 .top-page__trophy-box {
@@ -191,6 +202,28 @@
 /* 各ゲームリンクのホバーに応じて、その中のトロフィー画像のみをY軸で回転させる */
 .top-page__game-box:hover .top-page__trophy-image.rotate-once {
   transform: rotateY(180deg);
+}
+.top-page__trophy-description {
+  display: none; /* 最初は非表示 */
+  position: absolute;
+  bottom: -30px; /* トロフィーの下に表示 */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7); /* 半透明の背景 */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+  width: 200px;
+  z-index: 10; /* トロフィーの上に表示 */
+}
+
+/* トロフィー画像にホバーした時に説明文を表示 */
+.top-page__trophy-box:hover .top-page__trophy-description {
+  display: block; /* ホバー時に表示 */
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out; /* 表示アニメーション */
 }
 
 .top-page__right-box {
