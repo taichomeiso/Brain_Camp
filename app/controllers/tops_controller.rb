@@ -1,45 +1,23 @@
 class TopsController < ApplicationController
-  def index
-    # @memory_squares = MemorySquare.order(score: :desc).limit(10)
-    # @color_rock_paper_sicissor = ColorRockPaperSicissor.order(score: :desc).limit(10)
-    # 仮のランキングデータを定義
-    @memory_squares = [
-      OpenStruct.new(nickname: 'Player1', score: 120),
-      OpenStruct.new(nickname: 'Player2', score: 110),
-      OpenStruct.new(nickname: 'Player3', score: 100),
-      OpenStruct.new(nickname: 'Player4', score: 90),
-      OpenStruct.new(nickname: 'Player5', score: 80),
-      OpenStruct.new(nickname: 'Player6', score: 70),
-      OpenStruct.new(nickname: 'Player7', score: 60),
-      OpenStruct.new(nickname: 'Player8', score: 50),
-      OpenStruct.new(nickname: 'Player9', score: 40),
-      OpenStruct.new(nickname: 'Player10', score: 30)
-    ]
+  before_action :set_ranking_data, only: %i[index rankings]
 
-    @color_rock_paper_sicissor = [
-      OpenStruct.new(nickname: 'PlayerA', score: 95),
-      OpenStruct.new(nickname: 'PlayerB', score: 85),
-      OpenStruct.new(nickname: 'PlayerC', score: 75),
-      OpenStruct.new(nickname: 'PlayerD', score: 65),
-      OpenStruct.new(nickname: 'PlayerE', score: 55),
-      OpenStruct.new(nickname: 'PlayerF', score: 45),
-      OpenStruct.new(nickname: 'PlayerG', score: 35),
-      OpenStruct.new(nickname: 'PlayerH', score: 25),
-      OpenStruct.new(nickname: 'PlayerI', score: 15),
-      OpenStruct.new(nickname: 'PlayerJ', score: 5)
-    ]
+  def set_ranking_data
+    @memory_squares = MemorySquare.order(score: :desc).limit(20)
+    @color_rock_paper_sicissors = ColorRockPaperSicissor.order(score: :desc).limit(20)
+    @number_master = NumberMaster.order(game_time: :asc).limit(20)
+  end
 
-    @number_master = [
-      OpenStruct.new(nickname: 'PlayerA', score: 95),
-      OpenStruct.new(nickname: 'PlayerB', score: 85),
-      OpenStruct.new(nickname: 'PlayerC', score: 75),
-      OpenStruct.new(nickname: 'PlayerD', score: 65),
-      OpenStruct.new(nickname: 'PlayerE', score: 55),
-      OpenStruct.new(nickname: 'PlayerF', score: 45),
-      OpenStruct.new(nickname: 'PlayerG', score: 35),
-      OpenStruct.new(nickname: 'PlayerH', score: 25),
-      OpenStruct.new(nickname: 'PlayerI', score: 15),
-      OpenStruct.new(nickname: 'PlayerJ', score: 5)
-    ]
+  def rankings
+    data = case params[:game]
+           when 'color_rock_paper_sicissors'
+             @color_rock_paper_sicissors.map(&:as_json)
+           when 'memory_square'
+             @memory_squares.map(&:as_json)
+           when 'number_master'
+             @number_master.map(&:as_json)
+           else
+             []
+           end
+    render json: data
   end
 end

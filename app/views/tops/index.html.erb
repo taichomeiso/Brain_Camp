@@ -90,8 +90,8 @@
                  <%= index + 1 %>位
                 </span>
                </div>
-               <div class="top-page__ranking-nickname-box"><%= ranking.nickname %></div>
-                <div class="top-page__ranking-score-box"><%= ranking.score %></div>
+               <div class="top-page__ranking-nickname-box"><%= ranking[:nickname] %></div>
+                <div class="top-page__ranking-score-box"><%= ranking[:score] %></div>
              </div>
             <% end %>
           <% else %>
@@ -115,8 +115,8 @@
                  <%= index + 1 %>位
                 </span>
                 </div>
-                <div class="top-page__ranking-nickname-box"><%= ranking.nickname %></div>
-                 <div class="top-page__ranking-score-box"><%= ranking.score %></div>
+                 <div class="top-page__ranking-nickname-box"><%= ranking[:nickname] %></div>
+                <div class="top-page__ranking-score-box"><%= ranking[:game_time] %></div>
               </div>
             <% end %>
           <% else %>
@@ -140,8 +140,8 @@
                    <%= index + 1 %>位
                 </span>
                 </div>
-                <div class="top-page__ranking-nickname-box"><%= ranking.nickname %></div>
-               <div class="top-page__ranking-score-box"><%= ranking.score %></div>
+                 <div class="top-page__ranking-nickname-box"><%= ranking[:nickname] %></div>
+                <div class="top-page__ranking-score-box"><%= ranking[:score] %></div>
               </div>
             <% end %>
           <% else %>
