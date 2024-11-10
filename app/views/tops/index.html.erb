@@ -28,6 +28,7 @@
           <% end %>
           <div class="top-page__trophy-box">
             <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 60, height: 60,data: { game: "color_rock_paper_sicissors" } %>
+           <div class="top-page__trophy-description">クリックするとランキングが表示されます</div>
           </div>
         </div>
 
@@ -37,6 +38,7 @@
           <% end %> 
           <div class="top-page__trophy-box">
             <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 60, height: 60,data: { game: "number_master" }%>
+            <div class="top-page__trophy-description">クリックするとランキングが表示されます</div>
           </div>
         </div>
 
@@ -46,6 +48,7 @@
           <% end %>
           <div class="top-page__trophy-box">
             <%= image_tag "top-page-images/trophy.svg", class: "top-page__trophy-image", alt: "トロフィーの画像", width: 60, height: 60 ,data: { game: "memory_square" }%>
+           <div class="top-page__trophy-description">クリックするとランキングが表示されます</div>
           </div>
         </div>
       </div>
@@ -82,16 +85,16 @@
           <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
         </div>
         <div class="top-page__ranking-number-list">
-          <% if @color_rock_paper_sicissor.present? %>
-             <% @color_rock_paper_sicissor.each_with_index do |ranking, index| %>
-             <div class="top-page__ranking-number<%= index + 1 <= 3 ? index + 1 : ' other' %>">
+          <% if @color_rock_paper_sicissors.present? %>
+             <% @color_rock_paper_sicissors.each_with_index do |ranking, index| %>
+             <div class="top-page__ranking-number<%= index + 1 <= 3 ? index + 1 : ' other' %>" >
                <div class="top-page__ranking-number-box">
                 <span class="<%= index == 0 ? 'top-page__gold-number' : index == 1 ? 'top-page__silver-number' : index == 2 ? 'top-page__bronze-number' : '' %>">
                  <%= index + 1 %>位
                 </span>
                </div>
-               <div class="top-page__ranking-nickname-box"><%= ranking.nickname %></div>
-                <div class="top-page__ranking-score-box"><%= ranking.score %></div>
+               <div class="top-page__ranking-nickname-box"><%= ranking[:nickname] %></div>
+                <div class="top-page__ranking-score-box"><%= ranking[:score] %></div>
              </div>
             <% end %>
           <% else %>
@@ -107,16 +110,16 @@
           <%= image_tag "top-page-images/trophy.svg", class: "top-page__ranking-trophy-image", alt: "トロフィーの画像", width: 50, height: 50 %>
         </div>
         <div class="top-page__ranking-number-list">
-          <% if @number_master.present? %>
-            <% @number_master.each_with_index do |ranking, index| %>
-              <div class="top-page__ranking-number<%= index + 1 <= 3 ? index + 1 : ' other' %>">
+          <% if @number_masters.present? %>
+            <% @number_masters.each_with_index do |ranking, index| %>
+              <div class="top-page__ranking-number<%= index + 1 <= 3 ? index + 1 : ' other' %>" >
                 <div class="top-page__ranking-number-box">
                   <span class="<%= index == 0 ? 'top-page__gold-number' : index == 1 ? 'top-page__silver-number' : index == 2 ? 'top-page__bronze-number' : '' %>">
                  <%= index + 1 %>位
                 </span>
                 </div>
-                <div class="top-page__ranking-nickname-box"><%= ranking.nickname %></div>
-                 <div class="top-page__ranking-score-box"><%= ranking.score %></div>
+                 <div class="top-page__ranking-nickname-box"><%= ranking[:nickname] %></div>
+                <div class="top-page__ranking-score-box"><%= ranking[:game_time] %></div>
               </div>
             <% end %>
           <% else %>
@@ -134,14 +137,14 @@
         <div class="top-page__ranking-number-list">
           <% if @memory_squares.present? %>
             <% @memory_squares.each_with_index do |ranking, index| %>
-              <div class="top-page__ranking-number<%= index + 1 <= 3 ? index + 1 : ' other' %>">
+              <div class="top-page__ranking-number<%= index + 1 <= 3 ? index + 1 : ' other' %>" >
                 <div class="top-page__ranking-number-box">
                  <span class="<%= index == 0 ? 'top-page__gold-number' : index == 1 ? 'top-page__silver-number' : index == 2 ? 'top-page__bronze-number' : '' %>">
                    <%= index + 1 %>位
                 </span>
                 </div>
-                <div class="top-page__ranking-nickname-box"><%= ranking.nickname %></div>
-               <div class="top-page__ranking-score-box"><%= ranking.score %></div>
+                 <div class="top-page__ranking-nickname-box"><%= ranking[:nickname] %></div>
+                <div class="top-page__ranking-score-box"><%= ranking[:score] %></div>
               </div>
             <% end %>
           <% else %>

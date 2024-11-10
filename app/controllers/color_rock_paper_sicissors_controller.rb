@@ -1,6 +1,5 @@
 class ColorRockPaperSicissorsController < ApplicationController
   def index
-
   end
 
   def new
@@ -15,9 +14,10 @@ class ColorRockPaperSicissorsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   private
+
   def create_params
-    params.require(:color_rock_paper_sicissor).permit(:name, :score)
+    params.require(:color_rock_paper_sicissor).permit(:nickname, :score)
   end
 end
