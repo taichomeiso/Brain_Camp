@@ -66,4 +66,15 @@ class ResultsController < ApplicationController
   def number_master_params
     params.require(:number_master).permit(:nickname, :game_time)
   end
+
+  def format_time(seconds)
+    minutes = seconds.to_i / 60
+    remaining_seconds = (seconds % 60).round(3) # 小数点以下3桁まで表示
+    format('%d:%05.3f', minutes, remaining_seconds) # 小数点以下3桁で表示
+  end
+
+  def show
+    # 必要に応じてレコードのIDで取得
+    @result = Result.find(params[:id])
+  end
 end
