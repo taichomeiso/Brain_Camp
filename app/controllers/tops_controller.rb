@@ -3,18 +3,18 @@ class TopsController < ApplicationController
 
   def set_ranking_data
     @memory_squares = MemorySquare.order(score: :desc).limit(20)
-    @color_rock_paper_sicissor = ColorRockPaperSicissor.order(score: :desc).limit(20)
-    @number_master = NumberMaster.order(game_time: :asc).limit(20)
+    @color_rock_paper_sicissors = ColorRockPaperSicissor.order(score: :desc).limit(20)
+    @number_masters = NumberMaster.order(game_time: :asc).limit(20)
   end
 
   def rankings
     data = case params[:game]
            when 'color_rock_paper_sicissors'
-             @color_rock_paper_sicissor.map(&:as_json)
+             @color_rock_paper_sicissors.map(&:as_json)
            when 'memory_square'
              @memory_squares.map(&:as_json)
            when 'number_master'
-             @number_master.map(&:as_json)
+             @number_masters.map(&:as_json)
            else
              []
            end

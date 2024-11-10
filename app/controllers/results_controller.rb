@@ -1,10 +1,10 @@
 class ResultsController < ApplicationController
   def color_rock_paper_sicissors
-    @color_rock_paper_sicissor = ColorRockPaperSicissor.new # ここでインスタンスを初期化
+    @color_rock_paper_sicissor = ColorRockPaperSicissor.new
 
     return unless request.post?
 
-    @color_rock_paper_sicissor.assign_attributes(color_rock_paper_sicissors_square_params)
+    @color_rock_paper_sicissor.assign_attributes(color_rock_paper_sicissor_params)
     if @color_rock_paper_sicissor.save
       redirect_to root_path, notice: '記録が登録されました！'
     else
@@ -13,7 +13,7 @@ class ResultsController < ApplicationController
   end
 
   def memory_square
-    @memory_square = MemorySquare.new # ここでインスタンスを初期化
+    @memory_square = MemorySquare.new
 
     return unless request.post?
 
@@ -53,28 +53,17 @@ class ResultsController < ApplicationController
     end
   end
 
+  private
+
   def memory_square_params
     params.require(:memory_square).permit(:nickname, :score)
   end
 
-  def format_time(seconds)
-    minutes = seconds.to_i / 60
-    remaining_seconds = (seconds % 60).round(3) # 小数点以下3桁まで表示
-    format('%d:%05.3f', minutes, remaining_seconds) # 小数点以下3桁で表示
-  end
-
-  def color_rock_paper_sicissors_square_params
+  def color_rock_paper_sicissor_params
     params.require(:color_rock_paper_sicissor).permit(:nickname, :score)
   end
 
-  private
-
   def number_master_params
     params.require(:number_master).permit(:nickname, :game_time)
-  end
-
-  def show
-    # 必要に応じてレコードのIDで取得
-    @result = Result.find(params[:id])
   end
 end
