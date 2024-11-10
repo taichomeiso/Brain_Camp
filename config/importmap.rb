@@ -1,9 +1,10 @@
 # Pin npm packages by running ./bin/importmap
-pin "number_master", to: "number_master.js"
 pin 'application'
 pin '@hotwired/turbo-rails', to: 'turbo.min.js'
 pin '@hotwired/stimulus', to: 'stimulus.min.js'
 pin '@hotwired/stimulus-loading', to: 'stimulus-loading.js'
+pin 'top-page', to: 'top-page.js'
+pin "number_master", to: "number_master.js"
 pin 'game-memory-square', to: 'game-memory-square.js'
 pin 'tutorial-memory-square', to: 'tutorial-memory-square.js'
 pin 'result-display-number-master', to: 'result-display-number-master.js'
