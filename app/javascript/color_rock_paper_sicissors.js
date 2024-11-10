@@ -236,34 +236,6 @@ function  gameEnd(){
     window.location.href = '/results/color_rock_paper_sicissors'; // リザルト画面のパスに置き換えてください
   }, 3000);
 }
-//スコア
-// function gameScoreSave() {
-//   fetch('/results/color_rock_paper_sicissors', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'X-CSRF-Token': document.querySelector("meta[name='csrf-token']").getAttribute("content")
-//     },
-//     body: JSON.stringify({
-//       color_rock_paper_sicissor: {  
-//         name: "ユーザー名",
-//         score: score
-//       }
-//     })
-//   })
-//   .then(response => {
-//     if (!response.ok) {
-//       throw new Error("サーバーエラー");
-//     }
-//     return response.json();
-//   })
-//   .then(data => {
-//     console.log("保存成功:", data);
-//   })
-//   .catch(error => {
-//     console.error("エラー:", error);
-//   });
-// }
 disableClicks(); // ゲームが開始されるまではクリックを無効化
   gameStartButton.addEventListener("click", () => {
     startMessageImage.style.display = "none"; // スタートボタンが押されたら非表示に
