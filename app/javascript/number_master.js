@@ -30,9 +30,6 @@ document.addEventListener("turbo:load", () => {
     startButton.classList.add("hidden");
     backButton.classList.add("hidden");
 
-    if (!memorySquareTable || !questionBox) {
-      return null;
-    } // テーブルや質問ボックスが無い場合は終了
   }
 
   // クエリパラメータからゲームタイムを取得

@@ -10,3 +10,5 @@ import "tutorial-memory-square";
 import "tutorial-color_rock_paper_sicissors";
 import "color_rock_paper_sicissors";
 import "top-page";
+import "./tutorial-number_master";
+
