@@ -1,4 +1,9 @@
 document.addEventListener("turbo:load", () => {
+  // トップページの特定の要素を取得し、存在しない場合は処理を終了
+  const topPageElement = document.querySelector(".top-page__ranking-box");
+  if (!topPageElement) {
+    return; // トップページでない場合、処理を終了
+  }
   // 最初に全てのランキングボックスを非表示にする
   document.querySelectorAll(".top-page__ranking-box").forEach((box) => {
     box.classList.remove("active");
