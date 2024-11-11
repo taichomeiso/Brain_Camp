@@ -14,3 +14,8 @@
 //= link color_rock_paper_sicissors-tutorial-movie.mp4
 //= link color-false.mp3
 //= link color-true.mp3
+//= link result-message-sound.mp3
+//= link result-button-click-sound.mp3
+//= link result-form-click-sound.mp3
+//= link result-hover-sound.mp3
+//= link result-page-sound.mp3
