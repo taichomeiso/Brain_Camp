@@ -85,15 +85,27 @@
   border: 6px solid white;
   padding: 4px;
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を追加 */
 }
-
+.result-page__registration-button:hover,
+.result-page__form:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 影の強調 */
+}
 .result-page__username {
   font-size: 35px;
   font-weight: bold;
   font-family: "Roboto";
   white-space: nowrap;
+  border-right: 2px solid #e52323; /* カーソル風のライン */
 }
-
+#typing-text {
+  display: inline-block;
+  width: 315px; /* 必要な幅に調整 */
+  height: 80px; /* 必要な高さに調整 */
+  white-space: nowrap; /* 改行しないように設定 */
+  overflow: hidden; /* 余分なテキストを隠す */
+}
 .result-page__name-form {
   width: 300px;
   height: 80px;
