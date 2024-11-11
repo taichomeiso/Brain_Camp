@@ -17,3 +17,6 @@
 //= link result-form-click-sound.mp3
 //= link result-hover-sound.mp3
 //= link result-page-sound.mp3
+//= link top-ranking-change.mp3
+//= link top-hover.mp3
+//= link top-button-click.mp3
