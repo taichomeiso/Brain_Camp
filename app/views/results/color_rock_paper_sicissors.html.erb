@@ -2,14 +2,19 @@
   <%= stylesheet_link_tag 'results', media: 'all' %>
   <title>リザルト</title>
 <div class="result-body">
+       <audio id="result-message-sound" src="<%= asset_path('result-message-sound.mp3') %>" preload="auto"></audio>
+        <audio id="result-button-click-sound" src="<%= asset_path('result-button-click-sound.mp3') %>" preload="auto"></audio>
+        <audio id="result-form-click-sound" src="<%= asset_path('result-form-click-sound.mp3') %>" preload="auto"></audio>
+        <audio id="result-hover-sound" src="<%= asset_path('result-hover-sound.mp3') %>" preload="auto"></audio>
+        <audio id="result-page-sound" src="<%= asset_path('result-page-sound.mp3') %>" preload="auto"></audio>
   <div class="result-layer1">
     <div class="result-score">
       <div class="result-page__score-name">SCORE!!</div>
       <div class="result-page__score"></div>
-      <div class="color_rock_paper_sicissors-result-page__score-display">0000点</div>
+      <div class="color_rock_paper_sicissors-result-page__score-display"></div>
       <div class="result-page__Registration-form">
-        <div class="result-page__username">記録を登録しますか？</div>
-          <%= form_with model:@color_rock_paper_sicissors,class:"result-page__form",url: results_color_rock_paper_sicissors_path, local: true do|f|  %>
+        <div class="result-page__username"id="typing-text">ランキングに記録を<br>登録しますか？</div>
+          <%= form_with model: @color_rock_paper_sicissor, class: "result-page__form", url: results_color_rock_paper_sicissors_path, id: "color-rock-paper-scissors-game-form", data: { game: "color_rock_paper_sicissors" }, local: true do |f| %>
             <%= f.text_field :nickname,  placeholder: "ニックネーム入力", class: "result-page__name-form" %>
              <%= f.hidden_field :score, id: "color_rock_paper_sicissors-result-page__score-field" %>
             <%= submit_tag "登録", class: "result-page__registration-button" %>

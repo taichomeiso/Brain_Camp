@@ -2,13 +2,19 @@
   <%= stylesheet_link_tag 'results', media: 'all' %>
   <title>リザルト</title>
 <div class="result-body">
+   <audio id="result-message-sound" src="<%= asset_path('result-message-sound.mp3') %>" preload="auto"></audio>
+        <audio id="result-button-click-sound" src="<%= asset_path('result-button-click-sound.mp3') %>" preload="auto"></audio>
+        <audio id="result-form-click-sound" src="<%= asset_path('result-form-click-sound.mp3') %>" preload="auto"></audio>
+        <audio id="result-hover-sound" src="<%= asset_path('result-hover-sound.mp3') %>" preload="auto"></audio>
+        <audio id="result-page-sound" src="<%= asset_path('result-page-sound.mp3') %>" preload="auto"></audio>
   <div class="result-layer1">
     <div class="result-score">
       <div class="result-page__score-name">SCORE!!</div>
       <div class="result-page__score"></div>
       <div class="gameTime">ゲームタイム: 計測中...</div>
       <div class="result-page__Registration-form">
-        <%= form_with(model: @number_master, url: results_create_number_master_path,class:"result-page__form", method: :post, local: true) do |f| %>
+         <div class="result-page__username"id="typing-text">ランキングに記録を<br>登録しますか？</div>
+        <%= form_with(model: @number_master, url: results_create_number_master_path,class:"result-page__form", method: :post, id: "number-master-game-form", data: { game: "number_master" }, local: true) do |f| %>
           <%= f.text_field :nickname, placeholder: "ニックネーム入力", class: "result-page__name-form" %>
           <%= f.hidden_field :game_time, value: @game_time %>
           <%= f.submit "登録", class: "result-page__registration-button" %>
