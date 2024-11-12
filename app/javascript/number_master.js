@@ -27,8 +27,8 @@ document.addEventListener("turbo:load", () => {
     }
 
     // スタートボタンを非表示にする
-    startButton.classList.add("hidden");
-    backButton.classList.add("hidden");
+    startButton.classList.add("hidden-opacity");
+    backButton.classList.add("hidden-opacity");
 
   }
 

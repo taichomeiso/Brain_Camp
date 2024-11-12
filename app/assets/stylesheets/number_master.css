@@ -280,3 +280,8 @@ input {
 .number_master__number-table td.highlighted {
   border: 2px solid orange;
 }
+
+.hidden-opacity {
+  opacity: 0;
+  pointer-events: none;
+}
