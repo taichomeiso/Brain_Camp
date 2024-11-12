@@ -48,4 +48,7 @@ document.addEventListener("turbo:load", () => {
     tutorialMovie.pause();
     tutorialScreen.style.display = "none";
   });
+
+
+
 });
