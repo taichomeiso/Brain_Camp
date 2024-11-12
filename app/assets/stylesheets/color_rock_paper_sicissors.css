@@ -185,6 +185,34 @@
   top: 20px;
   left: 200px;
 }
+.color_rock_paper-score_combo{
+  position: absolute;
+  width: 150px;
+  height: 80px;
+  top: 400px;
+  right: 0;
+  font-size: 30px;
+  font-family: "Hiragino Sans","ヒラギノ角ゴシック";
+}
+/*コンボに関するパーツ*/
+.base-color_rock_paper_sicissors-combo-contents{
+  width: 150px;
+  height: 80px;
+}
+.color_rock_paper-score_combo_number{
+  position: absolute;
+  top: 400px;
+  left: 0;
+  font-size: 20px;
+  font-family: "Hiragino Sans","ヒラギノ角ゴシック";
+}
+.color_rock_paper-score_combo_combo{
+  position: absolute;
+  top: 400px;
+  left: 25px;
+  font-size: 20px;
+  font-family: "Hiragino Sans","ヒラギノ角ゴシック";
+}
 /*「ゲームが始まる前に表示するメッセージ」の画像のサイズ*/
 .game-start-button_image {
   position: absolute;

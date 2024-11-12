@@ -23,6 +23,9 @@ document.addEventListener("turbo:load", () => {
  const decreaseRate = 100 / totalTimeInSeconds;
  //スコア
  let color_rock_paper_sicissors_Score = 0;
+ //表示するコンボ
+ const commandContent = document.getElementById("base-color_rock_paper_sicissors-combo-contents_id");
+ let commandText      = document.querySelector(".color_rock_paper-score_combo_number");
  //加点するポイント
  const addPoint = 100;
  //コンボが始まるカウント
@@ -122,7 +125,7 @@ if (!rock) {
 // カウントダウンを表示し、終了後にゲームを開始する関数
 function startCountdown() {
  let countdownIndex = 0;
-
+ commandContent.style.display = "none";
  const countdownInterval = setInterval(() => {
    if (countdownIndex < countdownImages.length) {
      countdownImageElement.style.display = "block";
@@ -141,6 +144,7 @@ function startCountdown() {
 function startGame(){
  enableClicks(); // ゲーム開始時にクリックを有効化
  displayComputerHand(currentHandNumber); // コンピューターの手を表示
+ commandContent.style.display = "none";
   //制限時間の初期値
   let gauge_Initial_value = 100;
   backGroundMusic.loop = true;
@@ -194,6 +198,8 @@ function checkResult(playerHandType) {
    commandStartCount++;
    if (commandStartCount >= 2){
      addCommand = addCommand + 10;
+     commandContent.style.display = "flex";
+     commandText.textContent = commandStartCount;
    }
    color_rock_paper_sicissors_Score += addPoint + addCommand;
    //idのscoreがsocreになっていたので修正
@@ -204,6 +210,8 @@ function checkResult(playerHandType) {
  }else{
    addCommand = 0;
    commandStartCount = 0;
+   commandContent.style.display = "none";
+
  }
 }
 
