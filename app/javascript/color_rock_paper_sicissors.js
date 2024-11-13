@@ -24,14 +24,16 @@ document.addEventListener("turbo:load", () => {
  //スコア
  let color_rock_paper_sicissors_Score = 0;
  //表示するコンボ
- const commandContent = document.getElementById("base-color_rock_paper_sicissors-combo-contents_id");
- let commandText      = document.querySelector(".color_rock_paper-score_combo_number");
+ const commandContent       = document.getElementById("base-color_rock_paper_sicissors-combo-contents_id");
+ let commandText            = document.querySelector(".color_rock_paper-score_combo_number");
+ const commandAddNumberTextContent = document.querySelector(".color_rock_paper-score_combo_add_number");
+ let commandAddNumberText        = document.getElementById("score_combo_add_number_id");
  //加点するポイント
- const addPoint = 100;
+ const addPoint             = 100;
  //コンボが始まるカウント
- let commandStartCount = 0;
+ let commandStartCount      = 0;
  //連続で正解した時のコンボによる加点点数
- let addCommand = 0;
+ let addCommand             = 0;
  //バックグラウンドミュージック
  const backGroundMusic = document.getElementById("back-bround-music-id");
  const countDownSound  = document.getElementById("countDown-id");
@@ -116,6 +118,17 @@ function animateButton(button) {
     button.style.transform = 'translateY(0)';
   }, 100);
 }
+function animateCommand(addComd, comdStart){
+  const movingText = document.getElementById("moving-text");
+  movingText.textContent = `+${addComd}`; // 点数を表示
+  if(comdStart >= 2){
+    commandAddNumberTextContent.style.display = "flex";
+    movingText.style.animation = 'none'; // 前回のアニメーションをセット
+    void movingText.offsetWidth; // 強制的にリフローを発生させてリセット
+    movingText.style.animation = 'moveText 1s ease forwards'; // 新しいアニメーションを開始
+    console.log("現在のコンボ数は",comdStart);
+  }
+}
 // 初期メッセージの表示
 startMessageImage.src = gameStartButtonImage; // 画像パスを設定
 startMessageImage.style.display = "block"; // 初期は表示
@@ -126,6 +139,7 @@ if (!rock) {
 function startCountdown() {
  let countdownIndex = 0;
  commandContent.style.display = "none";
+ commandAddNumberTextContent.style.display = "none";
  const countdownInterval = setInterval(() => {
    if (countdownIndex < countdownImages.length) {
      countdownImageElement.style.display = "block";
@@ -145,6 +159,7 @@ function startGame(){
  enableClicks(); // ゲーム開始時にクリックを有効化
  displayComputerHand(currentHandNumber); // コンピューターの手を表示
  commandContent.style.display = "none";
+ commandAddNumberTextContent.style.display = "none";
   //制限時間の初期値
   let gauge_Initial_value = 100;
   backGroundMusic.loop = true;
@@ -200,6 +215,7 @@ function checkResult(playerHandType) {
      addCommand = addCommand + 10;
      commandContent.style.display = "flex";
      commandText.textContent = commandStartCount;
+     animateCommand(addCommand, commandStartCount);
    }
    color_rock_paper_sicissors_Score += addPoint + addCommand;
    //idのscoreがsocreになっていたので修正
@@ -211,7 +227,7 @@ function checkResult(playerHandType) {
    addCommand = 0;
    commandStartCount = 0;
    commandContent.style.display = "none";
-
+   commandAddNumberTextContent.style.display = "none";
  }
 }
 
