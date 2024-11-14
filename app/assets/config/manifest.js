@@ -3,6 +3,7 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 //= link memory-square-bgm.mp3
+//= link memory-square-fever-bgm.mp3
 //= link correct-answer.mp3
 //= link wrong-answer.mp3
 //= link fever-scratch.mp3
@@ -20,3 +21,4 @@
 //= link top-ranking-change.mp3
 //= link top-hover.mp3
 //= link top-button-click.mp3
+//= link fever-sound.mp3
