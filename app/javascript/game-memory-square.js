@@ -153,6 +153,7 @@ document.addEventListener("turbo:load", () => {
                 gameScreen.classList.remove("fever-background");
                 correctOrWrongArray.length = 0;
                 feverBgm.pause();
+                bgmAudio.play();
               }
             }
           }
