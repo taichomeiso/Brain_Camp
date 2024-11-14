@@ -11,14 +11,22 @@
 @keyframes moveText {
   0% {
     right: -65px; /* 初期位置（右の範囲外） */
+    margin-right:10%;
+    opacity: 1;
+  }
+  50% {
+    right: 0; /* 右から左に移動して停止 */
+    margin-right:10%;
     opacity: 1;
   }
   80% {
     right: 0; /* 右から左に移動して停止 */
+    margin-right:10%;
     opacity: 1;
   }
   100% {
     right: 0;
+    margin-right:10%;
     opacity: 0; /* 徐々に消える */
   }
 }
@@ -236,8 +244,8 @@
   top: 15px;
   right: 125px;
   font-size: 28px;
-  height: 60px;
-  width: 90px; /* 表示範囲の幅を設定 */
+  height: 50px;
+  width: 80px; /* 表示範囲の幅を設定 */
   overflow: hidden; /* 表示範囲外を隠す */
   font-style: italic;
   font-family: 'Bangers', cursive;
@@ -245,9 +253,9 @@
 #moving-text {
   position: absolute;
   white-space: nowrap;
-  right: -65px; /* 初期位置を範囲外に */
+  right: -55px; /* 初期位置を範囲外に */
   opacity: 1;
-  animation: moveText 1s ease forwards; /* 一度だけアニメーション */
+  animation: moveText 0.5s ease forwards; /* 一度だけアニメーション */
 }
 /*「ゲームが始まる前に表示するメッセージ」の画像のサイズ*/
 .game-start-button_image {
