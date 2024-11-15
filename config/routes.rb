@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root to: 'tops#index'
+
   get 'rankings/:game', to: 'tops#rankings'
-  # resources :color_rock_paper_sicissors, only:[:index,:new ,:create]
+
   resources :sudokus
 
   # ゲームに関するルーティング

@@ -1,5 +1,11 @@
 <!-- ゲーム画面の全体の表示 -->
 <div class="game-page__GameScreenBase">
+  <!-- 効果音、音楽 -->
+    <audio id="win-sound" src="<%= asset_path('color-true.mp3') %>" preload="auto"></audio>
+    <audio id="lose-sound" src="<%= asset_path('color-false.mp3') %>" preload="auto"></audio>
+    <audio id="back-bround-music-id" src="<%= asset_path('thinkingtime13.mp3') %>" preload="auto"></audio>
+    <audio id="countDown-id" src="<%= asset_path('Countdown03-2.mp3') %>" preload="auto"></audio>
+    <audio id="game-End-Sound-id" src="<%= asset_path('gameEndSound.mp3') %>" preload="auto"></audio>
   <!-- タイトルに戻るボタンの表示 -->
   <%= link_to root_path, class: "game-page__BackTitleButton" do %>
      <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>   
@@ -31,6 +37,9 @@
       <div class="color_rock_paper-score_text">
         <span id="color_rock_paper-score_id">0</span>
       </div>
+      <div class="color_rock_paper-score_combo_add_number">
+        <span id="moving-text">＋0</span>
+      </div>
       <!--スコアの表示ここまで-->
       <%= image_tag "" ,id:"game-start-button_image_id", class:"game-start-button_image", style: "display: none;"%>
       <!--ゲームが終了したとき表示する画像-->
@@ -39,9 +48,6 @@
       <!-- コンピューターが出す手を表示 -->
       <%= image_tag "GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/computer/computer_1_image.png", id: "color_rock_paper_computer_id", style:"display: none;" %>
       <!-- コンピューターが出す手を表示ここまで -->
-       <!-- 正解不正解の音声 -->
-      <audio id="win-sound" src="<%= asset_path('color-true.mp3') %>" preload="auto"></audio>
-      <audio id="lose-sound" src="<%= asset_path('color-false.mp3') %>" preload="auto"></audio>
 
       <!-- 制限時間のゲージ表示 -->
        <div class="time-limit_gauge">
@@ -49,6 +55,13 @@
       </div>
       <div class="instructions_text">
         <span style="color:blue">青</span>には勝ち、<span style="color:red">赤</span>には負けてみよう！
+      </div>
+      <div class="base-color_rock_paper_sicissors-combo-contents" id="base-color_rock_paper_sicissors-combo-contents_id">
+        <div class="color_rock_paper-score_combo_number">
+        </div>
+        <div class="color_rock_paper-score_combo_combo">
+          comdo!!
+        </div>
       </div>
       <!-- 制限時間のゲージ表示ここまで -->
     </div>
