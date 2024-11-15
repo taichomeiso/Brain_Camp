@@ -11,22 +11,22 @@
 @keyframes moveText {
   0% {
     right: -65px; /* 初期位置（右の範囲外） */
-    margin-right:10%;
+    margin-right:5%;
     opacity: 1;
   }
   50% {
     right: 0; /* 右から左に移動して停止 */
-    margin-right:10%;
+    margin-right:5%;
     opacity: 1;
   }
   80% {
     right: 0; /* 右から左に移動して停止 */
-    margin-right:10%;
+    margin-right:5%;
     opacity: 1;
   }
   100% {
     right: 0;
-    margin-right:10%;
+    margin-right:5%;
     opacity: 0; /* 徐々に消える */
   }
 }
@@ -242,7 +242,7 @@
   position: absolute;
   display: inline-flex;
   top: 15px;
-  right: 125px;
+  right: 120px;
   font-size: 28px;
   height: 50px;
   width: 80px; /* 表示範囲の幅を設定 */
