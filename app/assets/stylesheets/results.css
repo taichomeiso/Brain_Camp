@@ -32,7 +32,18 @@
   margin: 0 auto;
   margin-bottom: 25px;
 }
-
+.result-page__score-time
+{
+  font-size: 110px;
+  font-family: "M PULS 1", sans-serif;
+  font-weight: 800;
+  transform: rotate(-3deg) translateX(-40px);
+  /* 左に20px寄せる */
+  width: fit-content;
+  line-height: 1;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
 .memory-square-result-page__score-display,
 .color_rock_paper_sicissors-result-page__score-display {
   color: white;
@@ -245,7 +256,13 @@
   top: 130px;
   left: 100px;
 }
-
+.score-background-n{
+  width: 620px;
+  height: auto;
+  position: absolute;
+  top: 125px;
+  left: 50px;
+}
 .result-layer3 {
   position: absolute;
   width: 100vw;
@@ -264,13 +281,14 @@
 }
 
 .gameTime {
-  font-size: 3rem;
+  font-size: 6rem;
   /* フォントサイズを大きく調整 */
   font-weight: bold;
   color: white;
   display: flex;
   justify-content: center;
-  margin: 70px 0 30px 0;
+  margin: 50px 0 30px 0;
+  text-shadow: 0px 4px 4px #00000040;
 }
 
 .gameTime {

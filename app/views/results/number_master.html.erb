@@ -9,16 +9,25 @@
         <audio id="result-page-sound" src="<%= asset_path('result-page-sound.mp3') %>" preload="auto"></audio>
   <div class="result-layer1">
     <div class="result-score">
-      <div class="result-page__score-name">SCORE!!</div>
+      <div class="result-page__score-time">Clear Time</div>
       <div class="result-page__score"></div>
-      <div class="gameTime">ゲームタイム: 計測中...</div>
+      <div class="gameTime">タイム: 計測中...</div>
       <div class="result-page__Registration-form">
          <div class="result-page__username"id="typing-text">ランキングに記録を<br>登録しますか？</div>
-        <%= form_with(model: @number_master, url: results_create_number_master_path,class:"result-page__form", method: :post, id: "number-master-game-form", data: { game: "number_master" }, local: true) do |f| %>
-          <%= f.text_field :nickname, placeholder: "ニックネーム入力", class: "result-page__name-form" %>
+        <%= form_with(model: @number_master, url: results_create_number_master_path,class:"result-page__form", method: :post, id: "number-master-game-form",data: { game: "number_master" }, local: true) do |f| %>
+          <%= f.text_field :nickname, placeholder: "ニックネーム入力", class: "result-page__name-form" , autocomplete: "off"%>
           <%= f.hidden_field :game_time, value: @game_time %>
           <%= f.submit "登録", class: "result-page__registration-button" %>
         <% end %>
+         <% if @number_master.errors.any? %>
+        <div class="error-messages">
+          <ul>
+            <% @@number_master.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       </div>
       <div class="hover-area">
         <div class="result-button">
@@ -41,7 +50,7 @@
   
 
   <div class="result-layer2">
-    <%= image_tag 'result-page-images/decoration.svg', alt: "score背景", class: "score-background" %>
+    <%= image_tag 'result-page-images/decoration.svg', alt: "score背景", class: "score-background-n" %>
     <%= image_tag 'result-page-images/results_speech_bubble_down.svg', alt: "フレーム画像", class: "result-page__frame" %>
     <%= image_tag 'result-page-images/results_speech_bubble_up.svg', alt: "リザルト画面メッセージ", class: "result-page__right-message" %>
   </div>

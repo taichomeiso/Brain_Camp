@@ -14,11 +14,21 @@
       <div class="memory-square-result-page__score-display"></div>
       <div class="result-page__Registration-form">
         <div class="result-page__username"id="typing-text">ランキングに記録を<br>登録しますか？</div>
-          <%= form_with model:@memory_square,class:"result-page__form",url: results_memory_square_path, id: "memory-square-game-form", data: { game: "memory_square" }, local: true do|f|  %>
-            <%= f.text_field :nickname, placeholder: "ニックネーム入力", class: "result-page__name-form" %>
+          <%= form_with model:@memory_square,class:"result-page__form",url: results_memory_square_path, id: "memory-square-game-form",
+          autocomplete: "off", data: { game: "memory_square" }, local: true do|f|  %>
+            <%= f.text_field :nickname, placeholder: "ニックネーム入力", class: "result-page__name-form" ,autocomplete: "off" %>
              <%= f.hidden_field :score, id: "memory-square-result-page__score-field" %>
             <%= submit_tag "登録", class: "result-page__registration-button" %>
           <% end %>
+           <% if @memory_square.errors.any? %>
+        <div class="error-messages">
+          <ul>
+            <% @memory_square.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       </div>
       <div class="hover-area">
         <div class="result-button">
