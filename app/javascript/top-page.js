@@ -1,11 +1,18 @@
 document.addEventListener("turbo:load", () => {
+  // トップページの特定の要素を取得し、存在しない場合は処理を終了
+  const topPageElement = document.querySelector(".top-page__ranking-box");
+  if (!topPageElement) {
+    return; // トップページでない場合、処理を終了
+  }
   // 最初に全てのランキングボックスを非表示にする
   document.querySelectorAll(".top-page__ranking-box").forEach((box) => {
     box.classList.remove("active");
     box.classList.add("inactive");
   });
-
-  // localStorage から最後にプレイしたゲームを取得
+const TopHoverSound =document.getElementById("top-hover");
+const RankChangeSound =document.getElementById("top-ranking-change");
+const TopButtonClickSound =document.getElementById("top-button-click") 
+// localStorage から最後にプレイしたゲームを取得
   const lastPlayedGame =
     localStorage.getItem("lastPlayedGame") || "color_rock_paper_sicissors";
 
@@ -68,7 +75,8 @@ document.addEventListener("turbo:load", () => {
         box.classList.remove("active");
         box.classList.add("inactive");
       });
-
+     
+      
       // クリックされたゲームのランキングボックスを表示・アクティブ化
       const targetBox = document.querySelector(
         `.top-page__ranking-box[data-game="${game}"]`
@@ -76,10 +84,30 @@ document.addEventListener("turbo:load", () => {
       if (targetBox) {
         targetBox.classList.remove("inactive");
         targetBox.classList.add("active");
+        // ランキング変更音を再生
+        if (RankChangeSound) {
+          RankChangeSound.currentTime = 0; // 再生位置をリセット
+          RankChangeSound.play();
+        }
       }
     });
   });
+  // リンククリック時の音声再生と遅延
+  document.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (TopButtonClickSound) {
+        event.preventDefault(); // デフォルトのリンク動作を一旦キャンセル
+        TopButtonClickSound.currentTime = 0;
+        TopButtonClickSound.volume = 0.3;
+        TopButtonClickSound.play();
 
+        // 音が聞こえる時間を作るために遅延を入れてから遷移
+        setTimeout(() => {
+          window.location.href = link.href;
+        }, 500); // 500ms遅延
+      }
+    });
+  });
   // トロフィー画像を一度回転させるイベントを設定
   document.querySelectorAll(".top-page__game-box").forEach((gameBox) => {
     const trophyImage = gameBox.querySelector(".top-page__trophy-image");
@@ -87,7 +115,15 @@ document.addEventListener("turbo:load", () => {
     gameBox.addEventListener("mouseenter", () => {
       // 回転クラスを一時的に追加
       trophyImage.classList.add("rotate-once");
-
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("mouseenter", () => {
+          if (TopHoverSound) {
+            TopHoverSound.currentTime = 0; // 再生位置をリセット
+            TopHoverSound.volume = 0.3
+            TopHoverSound.play();
+          }
+        });
+      });
       // アニメーションが終わる頃にクラスを削除
       setTimeout(() => {
         trophyImage.classList.remove("rotate-once");

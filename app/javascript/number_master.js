@@ -1,10 +1,13 @@
 document.addEventListener("turbo:load", () => {
-
   let timer = 0;
   let timerInterval;
   let gameStarted = false;
   const grid = [...Array(4)].map(() => Array(4).fill(null));
   let activeCell = null;
+
+
+  const startButton = document.getElementById("startButton");
+  const backButton = document.querySelector(".game-page__BackTitleButton");
 
   function updateTimer() {
     timer += 10;
@@ -23,9 +26,10 @@ document.addEventListener("turbo:load", () => {
       timerInterval = setInterval(updateTimer, 10);
     }
 
-    if (!memorySquareTable || !questionBox) {
-      return null;
-    } // テーブルや質問ボックスが無い場合は終了
+    // スタートボタンを非表示にする
+    startButton.classList.add("hidden-opacity");
+    backButton.classList.add("hidden-opacity");
+
   }
 
   // クエリパラメータからゲームタイムを取得
@@ -39,6 +43,9 @@ document.addEventListener("turbo:load", () => {
       gameTimeElement.innerText = `ゲームタイム: ${gameTime}秒`;
     }
   }
+
+
+
 
   function showMessage(text, type = "success") {
     const messageDiv = document.createElement("div");
@@ -218,10 +225,18 @@ document.addEventListener("turbo:load", () => {
     }
   };
 
+
   document.querySelectorAll(".sudoku-cell").forEach(cell => {
     cell.addEventListener('click', () => {
+      // 前のアクティブセルのスタイルをリセット
+      if (activeCell) {
+        activeCell.style.backgroundColor = ""; // 以前選ばれていたセルの背景色をリセット
+      }
+
+      // 新しいアクティブセルのスタイルを変更
       activeCell = cell;
       cell.focus();
+      cell.style.backgroundColor = "lightblue"; // アクティブなセルに背景色を追加
       console.log("アクティブなセルが設定されました。", activeCell);
     });
     cell.setAttribute('readonly', true);
@@ -233,4 +248,5 @@ document.addEventListener("turbo:load", () => {
       setNumber(parseInt(number));
     });
   });
+
 });
