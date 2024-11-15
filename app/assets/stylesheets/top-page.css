@@ -220,7 +220,7 @@
 }
 
 /* トロフィー画像にホバーした時に説明文を表示 */
-.top-page__trophy-box:hover .top-page__trophy-description {
+.top-page__game-box:hover .top-page__trophy-description {
   display: block; /* ホバー時に表示 */
   opacity: 1;
   transition: opacity 0.3s ease-in-out; /* 表示アニメーション */
@@ -237,20 +237,35 @@
 
 .top-page__ranking-box {
   width: 90%;
-  height: 95%;
+  height: 80%; 
   border: 1px solid white;
   border-radius: 10px;
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   font-family: "M PLUS 1", sans-serif;
   font-weight: 600;
-  padding: 5px;
-  margin-bottom: 10px;
-  animation-duration: 0.5s;
+  padding: 10px;
+  margin-bottom: 20px; 
+  overflow: hidden;
+  /* 全角文字対応の省略設定 */
+  white-space: nowrap; /* テキストを1行に制限 */
+  overflow: hidden;    /* 溢れた部分を隠す */
+  text-overflow: ellipsis; /* 省略記号を表示 */
 }
 
+
+.new-label {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 5px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: bold;
+}
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -308,6 +323,8 @@
   align-items: center;
   justify-content: center;
 }
+
+
 .top-page__ranking-score-box{
   display: flex;
   align-items: center;
@@ -347,7 +364,7 @@
 .top-page__ranking-number3 {
   font-size: 30px;
   margin: 0;
-  width: 100%;
+  width:100%;
   height: 20%;
   display: flex;
 }

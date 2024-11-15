@@ -24,3 +24,4 @@
 //= link top-hover.mp3
 //= link top-button-click.mp3
 //= link fever-sound.mp3
+//= link top-bgm.mp3
