@@ -39,7 +39,7 @@ document.addEventListener("turbo:load", () => {
  const countDownSound  = document.getElementById("countDown-id");
  const gameEndSound    = document.getElementById("game-End-Sound-id");
  //ゲームが始まる前に表示するメッセージ
- const gameStartButtonImage = "/assets/GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/item/startButton.png";
+//  const gameStartButtonImage = "/assets/GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/item/startButton.png";
  //「おわり！」の文字画像を格納
  const gameEndImage = "/assets/GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/item/gameEnd.png";
  //カウントダウンの画像を格納
@@ -132,9 +132,9 @@ function animateCommand(addComd, comdStart){
     console.log("現在のコンボ数は",comdStart);
   }
 }
-// 初期メッセージの表示
-startMessageImage.src = gameStartButtonImage; // 画像パスを設定
-startMessageImage.style.display = "block"; // 初期は表示
+// // 初期メッセージの表示
+// startMessageImage.src = gameStartButtonImage; // 画像パスを設定
+// startMessageImage.style.display = "block"; // 初期は表示
 
 // カウントダウンを表示し、終了後にゲームを開始する関数
 function startCountdown() {
