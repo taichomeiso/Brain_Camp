@@ -1,0 +1,27 @@
+# config/locales/ja.yml
+ja:
+  activerecord:
+    attributes:
+      color_rock_paper_sicissor:
+        nickname: ""
+      memory_square:
+        nickname: ""
+      number_master:
+        nickname: ""
+    errors:
+      models:
+        color_rock_paper_sicissor:
+          attributes:
+            nickname:
+              taken: "このニックネームは既に使用されています!!"
+              blank: "ニックネームを記入してください!!"
+        memory_square:
+          attributes:
+            nickname:
+              taken: "このニックネームは既に使用されています!!"
+              blank: "ニックネームを記入してください!!"
+        number_master:
+          attributes:
+            nickname:
+              taken: "このニックネームは既に使用されています!!"
+              blank: "ニックネームを記入してください!!"

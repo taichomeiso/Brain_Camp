@@ -5,10 +5,12 @@ class ResultsController < ApplicationController
     return unless request.post?
 
     @color_rock_paper_sicissor.assign_attributes(color_rock_paper_sicissor_params)
+
     if @color_rock_paper_sicissor.save
       redirect_to root_path, notice: '記録が登録されました！'
     else
-      render :color_rock_paper_sicissors
+      # Rails 7の場合は status: :unprocessable_entity を追加
+      render :color_rock_paper_sicissors, status: :unprocessable_entity
     end
   end
 
@@ -21,7 +23,7 @@ class ResultsController < ApplicationController
     if @memory_square.save
       redirect_to root_path, notice: '記録が登録されました！'
     else
-      render :memory_square
+      render :memory_square, status: :unprocessable_entity
     end
   end
 
@@ -49,7 +51,7 @@ class ResultsController < ApplicationController
       redirect_to root_path, notice: '記録が登録されました！'
     else
       Rails.logger.debug "Errors: #{@number_master.errors.full_messages}"
-      render :number_master, alert: '記録の登録に失敗しました。'
+      render :number_master, alert: '記録の登録に失敗しました。', status: :unprocessable_entity
     end
   end
 
@@ -71,10 +73,5 @@ class ResultsController < ApplicationController
     minutes = seconds.to_i / 60
     remaining_seconds = (seconds % 60).round(3) # 小数点以下3桁まで表示
     format('%d:%05.3f', minutes, remaining_seconds) # 小数点以下3桁で表示
-  end
-
-  def show
-    # 必要に応じてレコードのIDで取得
-    @result = Result.find(params[:id])
   end
 end
