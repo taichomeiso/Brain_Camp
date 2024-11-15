@@ -1,0 +1,287 @@
+.number_master_timer {
+  font-size: 70px;
+  margin: 20px;
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+
+#buttons {
+  /* font-size: 50px;
+  text-align: center;
+  margin-top: 20px; */
+  font-size: 30px;
+  /* フォントサイズを調整 */
+  text-align: center;
+  margin-top: 20px;
+  /* 上部の余白調整 */
+  display: flex;
+  justify-content: center;
+  /* ボタンを中央に配置 */
+  gap: 20px;
+  /* ボタンの間隔を追加 */
+}
+
+#buttons button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 40px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.number-master_table {
+  border-collapse: collapse;
+  margin: 30px auto;
+  /* width: 80%; */
+  /* グリッドの幅を画面幅に合わせる */
+  max-width: 350px;
+  /* 最大幅を設定 */
+}
+
+.number-master_table td {
+  border: 1px solid black;
+  width: 25%;
+  height: 85px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 40px;
+  border: none;
+}
+
+/* 太い線で 2×2 のブロックを分ける */
+.number-master_table td:nth-child(2),
+.number-master_table td:nth-child(4) {
+  border-right: 2px solid black;
+}
+
+.number_master tr:nth-child(2) td,
+.number-master_table tr:nth-child(4) td {
+  border-bottom: 2px solid black;
+}
+
+/* 花火のアニメーションのスタイル */
+.firework {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 1s, opacity 1s;
+  width: 300px;
+  height: 300px;
+}
+
+.hidden {
+  display: none;
+}
+
+.number_master__tutorial-movie-screen {
+  position: fixed;
+  width: 700px;
+  height: 710px;
+  border: 10px solid #545454;
+  box-shadow: 0 0 50px #8a8a8a;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(206, 206, 206);
+  margin-bottom: 50px;
+  z-index: 1001;
+  color: orange;
+  font-family: "Reggae One", system-ui;
+  /* font-family: "Train One", system-ui; */
+}
+
+
+
+
+.number_master__tutorial-description-wrapper {
+  position: fixed;
+  width: 700px;
+  height: 690px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1002;
+}
+
+.number_master__upper-tutorial-container {
+  position: relative;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.number_master__upper-tutorial-container .number_master__volume-box {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: 2px solid rgb(69, 69, 69);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: inherit;
+}
+
+.number_master__title-container {
+  display: flex;
+  margin-top: 50px;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 10px;
+  border: 7px solid transparent;
+  border-image: linear-gradient(45deg, #000000, #ffffff);
+  border-image-slice: 1;
+  border-radius: 10px;
+}
+
+/* .number_master__number-container {
+  width: 90px;
+  height: 90px;
+  color: white;
+  font-size: 36px;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 20px;
+  font-weight: bold;
+} */
+
+
+.number_master__title {
+  font-size: 90px;
+  margin: 0;
+  z-index: inherit;
+  color: rgba(69, 69, 69);
+  letter-spacing: 10px;
+}
+
+.number_master__middle-tutorial-container {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.number_master__play-tutorial-box {
+  width: 60%;
+  height: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 8px solid rgb(113, 113, 113);
+  border-radius: 10px;
+  background-color: rgb(252, 252, 252);
+  cursor: pointer;
+
+  /* 立体感を出すためのボックスシャドウ */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3),
+    /* より大きな影 */
+    0 6px 12px rgba(0, 0, 0, 0.2);
+  /* 近くの影 */
+
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  /* スムーズなアニメーション */
+}
+
+.number_master__play-tutorial-box:hover {
+  /* ホバー時の影を小さくして凹んでいるように見せる */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+    /* 小さな影 */
+    0 2px 4px rgba(0, 0, 0, 0.2);
+  /* 近くの影 */
+
+  transform: translateY(4px);
+  /* 少し下に移動させる */
+}
+
+.number_master__play-tutorial-image {
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+  display: block;
+  border-radius: 50%;
+
+  /* ホバー時の影を変更 */
+  transition: box-shadow 0.3s ease;
+  /* ホバー時のトランジション */
+}
+
+.number_master__play-tutorial-image:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* ホバー時の影を強くする */
+  transform: translateY(4px);
+  /* 少し下に移動させる */
+}
+
+.number_master__watch-tutorial {
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+  margin: 0;
+  padding: 10px;
+  border: 10px outset #7e322a;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.number_master__tutorial-movie {
+  width: 180%;
+  height: 170%;
+  border-radius: 10px;
+  border: 8px solid rgb(250, 187, 0);
+  display: none;
+  background-color: black;
+}
+
+.number_master__lower-tutorial-container {
+  position: relative;
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: -40px;
+}
+
+.number_master__square-image-container {
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+}
+
+.number_master__number-table td.highlighted {
+  border: 2px solid orange;
+}
+
+.hidden-opacity {
+  opacity: 0;
+  pointer-events: none;
+}

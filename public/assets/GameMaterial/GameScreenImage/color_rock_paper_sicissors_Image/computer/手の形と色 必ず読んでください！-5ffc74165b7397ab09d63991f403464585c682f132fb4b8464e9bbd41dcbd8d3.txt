@@ -1,0 +1,8 @@
+computer_1_image パー　　青
+computer_2_image パー　　赤
+computer_3_image グー　　青
+computer_4_image グー　　赤
+computer_5_image チョキ　青
+computer_6_image チョキ　赤
+
+この並びは絶対に変えないでください！！
