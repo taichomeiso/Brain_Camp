@@ -1,5 +1,58 @@
 /* --- アニメーション --- */
 
+/* 虹色のテキストアニメーション */
+@keyframes rainbowText {
+  0% {
+    color: red;
+  }
+  14% {
+    color: orange;
+  }
+  28% {
+    color: yellow;
+  }
+  42% {
+    color: green;
+  }
+  57% {
+    color: blue;
+  }
+  71% {
+    color: indigo;
+  }
+  85% {
+    color: violet;
+  }
+  100% {
+    color: red;
+  }
+}
+
+/* カラフルな光るエフェクトのアニメーション */
+@keyframes colorfulGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6); /* 赤 */
+  }
+  25% {
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.8), 0 0 20px rgba(0, 0, 255, 0.6); /* 青 */
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 0, 0.6); /* 黄 */
+  }
+  75% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8), 0 0 20px rgba(0, 255, 0, 0.6); /* 緑 */
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 0, 0, 0.6); /* 赤に戻る */
+  }
+}
+
+/* フィーバーモード時のテーブルスタイル */
+.memory-square__table.fever-mode {
+  animation: colorfulGlow 2s infinite alternate;
+  border-radius: 10px; /* 角を少し丸くして見栄えを良くする */
+}
+
 /* フェードインアニメーション */
 @keyframes fadeInSquare {
   0% {
@@ -61,6 +114,10 @@
   font-family: "M PLUS 1", sans-serif;
 }
 
+.memory-square__game-screen.fever-background {
+  background-color: rgb(66, 66, 66);
+}
+
 .memory-square__countdown-screen {
   width: 100%;
   height: 100%;
@@ -110,21 +167,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.memory-square__upper-tutorial-container .memory-square__volume-box {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  border: 2px solid rgb(69, 69, 69);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: inherit;
 }
 
 .memory-square__title-container {
@@ -394,6 +436,8 @@
 .memory-square__fever-time {
   font-size: 30px;
   letter-spacing: -2px;
+  animation: rainbowText 3s infinite linear;
+  font-weight: bold; /* 見やすさのために太字に */
 }
 
 .memory-square__combo-number {
@@ -468,27 +512,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.memory-square__upper-container .memory-square__volume-box {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  border: 2px solid white;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: inherit;
-}
-
-.memory-square__volume-on-img,
-.memory-square__volume-off-img {
-  width: 40px;
-  height: 40px;
 }
 
 .memory-square__count-box {

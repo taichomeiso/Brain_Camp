@@ -2,6 +2,36 @@
   <%= link_to root_path, class: "game-page__BackTitleButton" do %>
      <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>   
   <% end %>
+  
+  <!-- チュートリアル画面 -->
+    <div class="number_master__tutorial-movie-screen" >
+      <%= video_tag "", controls: true, autoplay: false, loop: false, class: "number_master__tutorial-movie" %>
+      <div class="number_master__tutorial-description-wrapper">
+        <div class="number_master__upper-tutorial-container">
+          
+          <div class="number_master__title-container">
+            <div class="number_master__number-container">
+              
+              
+            </div>
+            <h1 class="number_master__title">数の達人</h1>
+          </div>
+        </div>
+        <div class="number_master__middle-tutorial-container">
+          <div class="number_master__play-tutorial-box">
+            # <%= image_tag "memory-square-images/play-tutorial.svg", alt: "動画再生ボタン", class: "memory-square__play-tutorial-image" %>
+          </div>
+        </div>
+        <div class="number_master__lower-tutorial-container">
+          <h1 class="number_master__watch-tutorial">ゲーム説明を見よう</h1>
+          <div class="number_master__square-image-container">
+            
+          </div>
+        </div>
+
+      </div> 
+    </div>
+
   <div class="game-page__MainGameScreen">
     <div id="number_master_timer" class="number_master_timer">00:00:00</div>
     <table class="number-master_table">

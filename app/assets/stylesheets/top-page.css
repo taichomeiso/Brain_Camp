@@ -216,7 +216,7 @@
   font-size: 14px;
   text-align: center;
   width: 200px;
-  z-index: 10; /* トロフィーの上に表示 */
+  pointer-events: none; /* クリックイベントを無効化 */
 }
 
 /* トロフィー画像にホバーした時に説明文を表示 */
