@@ -59,6 +59,9 @@ document.addEventListener("turbo:load", () => {
  };
  // 画像番号に基づいて相手の手をランダムに選択する
  let currentHandNumber = Math.floor(Math.random() * (Number_Steps_Max+ 1 - Number_Steps_Min)) + Number_Steps_Min;
+ if (!rock) {
+  return null;
+ }
  // let imagePath = "/assets/GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/computer/computer_" + currentHandNumber + "_image.png";
  // document.getElementById("color_rock_paper_computer_id").src = imagePath;  
  function displayComputerHand(number){
@@ -132,9 +135,7 @@ function animateCommand(addComd, comdStart){
 // 初期メッセージの表示
 startMessageImage.src = gameStartButtonImage; // 画像パスを設定
 startMessageImage.style.display = "block"; // 初期は表示
-if (!rock) {
- return null;
-}
+
 // カウントダウンを表示し、終了後にゲームを開始する関数
 function startCountdown() {
  let countdownIndex = 0;
