@@ -14,11 +14,21 @@
       <div class="color_rock_paper_sicissors-result-page__score-display"></div>
       <div class="result-page__Registration-form">
         <div class="result-page__username"id="typing-text">ランキングに記録を<br>登録しますか？</div>
-          <%= form_with model: @color_rock_paper_sicissor, class: "result-page__form", url: results_color_rock_paper_sicissors_path, id: "color-rock-paper-scissors-game-form", data: { game: "color_rock_paper_sicissors" }, local: true do |f| %>
-            <%= f.text_field :nickname,  placeholder: "ニックネーム入力", class: "result-page__name-form" %>
+          <%= form_with model: @color_rock_paper_sicissor, class: "result-page__form", url: results_color_rock_paper_sicissors_path, id: "color-rock-paper-scissors-game-form",
+          autocomplete: "off", data: { game: "color_rock_paper_sicissors" }, local: true do |f| %>
+            <%= f.text_field :nickname,  placeholder: "ニックネーム入力", class: "result-page__name-form" ,autocomplete: "off"%>
              <%= f.hidden_field :score, id: "color_rock_paper_sicissors-result-page__score-field" %>
             <%= submit_tag "登録", class: "result-page__registration-button" %>
           <% end %>
+           <% if @color_rock_paper_sicissor.errors.any? %>
+        <div class="error-messages">
+          <ul>
+            <% @color_rock_paper_sicissor.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       </div>
       <div class="hover-area">
         <div class="result-button">
