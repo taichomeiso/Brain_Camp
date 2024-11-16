@@ -5,15 +5,19 @@ document.addEventListener("turbo:load", () => {
   const grid = [...Array(4)].map(() => Array(4).fill(null));
   let activeCell = null;
 
-
   const startButton = document.getElementById("startButton");
   const backButton = document.querySelector(".game-page__BackTitleButton");
 
   const fireworksSound = new Audio("/assets/number_master/fireworks2.mp3");
-  const correct_answerSound = new Audio("/assets/number_master/correct-answer.mp3");
-  const Incorrect_answerSound = new Audio("/assets/number_master/Incorrect-answer.mp3");
-  const game_page_bgmSound = new Audio("/assets/number_master/game_page_bgm.mp3");
-
+  const correct_answerSound = new Audio(
+    "/assets/number_master/correct-answer.mp3"
+  );
+  const Incorrect_answerSound = new Audio(
+    "/assets/number_master/Incorrect-answer.mp3"
+  );
+  const game_page_bgmSound = new Audio(
+    "/assets/number_master/game_page_bgm.mp3"
+  );
 
   // カウントダウン用の要素を作成
   const countdownElement = document.createElement("div");
@@ -21,8 +25,8 @@ document.addEventListener("turbo:load", () => {
   countdownElement.style.top = "50%";
   countdownElement.style.left = "50%";
   countdownElement.style.transform = "translate(-50%, -50%)";
-  countdownElement.style.fontSize = "15rem";// フォントサイズ
-  countdownElement.style.fontWeight = "bold";// フォントの太さ
+  countdownElement.style.fontSize = "15rem"; // フォントサイズ
+  countdownElement.style.fontWeight = "bold"; // フォントの太さ
   countdownElement.style.color = "#000"; // 文字色
   countdownElement.style.zIndex = "999"; // 他の要素より前面に表示
   countdownElement.style.transition = "opacity 1s"; // アニメーション（不透明度の変化）
@@ -32,9 +36,11 @@ document.addEventListener("turbo:load", () => {
     timer += 10;
     const totalSeconds = Math.floor(timer / 1000);
     const minutes = Math.floor(totalSeconds / 60);
-    const seconds = (totalSeconds % 60).toString().padStart(2, '0');
-    const milliseconds = (timer % 1000).toString().padStart(3, '0').slice(0, 2);
-    document.getElementById("number_master_timer").innerText = `${minutes}:${seconds}.${milliseconds}秒`;
+    const seconds = (totalSeconds % 60).toString().padStart(2, "0");
+    const milliseconds = (timer % 1000).toString().padStart(3, "0").slice(0, 2);
+    document.getElementById(
+      "number_master_timer"
+    ).innerText = `${minutes}:${seconds}.${milliseconds}秒`;
   }
 
   function startGame() {
@@ -47,13 +53,12 @@ document.addEventListener("turbo:load", () => {
 
     // BGMを再生
     game_page_bgmSound.loop = true; // ループを設定
-    game_page_bgmSound.play();      // BGMを再生
-    game_page_bgmSound.volume = 0.3; // 音量を設定
+    game_page_bgmSound.play(); // BGMを再生
+    game_page_bgmSound.volume = 0.1; // 音量を設定
 
     // スタートボタンを非表示にする
     startButton.classList.add("hidden-opacity");
     backButton.classList.add("hidden-opacity");
-
   }
 
   // クエリパラメータからゲームタイムを取得
@@ -68,13 +73,11 @@ document.addEventListener("turbo:load", () => {
     }
   }
 
-
   function stopBGM() {
     // ゲーム終了時にBGMを停止
-    game_page_bgmSound.pause();  // 再生を停止
+    game_page_bgmSound.pause(); // 再生を停止
     game_page_bgmSound.currentTime = 0; // 再生位置をリセット
   }
-
 
   function showMessage(text, type = "success") {
     const messageDiv = document.createElement("div");
@@ -134,7 +137,10 @@ document.addEventListener("turbo:load", () => {
       }
       if (Math.random() > 0.5) {
         for (let row = 0; row < 4; row++) {
-          [baseGrid[row][i], baseGrid[row][i + 1]] = [baseGrid[row][i + 1], baseGrid[row][i]];
+          [baseGrid[row][i], baseGrid[row][i + 1]] = [
+            baseGrid[row][i + 1],
+            baseGrid[row][i],
+          ];
         }
       }
     }
@@ -151,7 +157,9 @@ document.addEventListener("turbo:load", () => {
 
       if (!grid[row][col]) {
         grid[row][col] = sudokuGrid[row][col];
-        const cell = document.querySelector(`table tr:nth-child(${row + 1}) td:nth-child(${col + 1}) input`);
+        const cell = document.querySelector(
+          `table tr:nth-child(${row + 1}) td:nth-child(${col + 1}) input`
+        );
         cell.value = sudokuGrid[row][col];
         cell.disabled = true;
         hints++;
@@ -159,41 +167,38 @@ document.addEventListener("turbo:load", () => {
     }
   }
 
-
   // 花火の表示と効果音再生
   function showFireworks() {
     // 効果音を再生
     fireworksSound.currentTime = 0; // 再生位置をリセット
-    fireworksSound.play();          // 効果音を再生
+    fireworksSound.play(); // 効果音を再生
     fireworksSound.volume = 1.0; // 音量を設定
 
-
-
     const fireworkCount = 20; // 花火の数
-    const fireworksContainer = document.createElement('div');
-    fireworksContainer.style.position = 'fixed';
-    fireworksContainer.style.top = '0';
-    fireworksContainer.style.left = '0';
-    fireworksContainer.style.pointerEvents = 'none';
+    const fireworksContainer = document.createElement("div");
+    fireworksContainer.style.position = "fixed";
+    fireworksContainer.style.top = "0";
+    fireworksContainer.style.left = "0";
+    fireworksContainer.style.pointerEvents = "none";
     document.body.appendChild(fireworksContainer);
 
     for (let i = 0; i < fireworkCount; i++) {
-      const firework = document.createElement('div');
-      firework.className = 'firework';
+      const firework = document.createElement("div");
+      firework.className = "firework";
       firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-      firework.style.width = '15px';
-      firework.style.height = '15px';
-      firework.style.position = 'absolute';
+      firework.style.width = "15px";
+      firework.style.height = "15px";
+      firework.style.position = "absolute";
       firework.style.top = `${Math.random() * window.innerHeight}px`;
       firework.style.left = `${Math.random() * window.innerWidth}px`;
-      firework.style.opacity = '1';
+      firework.style.opacity = "1";
 
       fireworksContainer.appendChild(firework);
 
       // 花火のアニメーション
       setTimeout(() => {
-        firework.style.transform = 'scale(20)';
-        firework.style.opacity = '0';
+        firework.style.transform = "scale(20)";
+        firework.style.opacity = "0";
       }, 100);
 
       // 花火を消す
@@ -221,13 +226,15 @@ document.addEventListener("turbo:load", () => {
     // ゲームタイムを取得
     const totalSeconds = Math.floor(timer / 1000);
     const minutes = Math.floor(totalSeconds / 60);
-    const seconds = (totalSeconds % 60).toString().padStart(2, '0');
-    const milliseconds = (timer % 1000).toString().padStart(3, '0').slice(0, 2);
+    const seconds = (totalSeconds % 60).toString().padStart(2, "0");
+    const milliseconds = (timer % 1000).toString().padStart(3, "0").slice(0, 2);
     const gameTime = `${minutes}:${seconds}.${milliseconds}`;
 
     // リザルト画面へゲームタイムをクエリパラメータで渡す
     setTimeout(() => {
-      window.location.href = `/results/number_master?game_time=${encodeURIComponent(gameTime)}`;
+      window.location.href = `/results/number_master?game_time=${encodeURIComponent(
+        gameTime
+      )}`;
     }, 3500); // メッセージの表示時間と合わせる
 
     // BGM停止
@@ -235,7 +242,6 @@ document.addEventListener("turbo:load", () => {
 
     return true;
   }
-
 
   function startCountdown() {
     let countdown = 3;
@@ -258,11 +264,12 @@ document.addEventListener("turbo:load", () => {
     // カウントダウン終了後、スタートする
   }
 
-
   document.getElementById("startButton").addEventListener("click", () => {
-    grid.forEach((row, rowIndex) => row.forEach((_, colIndex) => grid[rowIndex][colIndex] = 0));
-    document.querySelectorAll(".sudoku-cell").forEach(cell => {
-      cell.value = '';
+    grid.forEach((row, rowIndex) =>
+      row.forEach((_, colIndex) => (grid[rowIndex][colIndex] = 0))
+    );
+    document.querySelectorAll(".sudoku-cell").forEach((cell) => {
+      cell.value = "";
       cell.disabled = false;
     });
     setHints();
@@ -284,11 +291,10 @@ document.addEventListener("turbo:load", () => {
       activeCell.value = num;
       grid[row][col] = num;
 
-
       // 正解の場合に音を鳴らす
       correct_answerSound.currentTime = 0; // 再生位置をリセット
-      correct_answerSound.play();          // 正解音を再生
-      correct_answerSound.volume = 1.0; // 音量を設定
+      correct_answerSound.play(); // 正解音を再生
+      correct_answerSound.volume = 0.2; // 音量を設定
 
       if (checkCompletion()) {
         clearInterval(timerInterval);
@@ -296,15 +302,14 @@ document.addEventListener("turbo:load", () => {
     } else {
       // 不正解の場合に音を鳴らす
       Incorrect_answerSound.currentTime = 0; // 再生位置をリセット
-      Incorrect_answerSound.play();          // 不正解音を再生
-      Incorrect_answerSound.volume = 1.0; // 音量を設定
+      Incorrect_answerSound.play(); // 不正解音を再生
+      Incorrect_answerSound.volume = 0.1; // 音量を設定
       showMessage("重複しています！別の数字を選んでください。", "error");
     }
   };
 
-
-  document.querySelectorAll(".sudoku-cell").forEach(cell => {
-    cell.addEventListener('click', () => {
+  document.querySelectorAll(".sudoku-cell").forEach((cell) => {
+    cell.addEventListener("click", () => {
       // 前のアクティブセルのスタイルをリセット
       if (activeCell) {
         activeCell.style.backgroundColor = ""; // 以前選ばれていたセルの背景色をリセット
@@ -316,11 +321,11 @@ document.addEventListener("turbo:load", () => {
       cell.style.backgroundColor = "lightblue"; // アクティブなセルに背景色を追加
       console.log("アクティブなセルが設定されました。", activeCell);
     });
-    cell.setAttribute('readonly', true);
+    cell.setAttribute("readonly", true);
   });
 
-  document.querySelectorAll('.number-button').forEach(button => {
-    button.addEventListener('click', (event) => {
+  document.querySelectorAll(".number-button").forEach((button) => {
+    button.addEventListener("click", (event) => {
       const numberText = event.target.innerText;
 
       // 「消す」ボタンが押された場合の処理
@@ -340,5 +345,4 @@ document.addEventListener("turbo:load", () => {
       }
     });
   });
-
 });
