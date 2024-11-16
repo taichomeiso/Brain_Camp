@@ -274,10 +274,21 @@ document.addEventListener("turbo:load", () => {
     if (isValidMove(row, col, num)) {
       activeCell.value = num;
       grid[row][col] = num;
+
+
+      // 正解の場合に音を鳴らす
+      correct_answerSound.currentTime = 0; // 再生位置をリセット
+      correct_answerSound.play();          // 正解音を再生
+      correct_answerSound.volume = 1.0; // 音量を設定
+
       if (checkCompletion()) {
         clearInterval(timerInterval);
       }
     } else {
+      // 不正解の場合に音を鳴らす
+      Incorrect_answerSound.currentTime = 0; // 再生位置をリセット
+      Incorrect_answerSound.play();          // 不正解音を再生
+      Incorrect_answerSound.volume = 1.0; // 音量を設定
       showMessage("重複しています！別の数字を選んでください。", "error");
     }
   };
