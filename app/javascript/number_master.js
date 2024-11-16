@@ -258,6 +258,8 @@ document.addEventListener("turbo:load", () => {
     });
     setHints();
     // startGame();
+    // カウントダウン開始
+    startCountdown();
   });
 
   window.setNumber = function (num) {
