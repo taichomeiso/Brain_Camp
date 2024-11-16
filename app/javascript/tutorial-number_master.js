@@ -21,30 +21,28 @@ document.addEventListener("turbo:load", () => {
 
   const watchMovie = document.querySelector(".number_master__watch-tutorial");
 
-  const volumeBoxes = document.querySelectorAll(".number_master__volume-box");
+
 
   if (!gameStartButton) {
     return null;
   }
 
-  // playTutorialButton.addEventListener("click", () => {
-  //   tutorialDescriptionScreen.style.display = "none";
-  //   tutorialMovie.style.display = "flex";
-  //   volumeBoxes.forEach((volumeBox) => {
-  //     volumeBox.style.display = "none";
-  //   });
-  //   tutorialMovie.play();
-  // });
+  playTutorialButton.addEventListener("click", () => {
+    tutorialDescriptionScreen.style.display = "none";
+    tutorialMovie.style.display = "flex";
+    tutorialMovie.play();
+  });
 
-  // tutorialMovieBox.addEventListener("click", () => {
-  //   playTutorialButton.click();
-  // });
+  tutorialMovieBox.addEventListener("click", () => {
+    playTutorialButton.click();
+  });
 
-  // watchMovie.addEventListener("click", () => {
-  //   playTutorialButton.click();
-  // });
+  watchMovie.addEventListener("click", () => {
+    playTutorialButton.click();
+  });
 
   gameStartButton.addEventListener("click", () => {
+    tutorialMovie.pause();
     tutorialScreen.style.display = "none";
   });
 

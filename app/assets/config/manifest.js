@@ -25,3 +25,8 @@
 //= link top-button-click.mp3
 //= link fever-sound.mp3
 //= link top-bgm.mp3
+//= link number_master/correct-answer.mp3
+//= link number_master/Incorrect-answer.mp3
+//= link number_master/fireworks2.mp3
+//= link number_master/game_page_bgm.mp3
+//= link number_master/fireworks2.mp3

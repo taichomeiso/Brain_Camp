@@ -11,3 +11,5 @@ Rails.application.config.assets.precompile += %w[memory-square-tutorial-movie.mp
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+# 動画ファイルをアセットパイプラインに追加
+Rails.application.config.assets.precompile += %w[number_master_tutorial-movie.mp4]

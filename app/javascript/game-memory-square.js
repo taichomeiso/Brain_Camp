@@ -114,7 +114,7 @@ document.addEventListener("turbo:load", () => {
   // ゲームの制限時間設定
   let timeLimit = 60; // 制限時間（秒）
   const totalGameTime = timeLimit; // 合計ゲーム時間
-  const countMax = 36; // 最大問題数
+  const countMax = 39; // 最大問題数
 
   // ゲームの状態フラグ
   let previousTd = null; // 前回のマス目
@@ -158,10 +158,10 @@ document.addEventListener("turbo:load", () => {
     // ===== ゲーム開始時の処理 =====
     const startGame = () => {
       // BGMの設定
-      bgmAudio.volume = 0.2;
+      bgmAudio.volume = 0.3;
       bgmAudio.loop = true;
       bgmAudio.play();
-      feverBgm.volume = 0.3;
+      feverBgm.volume = 0.4;
       feverBgm.loop = true;
 
       // ゲーム画面のコンテナ表示
