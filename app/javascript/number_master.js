@@ -69,6 +69,11 @@ document.addEventListener("turbo:load", () => {
   }
 
 
+  function stopBGM() {
+    // ゲーム終了時にBGMを停止
+    game_page_bgmSound.pause();  // 再生を停止
+    game_page_bgmSound.currentTime = 0; // 再生位置をリセット
+  }
 
 
   function showMessage(text, type = "success") {
