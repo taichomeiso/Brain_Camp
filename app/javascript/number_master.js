@@ -9,6 +9,25 @@ document.addEventListener("turbo:load", () => {
   const startButton = document.getElementById("startButton");
   const backButton = document.querySelector(".game-page__BackTitleButton");
 
+  const fireworksSound = new Audio("/assets/number_master/fireworks2.mp3");
+  const correct_answerSound = new Audio("/assets/number_master/correct-answer.mp3");
+  const Incorrect_answerSound = new Audio("/assets/number_master/Incorrect-answer.mp3");
+  const game_page_bgmSound = new Audio("/assets/number_master/game_page_bgm.mp3");
+
+
+  // カウントダウン用の要素を作成
+  const countdownElement = document.createElement("div");
+  countdownElement.style.position = "fixed";
+  countdownElement.style.top = "50%";
+  countdownElement.style.left = "50%";
+  countdownElement.style.transform = "translate(-50%, -50%)";
+  countdownElement.style.fontSize = "15rem";// フォントサイズ
+  countdownElement.style.fontWeight = "bold";// フォントの太さ
+  countdownElement.style.color = "#000"; // 文字色
+  countdownElement.style.zIndex = "999"; // 他の要素より前面に表示
+  countdownElement.style.transition = "opacity 1s"; // アニメーション（不透明度の変化）
+  document.body.appendChild(countdownElement);
+
   function updateTimer() {
     timer += 10;
     const totalSeconds = Math.floor(timer / 1000);
