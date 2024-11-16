@@ -4,6 +4,11 @@ document.addEventListener("turbo:load", () => {
   if (!topPageElement) {
     return; // トップページでない場合、処理を終了
   }
+  const bgm = document.getElementById("top-bgm");
+  if (bgm) {
+    bgm.volume = 0.1; // 20%の音量で再生
+  }
+
   // 最初に全てのランキングボックスを非表示にする
   document.querySelectorAll(".top-page__ranking-box").forEach((box) => {
     box.classList.remove("active");
@@ -35,19 +40,25 @@ const TopButtonClickSound =document.getElementById("top-button-click")
           console.error(`ランキングボックスが見つかりません。gameType: ${gameType}`);
           return;
         }
-
+    
         rankingBox.innerHTML = ""; // 既存のランキングをクリア
-
+        // 最新IDを取得
+      const latestId = window.latestRankingIdFor[gameType];
         data.forEach((ranking, index) => {
-          const scoreOrTime = gameType === "number_master" ? ranking.game_time : ranking.score;
-          const rankingHTML = `
+          const scoreOrTime = gameType === "number_master" ? ranking.game_time : ranking.score; 
+          const isNew = ranking.id === latestId; // 最新IDと一致するか判定
+
+            const rankingHTML = `
             <div class="top-page__ranking-number${index + 1 <= 3 ? index + 1 : ' other'}">
               <div class="top-page__ranking-number-box">
                 <span class="${index === 0 ? 'top-page__gold-number' : index === 1 ? 'top-page__silver-number' : index === 2 ? 'top-page__bronze-number' : ''}">
                   ${index + 1}位
                 </span>
               </div>
-              <div class="top-page__ranking-nickname-box">${ranking.nickname}</div>
+                <div class="top-page__ranking-nickname-box">
+               ${isNew ? '<span class="new-label">NEW</span>' : ''} <!-- NEWラベルを追加 -->
+                ${ranking.nickname}
+               </div>    
               <div class="top-page__ranking-score-box">${scoreOrTime}</div>
             </div>`;
           rankingBox.insertAdjacentHTML("beforeend", rankingHTML);
@@ -55,13 +66,16 @@ const TopButtonClickSound =document.getElementById("top-button-click")
       })
       .catch(error => console.error("ランキングの更新に失敗しました:", error));
   }
-
+ // 初期表示時のランキング更新
+ fetchAndUpdateRanking("color_rock_paper_sicissors", "/rankings/color_rock_paper_sicissors");
+ fetchAndUpdateRanking("number_master", "/rankings/number_master");
+ fetchAndUpdateRanking("memory_square", "/rankings/memory_square");
   // 各ゲームタイプのランキングを定期的に更新
   setInterval(() => {
     fetchAndUpdateRanking("color_rock_paper_sicissors", "/rankings/color_rock_paper_sicissors");
     fetchAndUpdateRanking("number_master", "/rankings/number_master");
     fetchAndUpdateRanking("memory_square", "/rankings/memory_square");
-  }, 30000); // 30秒ごとに更新
+  }, 3000); // 30秒ごとに更新
   // 初期状態で「色勝ちじゃんけん」ランキングを表示
   document.querySelector('.top-page__ranking-box[data-game="color_rock_paper_sicissors"]').classList.add("active");
 
