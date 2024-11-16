@@ -27,22 +27,22 @@ document.addEventListener("turbo:load", () => {
     return null;
   }
 
-  // playTutorialButton.addEventListener("click", () => {
-  //   tutorialDescriptionScreen.style.display = "none";
-  //   tutorialMovie.style.display = "flex";
-  //   volumeBoxes.forEach((volumeBox) => {
-  //     volumeBox.style.display = "none";
-  //   });
-  //   tutorialMovie.play();
-  // });
+  playTutorialButton.addEventListener("click", () => {
+    tutorialDescriptionScreen.style.display = "none";
+    tutorialMovie.style.display = "flex";
+    volumeBoxes.forEach((volumeBox) => {
+      volumeBox.style.display = "none";
+    });
+    tutorialMovie.play();
+  });
 
-  // tutorialMovieBox.addEventListener("click", () => {
-  //   playTutorialButton.click();
-  // });
+  tutorialMovieBox.addEventListener("click", () => {
+    playTutorialButton.click();
+  });
 
-  // watchMovie.addEventListener("click", () => {
-  //   playTutorialButton.click();
-  // });
+  watchMovie.addEventListener("click", () => {
+    playTutorialButton.click();
+  });
 
   gameStartButton.addEventListener("click", () => {
     tutorialScreen.style.display = "none";

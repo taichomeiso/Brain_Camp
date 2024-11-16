@@ -159,7 +159,16 @@ document.addEventListener("turbo:load", () => {
     }
   }
 
+
+  // 花火の表示と効果音再生
   function showFireworks() {
+    // 効果音を再生
+    fireworksSound.currentTime = 0; // 再生位置をリセット
+    fireworksSound.play();          // 効果音を再生
+    fireworksSound.volume = 1.0; // 音量を設定
+
+
+
     const fireworkCount = 20; // 花火の数
     const fireworksContainer = document.createElement('div');
     fireworksContainer.style.position = 'fixed';
