@@ -83,10 +83,14 @@ input {
   display: none;
 }
 
+.game-page__MainGameScreen {
+  border-radius: 20px;
+}
+
 .number_master__tutorial-movie-screen {
   position: fixed;
   width: 700px;
-  height: 710px;
+  height: 700px;
   border: 10px solid #545454;
   box-shadow: 0 0 50px #8a8a8a;
   border-radius: 20px;
