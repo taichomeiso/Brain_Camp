@@ -21,7 +21,7 @@ document.addEventListener("turbo:load", () => {
 
   const watchMovie = document.querySelector(".number_master__watch-tutorial");
 
-  const volumeBoxes = document.querySelectorAll(".number_master__volume-box");
+
 
   if (!gameStartButton) {
     return null;
@@ -30,9 +30,6 @@ document.addEventListener("turbo:load", () => {
   playTutorialButton.addEventListener("click", () => {
     tutorialDescriptionScreen.style.display = "none";
     tutorialMovie.style.display = "flex";
-    volumeBoxes.forEach((volumeBox) => {
-      volumeBox.style.display = "none";
-    });
     tutorialMovie.play();
   });
 
