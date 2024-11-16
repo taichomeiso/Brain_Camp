@@ -45,6 +45,11 @@ document.addEventListener("turbo:load", () => {
       timerInterval = setInterval(updateTimer, 10);
     }
 
+    // BGMを再生
+    game_page_bgmSound.loop = true; // ループを設定
+    game_page_bgmSound.play();      // BGMを再生
+    game_page_bgmSound.volume = 0.3; // 音量を設定
+
     // スタートボタンを非表示にする
     startButton.classList.add("hidden-opacity");
     backButton.classList.add("hidden-opacity");
