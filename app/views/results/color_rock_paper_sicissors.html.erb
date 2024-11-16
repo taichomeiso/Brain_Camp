@@ -20,16 +20,16 @@
              <%= f.hidden_field :score, id: "color_rock_paper_sicissors-result-page__score-field" %>
             <%= submit_tag "登録", class: "result-page__registration-button" %>
           <% end %>
-      <% if @color_rock_paper_sicissor.errors.any? %>
-        <div class="error-messages">
-          <ul>
-            <% @color_rock_paper_sicissor.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      </div>
+          <% if @color_rock_paper_sicissor.errors.any? %>
+            <div class="error-messages">
+              <ul>
+                <% @color_rock_paper_sicissor.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+       </div>
       <div class="hover-area">
         <div class="result-button">
           <div class="button-with-icon">

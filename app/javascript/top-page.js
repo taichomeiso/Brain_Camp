@@ -40,7 +40,7 @@ const TopButtonClickSound =document.getElementById("top-button-click")
           console.error(`ランキングボックスが見つかりません。gameType: ${gameType}`);
           return;
         }
-        
+    
         rankingBox.innerHTML = ""; // 既存のランキングをクリア
         // 最新IDを取得
       const latestId = window.latestRankingIdFor[gameType];
@@ -75,7 +75,7 @@ const TopButtonClickSound =document.getElementById("top-button-click")
     fetchAndUpdateRanking("color_rock_paper_sicissors", "/rankings/color_rock_paper_sicissors");
     fetchAndUpdateRanking("number_master", "/rankings/number_master");
     fetchAndUpdateRanking("memory_square", "/rankings/memory_square");
-  }, 3000000); // 30秒ごとに更新
+  }, 3000); // 30秒ごとに更新
   // 初期状態で「色勝ちじゃんけん」ランキングを表示
   document.querySelector('.top-page__ranking-box[data-game="color_rock_paper_sicissors"]').classList.add("active");
 

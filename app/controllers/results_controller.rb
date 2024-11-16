@@ -9,7 +9,6 @@ class ResultsController < ApplicationController
     if @color_rock_paper_sicissor.save
       redirect_to root_path, notice: '記録が登録されました！'
     else
-      # Rails 7の場合は status: :unprocessable_entity を追加
       render :color_rock_paper_sicissors, status: :unprocessable_entity
     end
   end
@@ -42,6 +41,7 @@ class ResultsController < ApplicationController
     milliseconds = ((seconds_and_milliseconds - seconds) * 1000).round
 
     total_game_time = (minutes * 60) + seconds + (milliseconds / 1000.0)
+    @game_time = total_game_time
 
     @number_master = NumberMaster.new(number_master_params.except(:game_time).merge(game_time: total_game_time))
 

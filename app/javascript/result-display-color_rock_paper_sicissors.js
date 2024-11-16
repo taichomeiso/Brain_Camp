@@ -6,16 +6,13 @@ document.addEventListener("turbo:load", () => {
   const color_rock_paper_sicissors_Score = localStorage.getItem(
     "color_rock_paper_sicissors_Score"
   );
-
   // スコアボックスがない場合、処理を中止
   if (!scoreBox) {
     return;
   }
-
   // 画面にスコアを表示する（スコアが存在する場合のみ）
   if (color_rock_paper_sicissors_Score) {
     scoreBox.textContent = color_rock_paper_sicissors_Score + "点";
-
     // 音声要素の取得
     const buttonClickSound = document.getElementById(
       "result-button-click-sound"
@@ -23,13 +20,11 @@ document.addEventListener("turbo:load", () => {
     const formClickSound = document.getElementById("result-form-click-sound");
     const hoverSound = document.getElementById("result-hover-sound");
     const pageSound = document.getElementById("result-page-sound");
-
     // ページ表示時に再生
     if (pageSound) {
       pageSound.volume = 0.5; // 音量調整
       pageSound.play();
     }
-
     // ボタンクリック時の音声再生設定
     const buttons = document.querySelectorAll(
       "button,.result-page__retry-button, .result-page__back-to-home-button"
@@ -42,7 +37,6 @@ document.addEventListener("turbo:load", () => {
         }
       });
     });
-
     // フォームの入力部分クリック時の音声再生設定
     const formInputs = document.querySelectorAll("input, textarea"); // フォーム入力要素を取得
     formInputs.forEach((input) => {
@@ -53,7 +47,6 @@ document.addEventListener("turbo:load", () => {
         }
       });
     });
-
     // ホバー時の音声再生設定（ボタンとフォームの要素）
     const hoverElements = document.querySelectorAll(
       "button, input, textarea,.result-page__retry-button, .result-page__back-to-home-button, .hover-area .button-icon"
@@ -70,7 +63,6 @@ document.addEventListener("turbo:load", () => {
       scoreBox.classList.add("animate-scale");
     }, 100); // 100msの遅延
   }
-
   const typingElement = document.getElementById("typing-text");
   const text = typingElement.innerHTML; // innerHTMLで改行を含むテキストを取得
   typingElement.innerHTML = ""; // テキストをクリア
@@ -78,9 +70,7 @@ document.addEventListener("turbo:load", () => {
   audio.volume = 0.5;
   const totalDuration = 1800; // タイピングを終えるまでの目標時間（ミリ秒）
   const typingSpeed = totalDuration / text.length; // 1文字あたりの表示時間を計算
-
   let index = 0;
-
   function type() {
     if (index < text.length) {
       // `<br>`タグが含まれている場合は改行として処理
@@ -106,9 +96,7 @@ document.addEventListener("turbo:load", () => {
       typingElement.style.borderRight = "none";
     }
   }
-
   type();
-
   // フォームの隠しフィールドにスコアをセットする
   const scoreField = document.getElementById(
     "color_rock_paper_sicissors-result-page__score-field"
@@ -116,7 +104,6 @@ document.addEventListener("turbo:load", () => {
   if (scoreField && color_rock_paper_sicissors_Score) {
     scoreField.value = color_rock_paper_sicissors_Score;
   }
-
   // フォームが存在する場合、ゲームタイプをlocalStorageに保存
   const gameForm = document.getElementById(
     "color-rock-paper-scissors-game-form"
@@ -128,7 +115,6 @@ document.addEventListener("turbo:load", () => {
     });
   }
 });
-
 document.addEventListener("turbo:render", () => {
   // ローカルストレージからスコアを取得
   const scoreBox = document.querySelector(
@@ -137,16 +123,13 @@ document.addEventListener("turbo:render", () => {
   const color_rock_paper_sicissors_Score = localStorage.getItem(
     "color_rock_paper_sicissors_Score"
   );
-
   // スコアボックスがない場合、処理を中止
   if (!scoreBox) {
     return;
   }
-
   // 画面にスコアを表示する（スコアが存在する場合のみ）
   if (color_rock_paper_sicissors_Score) {
     scoreBox.textContent = color_rock_paper_sicissors_Score + "点";
-
     // 音声要素の取得
     const buttonClickSound = document.getElementById(
       "result-button-click-sound"
@@ -154,13 +137,11 @@ document.addEventListener("turbo:render", () => {
     const formClickSound = document.getElementById("result-form-click-sound");
     const hoverSound = document.getElementById("result-hover-sound");
     const pageSound = document.getElementById("result-page-sound");
-
     // ページ表示時に再生
     if (pageSound) {
       pageSound.volume = 0.5; // 音量調整
       pageSound.play();
     }
-
     // ボタンクリック時の音声再生設定
     const buttons = document.querySelectorAll(
       "button,.result-page__retry-button, .result-page__back-to-home-button"
@@ -173,7 +154,6 @@ document.addEventListener("turbo:render", () => {
         }
       });
     });
-
     // フォームの入力部分クリック時の音声再生設定
     const formInputs = document.querySelectorAll("input, textarea"); // フォーム入力要素を取得
     formInputs.forEach((input) => {
@@ -184,7 +164,6 @@ document.addEventListener("turbo:render", () => {
         }
       });
     });
-
     // ホバー時の音声再生設定（ボタンとフォームの要素）
     const hoverElements = document.querySelectorAll(
       "button, input, textarea,.result-page__retry-button, .result-page__back-to-home-button, .hover-area .button-icon"
@@ -201,7 +180,6 @@ document.addEventListener("turbo:render", () => {
       scoreBox.classList.add("animate-scale");
     }, 100); // 100msの遅延
   }
-
   const typingElement = document.getElementById("typing-text");
   const text = typingElement.innerHTML; // innerHTMLで改行を含むテキストを取得
   typingElement.innerHTML = ""; // テキストをクリア
@@ -209,9 +187,7 @@ document.addEventListener("turbo:render", () => {
   audio.volume = 0.5;
   const totalDuration = 1800; // タイピングを終えるまでの目標時間（ミリ秒）
   const typingSpeed = totalDuration / text.length; // 1文字あたりの表示時間を計算
-
   let index = 0;
-
   function type() {
     if (index < text.length) {
       // `<br>`タグが含まれている場合は改行として処理
@@ -237,9 +213,7 @@ document.addEventListener("turbo:render", () => {
       typingElement.style.borderRight = "none";
     }
   }
-
   type();
-
   // フォームの隠しフィールドにスコアをセットする
   const scoreField = document.getElementById(
     "color_rock_paper_sicissors-result-page__score-field"
@@ -247,7 +221,6 @@ document.addEventListener("turbo:render", () => {
   if (scoreField && color_rock_paper_sicissors_Score) {
     scoreField.value = color_rock_paper_sicissors_Score;
   }
-
   // フォームが存在する場合、ゲームタイプをlocalStorageに保存
   const gameForm = document.getElementById(
     "color-rock-paper-scissors-game-form"

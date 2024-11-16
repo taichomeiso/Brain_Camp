@@ -218,7 +218,7 @@
 }
 
 /* トロフィー画像にホバーした時に説明文を表示 */
-.top-page__game-box:hover .top-page__trophy-description {
+.top-page__trophy-box:hover .top-page__trophy-description {
   display: block; /* ホバー時に表示 */
   opacity: 1;
   transition: opacity 0.3s ease-in-out; /* 表示アニメーション */
