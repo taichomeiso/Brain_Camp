@@ -64,7 +64,7 @@ document.addEventListener("turbo:load", () => {
   if (gameTime) {
     const gameTimeElement = document.querySelector(".gameTime");
     if (gameTimeElement) {
-      gameTimeElement.innerText = ` ${gameTime}秒`;
+      gameTimeElement.innerText = `ゲームタイム ${gameTime}秒`;
     }
   }
 
@@ -159,7 +159,16 @@ document.addEventListener("turbo:load", () => {
     }
   }
 
+
+  // 花火の表示と効果音再生
   function showFireworks() {
+    // 効果音を再生
+    fireworksSound.currentTime = 0; // 再生位置をリセット
+    fireworksSound.play();          // 効果音を再生
+    fireworksSound.volume = 1.0; // 音量を設定
+
+
+
     const fireworkCount = 20; // 花火の数
     const fireworksContainer = document.createElement('div');
     fireworksContainer.style.position = 'fixed';
@@ -312,7 +321,7 @@ document.addEventListener("turbo:load", () => {
 
   document.querySelectorAll('.number-button').forEach(button => {
     button.addEventListener('click', (event) => {
-      const number = event.target.innerText;
+      const numberText = event.target.innerText;
 
       // 「消す」ボタンが押された場合の処理
       if (numberText === "消す") {

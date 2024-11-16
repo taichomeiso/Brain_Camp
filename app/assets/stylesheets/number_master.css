@@ -83,10 +83,14 @@ input {
   display: none;
 }
 
+.game-page__MainGameScreen {
+  border-radius: 20px;
+}
+
 .number_master__tutorial-movie-screen {
   position: fixed;
   width: 700px;
-  height: 710px;
+  height: 700px;
   border: 10px solid #545454;
   box-shadow: 0 0 50px #8a8a8a;
   border-radius: 20px;
@@ -95,7 +99,7 @@ input {
   justify-content: center;
   flex-direction: column;
   background-color: rgb(206, 206, 206);
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   z-index: 1001;
   color: orange;
   font-family: "Reggae One", system-ui;

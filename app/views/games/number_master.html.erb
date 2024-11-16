@@ -12,7 +12,7 @@
     
     <!-- チュートリアル画面 -->
       <div class="number_master__tutorial-movie-screen" >
-        <%= video_tag "", controls: true, autoplay: false, loop: false, class: "number_master__tutorial-movie" %>
+        <%= video_tag "number_master_tutorial-movie.mp4", controls: true, autoplay: false, loop: false, class: "number_master__tutorial-movie" %>
         <div class="number_master__tutorial-description-wrapper">
           <div class="number_master__upper-tutorial-container">
             
@@ -26,7 +26,7 @@
           </div>
           <div class="number_master__middle-tutorial-container">
             <div class="number_master__play-tutorial-box">
-              # <%= image_tag "memory-square-images/play-tutorial.svg", alt: "動画再生ボタン", class: "memory-square__play-tutorial-image" %>
+              <%= image_tag "memory-square-images/play-tutorial.svg", alt: "動画再生ボタン", class: "number_master__play-tutorial-image" %>
             </div>
           </div>
           <div class="number_master__lower-tutorial-container">
@@ -73,6 +73,7 @@
         <button class="number-button">2</button>
         <button class="number-button">3</button>
         <button class="number-button">4</button>
+        <button class="number-button">消す</button>
       </div>
 
     </div>
