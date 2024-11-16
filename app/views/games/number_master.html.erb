@@ -1,73 +1,81 @@
-<div class="game-page__GameScreenBase">
-  <%= link_to root_path, class: "game-page__BackTitleButton" do %>
-     <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>   
-  <% end %>
+<div class="game-page_sound-effects">
+  <audio id="correct-answer" src=<%= asset_path('number_master/correct-answer.mp3') %> preload="auto"></audio>
+  <audio id="Incorrect-answer" src=<%= asset_path('number_master/Incorrect-answer.mp3') %> preload="auto"></audio>
+  <audio id="fireworks" src=<%= asset_path('number_master/fireworks2.mp3') %> preload="auto"></audio>
+  <audio id="game_page_bgm" src=<%= asset_path('number_master/game_page_bgm.mp3') %> preload="auto"></audio>
+
   
-  <!-- チュートリアル画面 -->
-    <div class="number_master__tutorial-movie-screen" >
-      <%= video_tag "", controls: true, autoplay: false, loop: false, class: "number_master__tutorial-movie" %>
-      <div class="number_master__tutorial-description-wrapper">
-        <div class="number_master__upper-tutorial-container">
-          
-          <div class="number_master__title-container">
-            <div class="number_master__number-container">
-              
+  <div class="game-page__GameScreenBase">
+    <%= link_to root_path, class: "game-page__BackTitleButton" do %>
+      <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>   
+    <% end %>
+    
+    <!-- チュートリアル画面 -->
+      <div class="number_master__tutorial-movie-screen" >
+        <%= video_tag "", controls: true, autoplay: false, loop: false, class: "number_master__tutorial-movie" %>
+        <div class="number_master__tutorial-description-wrapper">
+          <div class="number_master__upper-tutorial-container">
+            
+            <div class="number_master__title-container">
+              <div class="number_master__number-container">
+                
+                
+              </div>
+              <h1 class="number_master__title">数の達人</h1>
+            </div>
+          </div>
+          <div class="number_master__middle-tutorial-container">
+            <div class="number_master__play-tutorial-box">
+              # <%= image_tag "memory-square-images/play-tutorial.svg", alt: "動画再生ボタン", class: "memory-square__play-tutorial-image" %>
+            </div>
+          </div>
+          <div class="number_master__lower-tutorial-container">
+            <h1 class="number_master__watch-tutorial">ゲーム説明を見よう</h1>
+            <div class="number_master__square-image-container">
               
             </div>
-            <h1 class="number_master__title">数の達人</h1>
           </div>
-        </div>
-        <div class="number_master__middle-tutorial-container">
-          <div class="number_master__play-tutorial-box">
-            # <%= image_tag "memory-square-images/play-tutorial.svg", alt: "動画再生ボタン", class: "memory-square__play-tutorial-image" %>
-          </div>
-        </div>
-        <div class="number_master__lower-tutorial-container">
-          <h1 class="number_master__watch-tutorial">ゲーム説明を見よう</h1>
-          <div class="number_master__square-image-container">
-            
-          </div>
-        </div>
 
-      </div> 
+        </div> 
+      </div>
+
+    <div class="game-page__MainGameScreen">
+      <div id="number_master_timer" class="number_master_timer">00:00:00</div>
+      <table class="number-master_table">
+        <tr>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        </tr>
+        <tr>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        </tr>
+        <tr>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        </tr>
+        <tr>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+          <td><input type="text" maxlength="1" class="sudoku-cell"></td>
+        </tr>
+      </table>
+
+      <div id="buttons">
+        <button class="number-button">1</button>
+        <button class="number-button">2</button>
+        <button class="number-button">3</button>
+        <button class="number-button">4</button>
+      </div>
+
     </div>
-
-  <div class="game-page__MainGameScreen">
-    <div id="number_master_timer" class="number_master_timer">00:00:00</div>
-    <table class="number-master_table">
-      <tr>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-      </tr>
-      <tr>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-      </tr>
-      <tr>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-      </tr>
-      <tr>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-        <td><input type="text" maxlength="1" class="sudoku-cell"></td>
-      </tr>
-    </table>
-
-    <div id="buttons">
-      <button class="number-button">1</button>
-      <button class="number-button">2</button>
-      <button class="number-button">3</button>
-      <button class="number-button">4</button>
-    </div>
-
+    <button id="startButton" class="game-page__GameStartButton">ゲームスタート</button>
   </div>
-  <button id="startButton" class="game-page__GameStartButton">ゲームスタート</button>
 </div>
