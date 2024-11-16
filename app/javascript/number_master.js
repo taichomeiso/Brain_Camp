@@ -64,7 +64,7 @@ document.addEventListener("turbo:load", () => {
   if (gameTime) {
     const gameTimeElement = document.querySelector(".gameTime");
     if (gameTimeElement) {
-      gameTimeElement.innerText = ` ${gameTime}秒`;
+      gameTimeElement.innerText = `ゲームタイム ${gameTime}秒`;
     }
   }
 
