@@ -312,7 +312,7 @@ document.addEventListener("turbo:load", () => {
 
   document.querySelectorAll('.number-button').forEach(button => {
     button.addEventListener('click', (event) => {
-      const number = event.target.innerText;
+      const numberText = event.target.innerText;
 
       // 「消す」ボタンが押された場合の処理
       if (numberText === "消す") {
