@@ -221,6 +221,9 @@ document.addEventListener("turbo:load", () => {
       window.location.href = `/results/number_master?game_time=${encodeURIComponent(gameTime)}`;
     }, 3500); // メッセージの表示時間と合わせる
 
+    // BGM停止
+    stopBGM();
+
     return true;
   }
 
