@@ -42,6 +42,7 @@ document.addEventListener("turbo:load", () => {
   });
 
   gameStartButton.addEventListener("click", () => {
+    tutorialMovie.pause();
     tutorialScreen.style.display = "none";
   });
 
