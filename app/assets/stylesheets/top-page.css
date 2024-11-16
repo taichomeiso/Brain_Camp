@@ -95,7 +95,7 @@
   font-weight: bold;
   text-shadow: -1px 2px 0 #000;
   margin-bottom: 10px;
-  display:flex;
+  display: flex;
   align-items: center;
 }
 .top-page__section-title::before,
@@ -151,7 +151,7 @@
 }
 
 .top-page__memory-square-img {
-  height:100%;
+  height: 100%;
 }
 .top-page__game-link {
   font-size: 24px;
@@ -171,7 +171,6 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* シャドウを少し小さく */
 }
 
-
 .top-page__trophy-box {
   width: 40px;
   height: 40px;
@@ -182,22 +181,21 @@
   position: absolute;
   top: 0;
   right: -40px;
-  perspective: 1000px;/* 3D適用時の奥行き*/
+  perspective: 1000px; /* 3D適用時の奥行き*/
 }
 
 .top-page__trophy-image {
   cursor: pointer;
   margin-left: 15px;
-  margin-top:10px;
-  transform-style: preserve-3d;/* 3D適用*/
+  margin-top: 10px;
+  transform-style: preserve-3d; /* 3D適用*/
   transition: transform 0.8s ease, filter 0.3s ease;
   /* ホバー前の状態 */
 }
 .top-page__trophy-image:hover {
-    transform: scale(1.1); /* 少し大きくする */
-    filter: hue-rotate(20deg) brightness(1.3); /* 色調と明るさを少し変える */
-  }
-
+  transform: scale(1.1); /* 少し大きくする */
+  filter: hue-rotate(20deg) brightness(1.3); /* 色調と明るさを少し変える */
+}
 
 /* 各ゲームリンクのホバーに応じて、その中のトロフィー画像のみをY軸で回転させる */
 .top-page__game-box:hover .top-page__trophy-image.rotate-once {
@@ -252,13 +250,21 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .top-page__ranking-box.active {
@@ -308,7 +314,7 @@
   align-items: center;
   justify-content: center;
 }
-.top-page__ranking-score-box{
+.top-page__ranking-score-box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -324,7 +330,14 @@
 
 .top-page__gold-number {
   display: inline-block;
-  background: linear-gradient(90deg, #8c7537 0%, #dbb00b 45%, #fde79d 70%, #dbb10c 85%, #bc7f04 100%);
+  background: linear-gradient(
+    90deg,
+    #8c7537 0%,
+    #dbb00b 45%,
+    #fde79d 70%,
+    #dbb10c 85%,
+    #bc7f04 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -339,7 +352,14 @@
 
 .top-page__silver-number {
   display: inline-block;
-  background: linear-gradient(45deg, #757575 0%, #9e9e9e 45%, #e8e8e8 70%, #9e9e9e 85%, #757575 100%);
+  background: linear-gradient(
+    45deg,
+    #757575 0%,
+    #9e9e9e 45%,
+    #e8e8e8 70%,
+    #9e9e9e 85%,
+    #757575 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -369,9 +389,11 @@
 
 .top-page__footer {
   width: 100%;
-  height: 60px;
-  background-color: #757575;
+  height: 50px;
+  background-color: #f4810c;
   display: flex;
   align-items: baseline;
   justify-content: center;
+  line-height: 50px;
+  color: white;
 }
