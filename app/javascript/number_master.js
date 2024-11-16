@@ -9,6 +9,25 @@ document.addEventListener("turbo:load", () => {
   const startButton = document.getElementById("startButton");
   const backButton = document.querySelector(".game-page__BackTitleButton");
 
+  const fireworksSound = new Audio("/assets/number_master/fireworks2.mp3");
+  const correct_answerSound = new Audio("/assets/number_master/correct-answer.mp3");
+  const Incorrect_answerSound = new Audio("/assets/number_master/Incorrect-answer.mp3");
+  const game_page_bgmSound = new Audio("/assets/number_master/game_page_bgm.mp3");
+
+
+  // カウントダウン用の要素を作成
+  const countdownElement = document.createElement("div");
+  countdownElement.style.position = "fixed";
+  countdownElement.style.top = "50%";
+  countdownElement.style.left = "50%";
+  countdownElement.style.transform = "translate(-50%, -50%)";
+  countdownElement.style.fontSize = "15rem";// フォントサイズ
+  countdownElement.style.fontWeight = "bold";// フォントの太さ
+  countdownElement.style.color = "#000"; // 文字色
+  countdownElement.style.zIndex = "999"; // 他の要素より前面に表示
+  countdownElement.style.transition = "opacity 1s"; // アニメーション（不透明度の変化）
+  document.body.appendChild(countdownElement);
+
   function updateTimer() {
     timer += 10;
     const totalSeconds = Math.floor(timer / 1000);
@@ -25,6 +44,11 @@ document.addEventListener("turbo:load", () => {
       document.getElementById("number_master_timer").innerText = "00:00.00秒";
       timerInterval = setInterval(updateTimer, 10);
     }
+
+    // BGMを再生
+    game_page_bgmSound.loop = true; // ループを設定
+    game_page_bgmSound.play();      // BGMを再生
+    game_page_bgmSound.volume = 0.3; // 音量を設定
 
     // スタートボタンを非表示にする
     startButton.classList.add("hidden-opacity");
@@ -45,6 +69,11 @@ document.addEventListener("turbo:load", () => {
   }
 
 
+  function stopBGM() {
+    // ゲーム終了時にBGMを停止
+    game_page_bgmSound.pause();  // 再生を停止
+    game_page_bgmSound.currentTime = 0; // 再生位置をリセット
+  }
 
 
   function showMessage(text, type = "success") {
@@ -192,8 +221,34 @@ document.addEventListener("turbo:load", () => {
       window.location.href = `/results/number_master?game_time=${encodeURIComponent(gameTime)}`;
     }, 3500); // メッセージの表示時間と合わせる
 
+    // BGM停止
+    stopBGM();
+
     return true;
   }
+
+
+  function startCountdown() {
+    let countdown = 3;
+    countdownElement.innerText = countdown;
+    countdownElement.style.opacity = "1"; // カウントダウンを表示
+
+    const countdownInterval = setInterval(() => {
+      countdown--;
+      countdownElement.innerText = countdown;
+      if (countdown === 0) {
+        clearInterval(countdownInterval); // カウントダウン終了
+        countdownElement.style.opacity = "0"; // カウントダウンを非表示
+        setTimeout(() => {
+          countdownElement.style.display = "none"; // カウントダウン要素を完全に非表示に
+        }, 1000); // フェードアウト後に非表示
+        startGame(); // ゲームを開始
+      }
+    }, 1000); // 1秒ごとにカウントダウン
+
+    // カウントダウン終了後、スタートする
+  }
+
 
   document.getElementById("startButton").addEventListener("click", () => {
     grid.forEach((row, rowIndex) => row.forEach((_, colIndex) => grid[rowIndex][colIndex] = 0));
@@ -202,7 +257,9 @@ document.addEventListener("turbo:load", () => {
       cell.disabled = false;
     });
     setHints();
-    startGame();
+    // startGame();
+    // カウントダウン開始
+    startCountdown();
   });
 
   window.setNumber = function (num) {
@@ -217,10 +274,21 @@ document.addEventListener("turbo:load", () => {
     if (isValidMove(row, col, num)) {
       activeCell.value = num;
       grid[row][col] = num;
+
+
+      // 正解の場合に音を鳴らす
+      correct_answerSound.currentTime = 0; // 再生位置をリセット
+      correct_answerSound.play();          // 正解音を再生
+      correct_answerSound.volume = 1.0; // 音量を設定
+
       if (checkCompletion()) {
         clearInterval(timerInterval);
       }
     } else {
+      // 不正解の場合に音を鳴らす
+      Incorrect_answerSound.currentTime = 0; // 再生位置をリセット
+      Incorrect_answerSound.play();          // 不正解音を再生
+      Incorrect_answerSound.volume = 1.0; // 音量を設定
       showMessage("重複しています！別の数字を選んでください。", "error");
     }
   };
@@ -245,7 +313,22 @@ document.addEventListener("turbo:load", () => {
   document.querySelectorAll('.number-button').forEach(button => {
     button.addEventListener('click', (event) => {
       const number = event.target.innerText;
-      setNumber(parseInt(number));
+
+      // 「消す」ボタンが押された場合の処理
+      if (numberText === "消す") {
+        if (activeCell) {
+          activeCell.value = ""; // アクティブなセルの値を空にする
+          const row = activeCell.parentElement.parentElement.rowIndex;
+          const col = activeCell.parentElement.cellIndex;
+          grid[row][col] = null; // グリッド配列も空にする
+        }
+      } else {
+        // 数字ボタンが押された場合のみsetNumberを呼び出す
+        const number = parseInt(numberText);
+        if (!isNaN(number)) {
+          setNumber(number);
+        }
+      }
     });
   });
 
