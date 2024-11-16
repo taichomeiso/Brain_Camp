@@ -227,6 +227,29 @@ document.addEventListener("turbo:load", () => {
     return true;
   }
 
+
+  function startCountdown() {
+    let countdown = 3;
+    countdownElement.innerText = countdown;
+    countdownElement.style.opacity = "1"; // カウントダウンを表示
+
+    const countdownInterval = setInterval(() => {
+      countdown--;
+      countdownElement.innerText = countdown;
+      if (countdown === 0) {
+        clearInterval(countdownInterval); // カウントダウン終了
+        countdownElement.style.opacity = "0"; // カウントダウンを非表示
+        setTimeout(() => {
+          countdownElement.style.display = "none"; // カウントダウン要素を完全に非表示に
+        }, 1000); // フェードアウト後に非表示
+        startGame(); // ゲームを開始
+      }
+    }, 1000); // 1秒ごとにカウントダウン
+
+    // カウントダウン終了後、スタートする
+  }
+
+
   document.getElementById("startButton").addEventListener("click", () => {
     grid.forEach((row, rowIndex) => row.forEach((_, colIndex) => grid[rowIndex][colIndex] = 0));
     document.querySelectorAll(".sudoku-cell").forEach(cell => {
@@ -234,7 +257,7 @@ document.addEventListener("turbo:load", () => {
       cell.disabled = false;
     });
     setHints();
-    startGame();
+    // startGame();
   });
 
   window.setNumber = function (num) {
