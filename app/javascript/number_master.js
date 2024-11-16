@@ -313,7 +313,22 @@ document.addEventListener("turbo:load", () => {
   document.querySelectorAll('.number-button').forEach(button => {
     button.addEventListener('click', (event) => {
       const number = event.target.innerText;
-      setNumber(parseInt(number));
+
+      // 「消す」ボタンが押された場合の処理
+      if (numberText === "消す") {
+        if (activeCell) {
+          activeCell.value = ""; // アクティブなセルの値を空にする
+          const row = activeCell.parentElement.parentElement.rowIndex;
+          const col = activeCell.parentElement.cellIndex;
+          grid[row][col] = null; // グリッド配列も空にする
+        }
+      } else {
+        // 数字ボタンが押された場合のみsetNumberを呼び出す
+        const number = parseInt(numberText);
+        if (!isNaN(number)) {
+          setNumber(number);
+        }
+      }
     });
   });
 
