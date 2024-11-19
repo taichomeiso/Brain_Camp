@@ -6,8 +6,10 @@
     <audio id="back-bround-music-id" src="<%= asset_path('thinkingtime13.mp3') %>" preload="auto"></audio>
     <audio id="countDown-id" src="<%= asset_path('Countdown03-2.mp3') %>" preload="auto"></audio>
     <audio id="game-End-Sound-id" src="<%= asset_path('gameEndSound.mp3') %>" preload="auto"></audio>
+    <audio id="game-start-id" src="<%= asset_path('game-play-click.mp3') %>" preload="auto"></audio>
+     <audio id="game-return-id" src="<%= asset_path('game-return-click-sound.mp3') %>" preload="auto"></audio>
   <!-- タイトルに戻るボタンの表示 -->
-  <%= link_to root_path, class: "game-page__BackTitleButton" do %>
+  <%= link_to root_path, class: "color_rock_paper_sicissors-BackTitleButton" do %>
      <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>   
   <% end %>
   <!-- タイトルに戻るボタンの表示ここまで -->

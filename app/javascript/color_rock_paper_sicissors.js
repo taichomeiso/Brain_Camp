@@ -16,7 +16,7 @@ document.addEventListener("turbo:load", () => {
  const gauge                = document.getElementById("time-limit_gauge_id");
  const startMessageImage    = document.getElementById("game-start-button_image_id");
  const gameStartButton      = document.getElementById("color_rock_paper_gameStartButton_id");
- const backTitleButton      = document.querySelector(".game-page__BackTitleButton");
+ const backTitleButton      = document.querySelector(".color_rock_paper_sicissors-BackTitleButton");
  //秒数管理
  const totalTimeInSeconds = 30;
  //減少させる割合

@@ -3,10 +3,11 @@
   <audio id="Incorrect-answer" src=<%= asset_path('number_master/Incorrect-answer.mp3') %> preload="auto"></audio>
   <audio id="fireworks" src=<%= asset_path('number_master/fireworks2.mp3') %> preload="auto"></audio>
   <audio id="game_page_bgm" src=<%= asset_path('number_master/game_page_bgm.mp3') %> preload="auto"></audio>
-
+  <audio id="game-start-id" src="<%= asset_path('game-play-click.mp3') %>" preload="auto"></audio>
+  <audio id="game-return-id" src="<%= asset_path('game-return-click-sound.mp3') %>" preload="auto"></audio>
   
   <div class="game-page__GameScreenBase">
-    <%= link_to root_path, class: "game-page__BackTitleButton" do %>
+    <%= link_to root_path, class: "number-master__BackTitleButton" do %>
       <%= image_tag "GameMaterial/GameScreenImage/GameBaseImage/top-page__BackButtonImage.png", width: 48, height: 30, alt: "代替テキスト" %>   
     <% end %>
     

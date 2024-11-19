@@ -5,7 +5,17 @@
   display: flex;
   justify-content: center;
 }
-
+.number-master__BackTitleButton{
+    width: 120px;
+    height: 39px;
+    padding: 5px;
+    text-align: center;
+    border: solid 2px #000;
+    background-color: skyblue;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: 700px;
+}
 #buttons {
   /* font-size: 50px;
   text-align: center;
