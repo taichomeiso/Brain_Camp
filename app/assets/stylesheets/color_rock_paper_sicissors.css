@@ -30,6 +30,7 @@
     opacity: 0; /* 徐々に消える */
   }
 }
+
 .color_rock_paper_sicissors-tutorial-movie-screen{
   position: fixed;
   width: 695px;

@@ -30,3 +30,5 @@
 //= link number_master/fireworks2.mp3
 //= link number_master/game_page_bgm.mp3
 //= link number_master/fireworks2.mp3
+//= link game-play-click.mp3
+//= link game-return-click-sound.mp3
