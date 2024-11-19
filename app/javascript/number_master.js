@@ -6,7 +6,7 @@ document.addEventListener("turbo:load", () => {
   let activeCell = null;
 
   const startButton = document.getElementById("startButton");
-  const backButton = document.querySelector(".game-page__BackTitleButton");
+  const backButton = document.querySelector(".number-master__BackTitleButton");
 
   const fireworksSound = new Audio("/assets/number_master/fireworks2.mp3");
   const correct_answerSound = new Audio(
