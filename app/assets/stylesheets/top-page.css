@@ -233,25 +233,24 @@
   justify-content: space-around;
 }
 
+/* ランキング全体のボックス */
 .top-page__ranking-box {
-  width: 90%;
-  height: 80%;
+  width: calc(100% - 20px); /* 画面幅から20pxを引いたサイズを指定 */
+  max-width: 800px; /* 最大幅を800pxに制限 */
+  height: 720px; /* 高さを固定 */
   border: 1px solid white;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between; /* 均等配置 */
   font-family: "M PLUS 1", sans-serif;
   font-weight: 600;
-  padding: 10px;
+  padding: 20px;
   margin-bottom: 20px;
-  overflow: hidden;
-  /* 全角文字対応の省略設定 */
-  white-space: nowrap; /* テキストを1行に制限 */
-  overflow: hidden; /* 溢れた部分を隠す */
-  text-overflow: ellipsis; /* 省略記号を表示 */
+  overflow: hidden; /* コンテンツが溢れないように */
 }
+
 
 .new-label {
   display: inline-block;
@@ -289,9 +288,10 @@
   animation-name: fadeOut;
   display: none; /* フェードアウト後に非表示にする */
 }
+/* ランキングタイトル */
 .top-page__ranking-title-box {
   width: 100%;
-  height: 15%;
+  height: 80px; /* 固定高さ */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -301,45 +301,93 @@
   margin: 0;
 }
 
+/* ランキングリスト全体 */
 .top-page__ranking-number-list {
   width: 100%;
-  height: 85%;
+  height: 620px; /* 固定高さ */
   display: flex;
-  align-items: center;
   flex-direction: column;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow-y: auto;
+  align-items: center;
+  overflow-y: auto; /* 縦スクロールを許可 */
 }
 
+/* ランキング順位のボックス */
 .top-page__ranking-number-box {
-  width: 30%;
-  height: 100%;
+  width: 100px; /* 固定幅 */
+  height: 50px; /* 固定高さ */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+
+/* ランキングのニックネーム表示 */
 .top-page__ranking-nickname-box {
-  width: 70%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 400px; /* 固定幅 */
+  height: 50px; /* 固定高さ */
+  white-space: nowrap; /* 1行に制限 */
+  overflow: hidden; /* 溢れた部分を隠す */
+  text-overflow: ellipsis; /* 省略記号を付ける */
+  padding: 0 10px;
+  box-sizing: border-box; /* パディングを幅に含める */
+  text-align: left; /* 左寄せ */
+  font-size: 24px; /* 適切なフォントサイズ */
 }
-.top-page__ranking-score-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* 1位のニックネームスタイル */
+.top-page__ranking-number1 .top-page__ranking-nickname-box {
+  font-size: 38px; /* 大きめのフォントサイズ */
+  font-weight: bold; /* 太字 */
+  width: 400px; /* 固定幅 */
+  height: 60px; /* 高さを調整 */
+  text-align: left; /* 左寄せ */
 }
-.top-page__ranking-number1 {
-  font-size: 46px;
+
+/* 2位のニックネームスタイル */
+.top-page__ranking-number2 .top-page__ranking-nickname-box {
+  font-size: 34px; /* 1位より小さいフォント */
   font-weight: bold;
-  margin: 0;
-  width: 100%;
-  height: 35%;
+ width: 380px;
+  height: 50px;
+  text-align: left;
+}
+
+/* 3位のニックネームスタイル */
+.top-page__ranking-number3 .top-page__ranking-nickname-box {
+  font-size: 30px; /* 2位より小さいフォント */
+  font-weight: bold;
+  width: 360px;
+  height: 45px;
+  text-align: left;
+}
+
+/* その他順位のニックネームスタイル */
+.top-page__ranking-number.other .top-page__ranking-nickname-box {
+  font-size: 26px; /* 通常サイズ */
+  font-weight: normal;
+  color: white; /* 通常カラー */
+  width: 340px;
+  height: 40px;
+  text-align: left;
+}
+
+/* スコア表示 */
+.top-page__ranking-score-box {
+  width: 150px; /* 固定幅 */
+  height: 50px; /* 固定高さ */
   display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  text-align: right; /* スコアを右寄せ */
+}
+/* 1位のスタイル */
+.top-page__ranking-number1 {
+  font-size: 46px; /* 大きなフォント */
+  height: 80px; /* 高さを大きめに */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* 横幅を全体に広げる */
 }
 
 .top-page__gold-number {
@@ -358,11 +406,13 @@
 
 .top-page__ranking-number2 {
   font-size: 36px;
-  margin: 0;
-  width: 100%;
-  height: 25%;
+  height: 60px; /* 高さを調整 */
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* 横幅を全体に広げる */
 }
+
 
 .top-page__silver-number {
   display: inline-block;
@@ -380,10 +430,11 @@
 
 .top-page__ranking-number3 {
   font-size: 30px;
-  margin: 0;
-  width: 100%;
-  height: 20%;
+  height: 50px; /* 高さを調整 */
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* 横幅を全体に広げる */
 }
 
 .top-page__bronze-number {
@@ -393,12 +444,14 @@
   -webkit-text-fill-color: transparent;
 }
 
+/* その他順位のスタイル */
 .top-page__ranking-number.other {
   font-size: 24px;
-  margin: 0;
-  width: 100%;
-  height: 10%;
+  height: 40px; /* 高さを小さめに */
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* 横幅を全体に広げる */
 }
 
 .top-page__footer {
