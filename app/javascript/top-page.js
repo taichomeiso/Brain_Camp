@@ -64,8 +64,9 @@ const TopButtonClickSound =document.getElementById("top-button-click")
           rankingBox.insertAdjacentHTML("beforeend", rankingHTML);
         });
       })
-      .catch(error => console.error("ランキングの更新に失敗しました:", error));
+      .catch(error => console.error("ランキングの更新に失敗しました:", error));   
   }
+  
  // 初期表示時のランキング更新
  fetchAndUpdateRanking("color_rock_paper_sicissors", "/rankings/color_rock_paper_sicissors");
  fetchAndUpdateRanking("number_master", "/rankings/number_master");
