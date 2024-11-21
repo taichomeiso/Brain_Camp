@@ -8,16 +8,10 @@ document.addEventListener("turbo:load", () => {
   const startButton = document.getElementById("startButton");
   const backButton = document.querySelector(".number-master__BackTitleButton");
 
-  const fireworksSound = new Audio("/assets/number_master/fireworks2.mp3");
-  const correct_answerSound = new Audio(
-    "/assets/number_master/correct-answer.mp3"
-  );
-  const Incorrect_answerSound = new Audio(
-    "/assets/number_master/Incorrect-answer.mp3"
-  );
-  const game_page_bgmSound = new Audio(
-    "/assets/number_master/game_page_bgm.mp3"
-  );
+  const fireworksSound = document.getElementById("fireworks");
+  const correct_answerSound = document.getElementById("correct-answer");
+  const Incorrect_answerSound = document.getElementById("Incorrect-answer");
+  const game_page_bgmSound = document.getElementById("game_page_bgm");
 
   // カウントダウン用の要素を作成
   const countdownElement = document.createElement("div");
