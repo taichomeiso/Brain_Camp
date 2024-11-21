@@ -28,6 +28,23 @@
     <%= javascript_importmap_tags %>
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Train+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Reggae+One&family=Train+One&display=swap" rel="stylesheet">
+     <%# ゲーム画像のパスをmetaタグとして出力 %>
+  <%= tag.meta name: "game-end-image", 
+               content: asset_path("GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/item/gameEnd.png") %>
+  
+  <%# カウントダウン画像 %>
+  <%= tag.meta name: "countdown-3", 
+               content: asset_path("GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/item/number_3.png") %>
+  <%= tag.meta name: "countdown-2", 
+               content: asset_path("GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/item/number_2.png") %>
+  <%= tag.meta name: "countdown-1", 
+               content: asset_path("GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/item/number_1.png") %>
+  
+  <%# コンピューターの手の画像 %>
+  <% (1..6).each do |i| %>
+    <%= tag.meta name: "computer-hand-#{i}", 
+                 content: asset_path("GameMaterial/GameScreenImage/color_rock_paper_sicissors_Image/computer/computer_#{i}_image.png") %>
+  <% end %>
 
   </head>
 
