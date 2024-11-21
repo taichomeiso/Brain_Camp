@@ -85,19 +85,7 @@ document.addEventListener("turbo:load", () => {
         console.error("ランキングの更新に失敗しました:", error)
       );
   }
-    const fetchLatestIds = () => {
-      return fetch("/rankings/latest_ids")
-        .then((response) => response.json())
-        .then((data) => {
-          // サーバーから取得した最新IDをwindowオブジェクトに保存
-          window.latestRankingIdFor = data;
-        })
-        .catch((error) => console.error("最新IDの取得に失敗しました:", error));
-    };
   
-  
-    // 初期化時に最新IDを取得
-    fetchLatestIds().then(() => {
       // 初期表示時のランキング更新
       fetchAndUpdateRanking(
         "color_rock_paper_sicissors",
@@ -115,7 +103,6 @@ document.addEventListener("turbo:load", () => {
         fetchAndUpdateRanking("number_master", "/rankings/number_master");
         fetchAndUpdateRanking("memory_square", "/rankings/memory_square");
       }, 7000); // 7秒ごとに更新
-    });
   
   // 初期状態で「色勝ちじゃんけん」ランキングを表示
   document
@@ -189,3 +176,4 @@ document.addEventListener("turbo:load", () => {
     });
   });
 });
+
