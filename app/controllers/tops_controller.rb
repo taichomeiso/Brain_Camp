@@ -1,3 +1,4 @@
+# app/controllers/tops_controller.rb
 class TopsController < ApplicationController
   before_action :set_ranking_data, only: %i[index rankings]
 
@@ -21,13 +22,16 @@ class TopsController < ApplicationController
     end
 
     # 最新のレコードIDを取得
-    @latest_memory_square_id = MemorySquare.latest_record
-    @latest_color_rock_paper_sicissor_id = ColorRockPaperSicissor.latest_record
-    @latest_number_master_id = NumberMaster.latest_record
+    @latest_ids = {
+      memory_square: MemorySquare.latest_record,
+      color_rock_paper_sicissors: ColorRockPaperSicissor.latest_record,
+      number_master: NumberMaster.latest_record
+    }
   end
 
   def rankings
-    data = case params[:game]
+    game_type = params[:game]
+    data = case game_type
            when 'color_rock_paper_sicissors'
              @color_rock_paper_sicissors
            when 'memory_square'
@@ -37,7 +41,11 @@ class TopsController < ApplicationController
            else
              []
            end
-    render json: data
+
+    render json: {
+      rankings: data,
+      latest_id: @latest_ids[game_type.to_sym]
+    }
   end
 
   private
