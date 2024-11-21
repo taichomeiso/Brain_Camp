@@ -1,8 +1,8 @@
 document.addEventListener("turbo:load", () => {
-  const gameStartButton = document.getElementById(
-    "startButton"
+  const gameStartButton = document.getElementById("startButton");
+  const backTitleButton = document.querySelector(
+    ".number-master__BackTitleButton"
   );
-  const backTitleButton = document.querySelector(".number-master__BackTitleButton");
   // 音声要素の取得
   const clickSound = document.getElementById("game-start-id");
   const gameReturnSound = document.getElementById("game-return-id");
@@ -26,6 +26,10 @@ document.addEventListener("turbo:load", () => {
 
   const watchMovie = document.querySelector(".number_master__watch-tutorial");
 
+  if (!gameStartButton) {
+    return null;
+  }
+
   gameStartButton.addEventListener("click", () => {
     tutorialMovie.pause();
     tutorialScreen.style.display = "none";
@@ -34,8 +38,7 @@ document.addEventListener("turbo:load", () => {
     clickSound.volume = 0.5;
     clickSound.play();
   });
-  
-  
+
   backTitleButton.addEventListener("click", (event) => {
     event.preventDefault(); // デフォルトのリンク動作を一時停止
     gameReturnSound.volume = 0.5; // 音量を設定
@@ -46,9 +49,6 @@ document.addEventListener("turbo:load", () => {
       window.location.href = backTitleButton.href; // 元のリンク先に遷移
     });
   });
-  if (!gameStartButton) {
-    return null;
-  }
 
   playTutorialButton.addEventListener("click", () => {
     tutorialDescriptionScreen.style.display = "none";
@@ -68,6 +68,4 @@ document.addEventListener("turbo:load", () => {
     tutorialMovie.pause();
     tutorialScreen.style.display = "none";
   });
-
-
 });

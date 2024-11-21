@@ -251,7 +251,6 @@
   overflow: hidden; /* コンテンツが溢れないように */
 }
 
-
 .new-label {
   display: inline-block;
   margin-left: 10px;
@@ -320,7 +319,6 @@
   justify-content: center;
 }
 
-
 /* ランキングのニックネーム表示 */
 .top-page__ranking-nickname-box {
   width: 400px; /* 固定幅 */
@@ -328,10 +326,11 @@
   white-space: nowrap; /* 1行に制限 */
   overflow: hidden; /* 溢れた部分を隠す */
   text-overflow: ellipsis; /* 省略記号を付ける */
-  padding: 0 10px;
   box-sizing: border-box; /* パディングを幅に含める */
-  text-align: left; /* 左寄せ */
   font-size: 24px; /* 適切なフォントサイズ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /* 1位のニックネームスタイル */
 .top-page__ranking-number1 .top-page__ranking-nickname-box {
@@ -346,7 +345,7 @@
 .top-page__ranking-number2 .top-page__ranking-nickname-box {
   font-size: 34px; /* 1位より小さいフォント */
   font-weight: bold;
- width: 380px;
+  width: 380px;
   height: 50px;
   text-align: left;
 }
@@ -412,7 +411,6 @@
   align-items: center;
   width: 100%; /* 横幅を全体に広げる */
 }
-
 
 .top-page__silver-number {
   display: inline-block;

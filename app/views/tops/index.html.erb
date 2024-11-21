@@ -152,7 +152,7 @@
                  <% if ranking[:id] == @latest_color_rock_papaer_sicissor_id %>
                    <span class="new-label">NEW</span>
                  <% end %>
-                 <%= ranking[:nickname] %>
+                 <%= truncate(ranking[:nickname].to_s, length: 10, omission: '...') %>
                </div>
                <div class="top-page__ranking-score-box">
                  <%= ranking[:score] %>
@@ -192,7 +192,7 @@
                  <% if ranking[:id] == @latest_number_master_id %>
                    <span class="new-label">NEW</span>
                  <% end %>
-                 <%= ranking[:nickname] %>
+                 <%= truncate(ranking[:nickname].to_s, length: 10, omission: '...') %>
                </div>
                <div class="top-page__ranking-score-box">
                  <%= ranking[:game_time] %>
@@ -232,7 +232,7 @@
                  <% if ranking[:id] == @latest_memory_square_id %>
                    <span class="new-label">NEW</span>
                  <% end %>
-                 <%= ranking[:nickname] %>
+                 <%= truncate(ranking[:nickname].to_s, length: 10, omission: '...') %>
                </div>
                <div class="top-page__ranking-score-box">
                  <%= ranking[:score] %>

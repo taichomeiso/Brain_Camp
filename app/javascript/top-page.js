@@ -14,10 +14,10 @@ document.addEventListener("turbo:load", () => {
     box.classList.remove("active");
     box.classList.add("inactive");
   });
-const TopHoverSound =document.getElementById("top-hover");
-const RankChangeSound =document.getElementById("top-ranking-change");
-const TopButtonClickSound =document.getElementById("top-button-click") 
-// localStorage から最後にプレイしたゲームを取得
+  const TopHoverSound = document.getElementById("top-hover");
+  const RankChangeSound = document.getElementById("top-ranking-change");
+  const TopButtonClickSound = document.getElementById("top-button-click");
+  // localStorage から最後にプレイしたゲームを取得
   const lastPlayedGame =
     localStorage.getItem("lastPlayedGame") || "color_rock_paper_sicissors";
 
@@ -31,32 +31,49 @@ const TopButtonClickSound =document.getElementById("top-button-click")
   }
   function fetchAndUpdateRanking(gameType, url) {
     fetch(url)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         console.log(`Received data for ${gameType}:`, data);
-        const rankingBox = document.querySelector(`.top-page__ranking-box[data-game="${gameType}"] .top-page__ranking-number-list`);
+        const rankingBox = document.querySelector(
+          `.top-page__ranking-box[data-game="${gameType}"] .top-page__ranking-number-list`
+        );
 
         if (!rankingBox) {
-          console.error(`ランキングボックスが見つかりません。gameType: ${gameType}`);
+          console.error(
+            `ランキングボックスが見つかりません。gameType: ${gameType}`
+          );
           return;
         }
-    
+
         rankingBox.innerHTML = ""; // 既存のランキングをクリア
         // 最新IDを取得
-      const latestId = window.latestRankingIdFor[gameType];
+        const latestId = window.latestRankingIdFor[gameType];
         data.forEach((ranking, index) => {
-          const scoreOrTime = gameType === "number_master" ? ranking.game_time : ranking.score; 
+          const scoreOrTime =
+            gameType === "number_master" ? ranking.game_time : ranking.score;
           const isNew = ranking.id === latestId; // 最新IDと一致するか判定
 
-            const rankingHTML = `
-            <div class="top-page__ranking-number${index + 1 <= 3 ? index + 1 : ' other'}">
+          const rankingHTML = `
+            <div class="top-page__ranking-number${
+              index + 1 <= 3 ? index + 1 : " other"
+            }">
               <div class="top-page__ranking-number-box">
-                <span class="${index === 0 ? 'top-page__gold-number' : index === 1 ? 'top-page__silver-number' : index === 2 ? 'top-page__bronze-number' : ''}">
+                <span class="${
+                  index === 0
+                    ? "top-page__gold-number"
+                    : index === 1
+                    ? "top-page__silver-number"
+                    : index === 2
+                    ? "top-page__bronze-number"
+                    : ""
+                }">
                   ${index + 1}位
                 </span>
               </div>
                 <div class="top-page__ranking-nickname-box">
-               ${isNew ? '<span class="new-label">NEW</span>' : ''} <!-- NEWラベルを追加 -->
+               ${
+                 isNew ? '<span class="new-label">NEW</span>' : ""
+               } <!-- NEWラベルを追加 -->
                 ${ranking.nickname}
                </div>    
               <div class="top-page__ranking-score-box">${scoreOrTime}</div>
@@ -64,21 +81,33 @@ const TopButtonClickSound =document.getElementById("top-button-click")
           rankingBox.insertAdjacentHTML("beforeend", rankingHTML);
         });
       })
-      .catch(error => console.error("ランキングの更新に失敗しました:", error));   
+      .catch((error) =>
+        console.error("ランキングの更新に失敗しました:", error)
+      );
   }
-  
- // 初期表示時のランキング更新
- fetchAndUpdateRanking("color_rock_paper_sicissors", "/rankings/color_rock_paper_sicissors");
- fetchAndUpdateRanking("number_master", "/rankings/number_master");
- fetchAndUpdateRanking("memory_square", "/rankings/memory_square");
+
+  // 初期表示時のランキング更新
+  fetchAndUpdateRanking(
+    "color_rock_paper_sicissors",
+    "/rankings/color_rock_paper_sicissors"
+  );
+  fetchAndUpdateRanking("number_master", "/rankings/number_master");
+  fetchAndUpdateRanking("memory_square", "/rankings/memory_square");
   // 各ゲームタイプのランキングを定期的に更新
   setInterval(() => {
-    fetchAndUpdateRanking("color_rock_paper_sicissors", "/rankings/color_rock_paper_sicissors");
+    fetchAndUpdateRanking(
+      "color_rock_paper_sicissors",
+      "/rankings/color_rock_paper_sicissors"
+    );
     fetchAndUpdateRanking("number_master", "/rankings/number_master");
     fetchAndUpdateRanking("memory_square", "/rankings/memory_square");
-  }, 3000); // 30秒ごとに更新
+  }, 7000); //  7秒ごとに更新
   // 初期状態で「色勝ちじゃんけん」ランキングを表示
-  document.querySelector('.top-page__ranking-box[data-game="color_rock_paper_sicissors"]').classList.add("active");
+  document
+    .querySelector(
+      '.top-page__ranking-box[data-game="color_rock_paper_sicissors"]'
+    )
+    .classList.add("active");
 
   // トロフィー画像のクリックイベントを設定
   document.querySelectorAll(".top-page__trophy-image").forEach((trophy) => {
@@ -90,8 +119,7 @@ const TopButtonClickSound =document.getElementById("top-button-click")
         box.classList.remove("active");
         box.classList.add("inactive");
       });
-     
-      
+
       // クリックされたゲームのランキングボックスを表示・アクティブ化
       const targetBox = document.querySelector(
         `.top-page__ranking-box[data-game="${game}"]`
@@ -134,7 +162,7 @@ const TopButtonClickSound =document.getElementById("top-button-click")
         link.addEventListener("mouseenter", () => {
           if (TopHoverSound) {
             TopHoverSound.currentTime = 0; // 再生位置をリセット
-            TopHoverSound.volume = 0.3
+            TopHoverSound.volume = 0.3;
             TopHoverSound.play();
           }
         });
