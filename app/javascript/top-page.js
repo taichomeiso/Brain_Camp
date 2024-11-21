@@ -29,6 +29,7 @@ document.addEventListener("turbo:load", () => {
     initialRankingBox.classList.remove("inactive");
     initialRankingBox.classList.add("active");
   }
+
   function fetchAndUpdateRanking(gameType, url) {
     fetch(url)
       .then((response) => response.json())
@@ -52,7 +53,6 @@ document.addEventListener("turbo:load", () => {
           const scoreOrTime =
             gameType === "number_master" ? ranking.game_time : ranking.score;
           const isNew = ranking.id === latestId; // 最新IDと一致するか判定
-
           const rankingHTML = `
             <div class="top-page__ranking-number${
               index + 1 <= 3 ? index + 1 : " other"
@@ -85,23 +85,38 @@ document.addEventListener("turbo:load", () => {
         console.error("ランキングの更新に失敗しました:", error)
       );
   }
-
-  // 初期表示時のランキング更新
-  fetchAndUpdateRanking(
-    "color_rock_paper_sicissors",
-    "/rankings/color_rock_paper_sicissors"
-  );
-  fetchAndUpdateRanking("number_master", "/rankings/number_master");
-  fetchAndUpdateRanking("memory_square", "/rankings/memory_square");
-  // 各ゲームタイプのランキングを定期的に更新
-  setInterval(() => {
-    fetchAndUpdateRanking(
-      "color_rock_paper_sicissors",
-      "/rankings/color_rock_paper_sicissors"
-    );
-    fetchAndUpdateRanking("number_master", "/rankings/number_master");
-    fetchAndUpdateRanking("memory_square", "/rankings/memory_square");
-  }, 7000); //  7秒ごとに更新
+    const fetchLatestIds = () => {
+      return fetch("/rankings/latest_ids")
+        .then((response) => response.json())
+        .then((data) => {
+          // サーバーから取得した最新IDをwindowオブジェクトに保存
+          window.latestRankingIdFor = data;
+        })
+        .catch((error) => console.error("最新IDの取得に失敗しました:", error));
+    };
+  
+  
+    // 初期化時に最新IDを取得
+    fetchLatestIds().then(() => {
+      // 初期表示時のランキング更新
+      fetchAndUpdateRanking(
+        "color_rock_paper_sicissors",
+        "/rankings/color_rock_paper_sicissors"
+      );
+      fetchAndUpdateRanking("number_master", "/rankings/number_master");
+      fetchAndUpdateRanking("memory_square", "/rankings/memory_square");
+  
+      // 各ゲームタイプのランキングを定期的に更新
+      setInterval(() => {
+        fetchAndUpdateRanking(
+          "color_rock_paper_sicissors",
+          "/rankings/color_rock_paper_sicissors"
+        );
+        fetchAndUpdateRanking("number_master", "/rankings/number_master");
+        fetchAndUpdateRanking("memory_square", "/rankings/memory_square");
+      }, 7000); // 7秒ごとに更新
+    });
+  
   // 初期状態で「色勝ちじゃんけん」ランキングを表示
   document
     .querySelector(
