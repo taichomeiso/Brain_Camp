@@ -16,21 +16,21 @@ class TopsController < ApplicationController
     data = case params[:game]
            when 'color_rock_paper_sicissors'
              @color_rock_paper_sicissors.map do |record|
-               record.as_json(only: %i[id score]).merge(
-                 nickname: truncate_nickname(record.nickname)
-               )
+               record_json = record.as_json(only: %i[id nickname score])
+               record_json['nickname'] = truncate_nickname(record_json['nickname'])
+               record_json
              end
            when 'memory_square'
              @memory_squares.map do |record|
-               record.as_json(only: %i[id score]).merge(
-                 nickname: truncate_nickname(record.nickname)
-               )
+               record_json = record.as_json(only: %i[id nickname score])
+               record_json['nickname'] = truncate_nickname(record_json['nickname'])
+               record_json
              end
            when 'number_master'
              @number_masters.map do |record|
-               record.as_json(only: %i[id game_time]).merge(
-                 nickname: truncate_nickname(record.nickname)
-               )
+               record_json = record.as_json(only: %i[id nickname game_time])
+               record_json['nickname'] = truncate_nickname(record_json['nickname'])
+               record_json
              end
            else
              []
