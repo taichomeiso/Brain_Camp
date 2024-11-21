@@ -15,14 +15,34 @@ class TopsController < ApplicationController
   def rankings
     data = case params[:game]
            when 'color_rock_paper_sicissors'
-             @color_rock_paper_sicissors.map { |record| record.as_json(only: %i[id nickname score]) }
+             @color_rock_paper_sicissors.map do |record|
+               record.as_json(only: %i[id score]).merge(
+                 nickname: truncate_nickname(record.nickname)
+               )
+             end
            when 'memory_square'
-             @memory_squares.map { |record| record.as_json(only: %i[id nickname score]) }
+             @memory_squares.map do |record|
+               record.as_json(only: %i[id score]).merge(
+                 nickname: truncate_nickname(record.nickname)
+               )
+             end
            when 'number_master'
-             @number_masters.map { |record| record.as_json(only: %i[id nickname game_time]) }
+             @number_masters.map do |record|
+               record.as_json(only: %i[id game_time]).merge(
+                 nickname: truncate_nickname(record.nickname)
+               )
+             end
            else
              []
            end
     render json: data
+  end
+
+  private
+
+  def truncate_nickname(text)
+    return text.to_s if text.to_s.length <= 10
+
+    "#{text.to_s[0...10]}..."
   end
 end
