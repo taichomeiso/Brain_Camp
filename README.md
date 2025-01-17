@@ -187,31 +187,34 @@ Figma: 初めての利用で、デザインの知識がない中、UIのプロ�
 - MySQL (または使用しているデータベース)
 - Git
 
-## ローカルでの動作方法
+ローカルでの動作方法
+リポジトリをクローンする
+リポジトリをGitHubからローカル環境にクローンします。
 
-1. リポジトリをクローンする
+```git clone https://github.com/taichomeiso/Brain_Camp cd Brain_Camp ```
 
-   git clone https://github.com/taichomeiso/Brain_Camp 
-   cd Brain_Camp
+必要なGemをインストール
+アプリケーションが依存するGemをインストールします。
 
-2. 必要なGemをインストール
+``` bundle install ```
 
-   bundle install
+データベースをセットアップ
+以下のコマンドを順に実行して、データベースを作成・マイグレーション・Seedデータを投入します。
 
-3. データベースをセットアップ  
-   以下のコマンドを順に実行して、データベースを作成・マイグレーション・Seedデータの投入を行います。
+``` rails db:create rails db:migrate rails db:seed ```
 
-   rails db:create  
-   rails db:migrate  
+サーバーを起動
+Railsサーバーを起動します。
 
-4. サーバーを起動
+``` rails server ```
 
-   rails server
+ブラウザでアプリケーションを開く
+サーバー起動後、以下のURLをブラウザで開いてアプリケーションを確認します。
 
-5. ブラウザでアプリケーションを開く  
-   サーバー起動後、以下のURLをブラウザで開いてアプリケーションを確認します。
+``` http://localhost:3000 ```
 
-   http://localhost:3000
+
+---
 
 
 
